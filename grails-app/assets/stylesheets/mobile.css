@@ -46,7 +46,7 @@
         width: auto;
     }
 
-    /* hide all but the first column of list tables */
+    /* hide all but the first column of org.grails.list tables */
     .scaffold-list td:not(:first-child),
     .scaffold-list th:not(:first-child) {
         display: none;
