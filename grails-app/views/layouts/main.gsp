@@ -1,51 +1,157 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>
-        <g:layoutTitle default="Grails"/>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <asset:stylesheet src="application.css"/>
+    <g:set var="entityName" value="iKariera.cz"/>
+    <title><g:layoutTitle default="${message(code: 'page.main.title')}"/></title>
+
+
+    <r:require modules="mainStyle, application"/>
+
+    <g:render template="/layouts/mainLayout/pageHead"/>
+    <g:render template="/layouts/mainLayout/googleAnalytics"/>
 
     <g:layoutHead/>
+
+    <r:layoutResources/>
+
+
+
 </head>
+
 <body>
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">
-                    <i class="fa grails-icon">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> Grails
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
-                <ul class="nav navbar-nav navbar-right">
-                    <g:pageProperty name="page.nav" />
-                </ul>
+<div class="wrapper">
+    <g:render template="/layouts/sharedLayout/maintanceMode"/>
+
+    <sec:ifAnyGranted roles="ROLE_STUDENT">
+
+        <g:render template="/layouts/studentLayout/loggedTopMenu"/>
+
+    </sec:ifAnyGranted>
+
+
+    <sec:ifAnyGranted roles="ROLE_COMPANY">
+
+        <g:render template="/layouts/companyLayout/loggedTopMenu"/>
+
+    </sec:ifAnyGranted>
+
+
+
+    <sec:ifAnyGranted roles="ROLE_ADMIN">
+
+        <g:render template="/layouts/adminLayout/loggedTopMenu"/>
+    </sec:ifAnyGranted>
+
+
+
+    <sec:ifNotLoggedIn>
+
+    %{--    <g:render template="/layouts/mainLayout/loggedTopMenu"/>--}%
+
+    </sec:ifNotLoggedIn>
+
+
+    <div class="menu-part">
+
+        <g:render template="/layouts/mainLayout/mainMenu"/>
+
+    </div>
+
+
+
+
+    %{--<div class="header-part">
+        <div class="row show-for-medium-up">
+
+            <div class="large-offset-7 large-5 columns">
+
+                <g:render template="/layouts/mainLayout/topMenu"/>
+
             </div>
         </div>
+
+
+        <div class="row">
+
+            <div class="large-12 columns">
+
+                <g:render template="/layouts/mainLayout/banner"/>
+
+            </div>
+        </div>
+
     </div>
 
-    <g:layoutBody/>
 
-    <div class="footer" role="contentinfo"></div>
+    <div class="menu-part">
+        <div class="row">
 
-    <div id="spinner" class="spinner" style="display:none;">
-        <g:message code="spinner.alt" default="Loading&hellip;"/>
+            <div class="large-12 columns">
+
+                <g:render template="/layouts/mainLayout/mainMenu"/>
+            </div>
+        </div>
+
+    </div>--}%
+
+
+
+    <g:render template="/layouts/mainLayout/flashMessages"/>
+
+
+    <div style="min-height: 400px">
+
+        <g:layoutBody/>
     </div>
 
-    <asset:javascript src="application.js"/>
+
+
+<br/>
+
+    <div class="footer">
+
+        <g:render template="/layouts/mainLayout/footer"/>
+
+    </div>
+
+
+
+
+
+
+
+    <r:layoutResources/>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<g:render template="/layouts/mainLayout/dialogs"/>
+
+%{-- sticky footer --}%
+<g:render template="/layouts/sharedLayout/bottomStickyBar"/>
+
+
+
+
+
+
+
+<script>
+    $(document).foundation();
+</script>
 
 </body>
 </html>

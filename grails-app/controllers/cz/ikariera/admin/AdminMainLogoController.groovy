@@ -16,7 +16,7 @@ class AdminMainLogoController {
     }
 
 
-    
+
     def list() {
         User user = springSecurityService.getCurrentUser()
         if (!user) {
