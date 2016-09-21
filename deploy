@@ -1,0 +1,71 @@
+#!/bin/sh
+# Proper header for a Bash script.
+
+
+#SERVER_ADDRESS="root@ikariera.cz"
+SERVER_ADDRESS="localhost"
+
+#DEPLOY_PATH="/var/lib/tomcat6/ikariera/"
+DEPLOY_PATH="/home/janko/Downloads/tomcat/webapps/ikariera/"
+
+WAR_NAME="ikariera-production-4.0.war"
+WAR_NAME_FINAL="ROOT.war"
+
+#TODO CHANGE
+LANG_API_PATH="http://global.senman.cz/api-export-translation/c079716a26d7362d626eee8aff4b930bd13b2f65"
+GLOBAL_ZIP_NAME="ika4.export.zip"
+I18N_CS_FILE="ika4.cs"
+I18N_EN_FILE="ika4.en"
+I18N_CS_PATH="grails-app/i18n/messages_cs_CZ.properties"
+I18N_EN_PATH="grails-app/i18n/messages_en_US.properties"
+I18N_GENERAL_PATH="grails-app/i18n/messages.properties"
+
+echo "Download i18n from global ..."
+#wget --user="admin" --password="hamachi159" ${LANG_API_PATH} 
+
+
+# extract archive
+#echo "extracting files from global. . . "
+#unzip ${GLOBAL_ZIP_NAME}
+
+
+#echo "copying extracted files from global to project. . . "
+#echo "copying CZ file. . . "
+#mv ${I18N_CS_FILE} ${I18N_CS_PATH}
+#scp ${I18N_CS_PATH} ${I18N_GENERAL_PATH}
+
+#echo "copying EN file. . . "
+#mv ${I18N_EN_FILE} ${I18N_EN_PATH}
+
+echo "Creating war ..."
+
+gvm use grails-2.3.7
+grails prod war
+
+echo "Rename war"
+mv target/${WAR_NAME} target/${WAR_NAME_FINAL}
+
+
+echo "Stoping tomcat ..."
+ssh ${SERVER_ADDRESS} service tomcat6 stop
+
+echo "Removing files on server ..."
+ssh ${SERVER_ADDRESS} rm -r ${DEPLOY_PATH}*
+
+echo "Copy war to server ..."
+ssh ${SERVER_ADDRESS} scp -r ./target/${WAR_NAME_FINAL}  ${DEPLOY_PATH}
+
+echo "Starting tomcat ..."
+ssh ${SERVER_ADDRESS} service tomcat6 start
+
+echo "Copy changes.txt ..."
+
+scp -r ./db/changes.txt  ${DEPLOY_PATH}db/
+
+
+#delete war, i18n zip on local disk - clean up"
+echo "Clean up ..."
+#rm target/${WAR_NAME_FINAL}
+#rm ${GLOBAL_ZIP_NAME}
+
+echo "...  deploy finished."

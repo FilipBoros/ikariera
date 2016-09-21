@@ -1,0 +1,179 @@
+Ikariera
+sudo apt-get install git
+git clone https://gitlab.iaeste.sk/administrator/ikariera.git
+
+### Ako rozbehat?
+
+Skopirovat grails-app/conf/Config.groovy.example do grails-app/conf/Config.groovy
+Skopirovat grails-app/conf/DataSource.groovy.example do grails-app/conf/DataSource.groovy a nastavit pristupy do DB
+Skopirovat grails-app/conf/BuildConfig.groovy.example do grails-app/conf/BuildConfig.groovy
+
+Oracle java 7/8 (aktualne 7)
+http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html
+http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install oracle-java7-installer
+java -version (to verify)
+sudo apt-get install oracle-java7-set-default
+
+### Switching between Oracle Java 8 and Java 7
+Later on, if you want to switch Oracle Java 7, use the following command (make sure "oracle-java7-installer" package is installed):
+sudo update-java-alternatives -s java-7-oracle
+And, switch back to Oracle Java 8 using:
+sudo update-java-alternatives -s java-8-oracle
+
+
+To remove (sudo apt-get remove oracle-java7-installer)
+
+MySQL
+install mysql
+sudo apt-get install mysql-server
+https://www.linode.com/docs/databases/mysql/how-to-install-mysql-on-ubuntu-14-04
+
+create ikariera db with utf-8 collation
+
+GIT
+install git
+
+For development
+
+SDKMAN
+install sdkman
+http://sdkman.io/install.html
+curl -s get.sdkman.io | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+GRAILS
+sdk install grails 2.3.7
+run
+grails run-app in ikariera dir
+
+
+Upgrade 2.5.4
+@author Michal Dolnak
+@email dolnakmichal@gmail.com
+
+Treba naistalovat grails 2.5.4 // viz. http://sdkman.io/usage.html
+gvm install grails 2.5.4 // alebo sdk install grails 2.5.4
+Este treba mat naistalovany gradle, gradle 2.13 funguje
+
+Testy
+Stiahnite si tento firefox https://ftp.mozilla.org/pub/firefox/releases/46.0.1/linux-x86_64/en-US/firefox-46.0.1.tar.bz2 a rozbalte si ho pod /opt/firefox-46 viz. GebConfig.groovy
+
+Najlepsie je spustat testy cez 2 terminaly. V oboch otvorime domovsky folder projektu napr. ~/Desktop/ikariera/ikariera, ak mate projekt na ploche.
+V prvom rozbehneme aplikaciu pomocou grails run-app.
+V druhom spustime testy cez grails test-app functional: baseUrl="http://localhost:8090/". (port sa moze zmenit)
+Pozn. Spustame len funkcionalne testy proti beziacej aplikacii. Vyhoda je, ze sa spustaju rychlejsie. Nevyhoda je, ze v aplikacii ostavaju udaje po testoch.
+Da sa to zmenit, ak v testoch dorobime metodu cleanup a v nej vymazeme to, co sme do aplikacie pridali.
+
+Ak mate Ubuntu 16.04,
+tak jeden select cez criterio api vracia chybu.
+tu je riesenie https://github.com/Piwigo/Piwigo/issues/376#issuecomment-230108109
+
+Pre verziu beziacu na grails 2.5.4
+| Warning The [$tt__replyInbox] action in [cz.ikariera.student.StudentAccountMessageController] accepts a parameter of type [org.springframework.transaction.TransactionStatus].  Interface types and abstract class types are not supported as command objects.  This parameter will be ignored.
+tieto Warningy si netreba vsimat viz. https://github.com/grails/grails-core/issues/9770
+
+Upgrade 3.1.9
+@author Michal Dolnak
+@email dolnakmichal@gmail.com
+
+Treba naistalovat grails 3.1.9 // viz. http://sdkman.io/usage.html
+gvm install grails 3.1.9 // alebo sdk install grails 3.1.9
+Este treba mat naistalovany gradle, gradle 2.13 funguje
+
+Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory. Staci checknut riadok 132 v config.groovy.
+
+Pre development verziu toto netreba
+For production version
+download tomcat
+https://tomcat.apache.org/download-80.cgi
+add ikariera.jar to tomcat/webapps
+
+
+Users:
+
+company@ikariera.eu
+company
+
+admin@ikariera.eu
+admin
+
+student@ikariera.eu
+student
+
+grails dev war
+grails prod war
+
+deploy file to /opt/tomcat8/webapps/ROOT.war
+
+Ako rozbehat tomcat ako servis
+
+init.d/tomcat
+#!/bin/bash
+#
+# tomcat
+#
+# chkconfig:
+# description:  Start up the Tomcat servlet engine.
+
+# Source function library.
+. /etc/init.d/functions
+
+
+RETVAL=$?
+export CATALINA_HOME=/home/administrator/tomcat
+
+case "$1" in
+ start)
+        if [ -f $CATALINA_HOME/bin/startup.sh ];
+          then
+        echo $"Starting Tomcat"
+            /bin/su tomcat $CATALINA_HOME/bin/startup.sh
+        fi
+    ;;
+ stop)
+        if [ -f $CATALINA_HOME/bin/shutdown.sh ];
+          then
+        echo $"Stopping Tomcat"
+            /bin/su tomcat $CATALINA_HOME/bin/shutdown.sh
+        fi
+    ;;
+ *)
+    echo $"Usage: $0 {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit $RETVAL
+
+default/tomcat
+USER=administrator
+
+#! /bin/bash
+
+install
+#Remove script if exists
+update-rc.d -f tomcat7 remove
+
+#Copy files to daemon directories
+cp init.d/tomcat7 /etc/init.d/tomcat
+cp default/tomcat7 /etc/dafault/tomcat
+
+#Add script to autostart
+update-rc.d tomcat7 defaults
+
+
+To start a daemon at startup:
+
+update-rc.d service_name defaults
+To remove:
+
+update-rc.d -f service_name remove
+
+
+set initial heap size
+echo 'export CATALINA_OPTS="-Xms512M -Xmx1024M"' > /usr/share/tomcat7/bin/setenv.sh

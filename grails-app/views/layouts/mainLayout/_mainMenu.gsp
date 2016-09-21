@@ -32,11 +32,9 @@
 
                     <a class="home show-for-small" href="${createLink(uri: '/')}">
                         <asset:image src="ikariera/ikariera-special.png" alt="iKariera" style="height: 70px; border-width: 0px; margin-bottom: 10px;"/>
-%{--
-                        <img style="height: 70px"
+                        %{--<img style="height: 70px"
                              src="${resource(dir: 'images/ikariera', file: 'ikariera-special.png')}" alt="iKariera"
-                             style="border-width: 0px; margin-bottom: 10px;"/>
---}%
+                             style="border-width: 0px; margin-bottom: 10px;"/>--}%
                     </a>
 
                 </h1>
