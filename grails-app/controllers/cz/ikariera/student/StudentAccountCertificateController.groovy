@@ -1,4 +1,4 @@
-package ikariera.student
+package cz.ikariera.student
 
 import cz.ikariera.security.User
 import cz.ikariera.student.StudentAccount

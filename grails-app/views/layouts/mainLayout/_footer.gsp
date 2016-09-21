@@ -1,7 +1,7 @@
 <div class="row">
     <div class="small-6 medium-6 large-5 columns">
 
-        <img src='${resource(dir: 'images/ikariera', file: 'iaeste-bile.png')}'/>
+        <asset:image src="ikariera/iaeste-bile.png"/>
         <br/>     <br/>
 
 

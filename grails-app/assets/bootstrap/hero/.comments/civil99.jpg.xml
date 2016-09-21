@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment version="3.0">
+  <caption>Sketch</caption>
+  <note>industrial drawing detail and several drawing   tools</note>
+  <place/>
+  <categories>
+    <category value="pencil"/>
+    <category value="projecting"/>
+    <category value="design"/>
+    <category value="engineering"/>
+    <category value="industrial"/>
+    <category value="industries"/>
+    <category value="mechanism"/>
+    <category value="machine"/>
+    <category value="aggregate"/>
+    <category value="set"/>
+    <category value="plant"/>
+    <category value="pattern"/>
+    <category value="geometry"/>
+    <category value="range"/>
+    <category value="circle"/>
+    <category value="radius"/>
+    <category value="diameter"/>
+    <category value="compass"/>
+    <category value="paper"/>
+    <category value="detail"/>
+    <category value="ruler"/>
+    <category value="scheme"/>
+    <category value="drawing"/>
+    <category value="instrument"/>
+    <category value="drafting"/>
+    <category value="document"/>
+    <category value="blueprint"/>
+    <category value="measurement"/>
+    <category value="technical"/>
+    <category value="tool"/>
+    <category value="tools"/>
+    <category value="frame"/>
+    <category value="sketch"/>
+    <category value="fragment"/>
+    <category value="diagram"/>
+    <category value="plan"/>
+    <category value="blue"/>
+  </categories>
+</comment>

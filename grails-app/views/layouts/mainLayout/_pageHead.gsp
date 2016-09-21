@@ -7,8 +7,8 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="${resource(dir: '/images/ikariera', file: 'ikariera.png')}" type="image/x-icon">
-
+<link id="ikarieraLogo" rel="shortcut icon" href="${resource(dir: '/images/ikariera', file: 'ikariera.png')}" type="image/x-icon">
+%{--<asset:image rel="shortcut icon" src="ikariera/ikariera.png"/>--}%
 
 
 <link href=" http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,500,600italic,600,700italic,700,800italic,800&subset=latin,latin-ext" rel="stylesheet" type="text/css">

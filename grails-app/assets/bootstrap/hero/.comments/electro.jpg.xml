@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment version="3.0">
+  <caption/>
+  <note/>
+  <place/>
+  <categories>
+    <category value="microprocesseur"/>
+    <category value="ingénierie"/>
+    <category value="composant électronique"/>
+    <category value="informatique"/>
+    <category value="processeur"/>
+    <category value="micro processeur"/>
+    <category value="abstrait"/>
+    <category value="agrandi"/>
+    <category value="concept"/>
+    <category value="électrique"/>
+    <category value="équipement"/>
+    <category value="fil de fer"/>
+    <category value="futuriste"/>
+    <category value="intégré"/>
+    <category value="jeton"/>
+    <category value="numérique"/>
+    <category value="ordinateur"/>
+    <category value="pc"/>
+    <category value="semi-conducteurs"/>
+    <category value="silicium"/>
+    <category value="système"/>
+    <category value="technologie"/>
+    <category value="vert"/>
+  </categories>
+</comment>

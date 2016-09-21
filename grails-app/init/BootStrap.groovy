@@ -22,8 +22,6 @@ class BootStrap {
 
     def grailsApplication
 
-
-
     def springSecurityService
 
     def init = { servletContext ->

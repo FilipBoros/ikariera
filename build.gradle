@@ -72,6 +72,7 @@ dependencies {
     profile "org.grails.profiles:web"
 
     runtime 'org.grails.plugins:database-migration:2.0.0.RC4'
+    runtime 'mysql:mysql-connector-java:5.1.24'
 
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.8.2"
     runtime "com.h2database:h2"
