@@ -185,8 +185,7 @@ class TextOperationLibTagLib {
 
         def servletContext = ServletContextHolder.servletContext
 
-        out << '<div class="partner-logo" >  <img   class="displayed"   src ="' + resource(dir: 'companies', file: path) + '" />  </div>'
-
+        out << '<div class="partner-logo" >  <asset:image   class="displayed"   src ="' + companies/path + '" />  </div>' /*TODO finnish this*/
 
     }
 
@@ -200,7 +199,7 @@ class TextOperationLibTagLib {
         Banner bannerInstance = bannerService.getActiveBannerWithPosition(position)
 
         if (bannerInstance) {
-            out << '<a href ="' + bannerInstance.urlLink + '" style="' + style + '" class="' + _class + '"><img src="' + resource(dir: bannerInstance.directory, file: bannerInstance.file) + '" /> </a>'
+            out << '<a href ="' + bannerInstance.urlLink + '" style="' + style + '" class="' + _class + '"><asset:image src="' + bannerInstance.directory/bannerInstance.file + '" /> </a>'
         }
 
     }

@@ -7,14 +7,7 @@
 
     <asset:stylesheet src="application.css"/>
 
-    <asset:javascript src="vendor/jquery.js"/>
-    <asset:javascript src="vendor/jquery-ui.js"/> %{--V ikariere 2 je to v require module, ale neviem kde presne to ma byt--}%
-    <asset:javascript src="foundation/foundation.js"/>
-    %{--<asset:javascript src="contactDetails.js"/>--}% %{--V ikariere 2 je to v require module, ale neviem kde presne to ma byt--}%
-    <asset:javascript src="fileinput/jquery.fileinput.min.js"/>
-    <asset:javascript src="ckeditor/ckeditor.js"/>
-    <asset:javascript src="chosen_v1.1.0/chosen.jquery.js"/>
-
+    <asset:javascript src="main.js"/>
     <asset:javascript src="application.js"/>
 
     <g:render template="/layouts/mainLayout/pageHead"/>
