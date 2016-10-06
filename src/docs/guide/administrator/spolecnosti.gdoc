@@ -1,0 +1,18 @@
+Seznam společností vám nabízí velké množství funkcionalit.
+Velmi důležitou funkčností je vyhledávací pole nad seznamem. Umožní vám vyhledat společnost podle názvu nebo iča.
+
+Seznam samotný podává důležité informace o firmách.
+Pokud je název firmy červený a sloupec aktivní má N, tak firma ještě nebyla schválena administrátorem.
+Také je třeba dát si pozor na firmy, které mají ve sloupci Valid N. U takových je před aktivací nutné manuálně opravit data.
+* *AKCE*
+** *Aktivovat společnost* - zobrazí se pouze u neaktivních společností, aktivuje společnost
+** *Zakázat společnost* - zobrazí se pouze u aktvivních společností, deaktivuje společnost
+** *Editovat společnost* - stejné jako normální editace profilu firmy, dovoluje ale navíc editovat i položky Název firmy a IČO.
+** *Je to personálka* - označí firmu jako personální agenturu
+** *Přidat kredity* - přidat/odebrat kredity
+** *Přihlásit jako* - otevře se nové okno ve kterém administrátor může spravovat firmu, jako by za ní byl přihlášen
+** *Aktivovat služby* - přehled a správa služeb poskytovaných společnosti
+** *Nahrát logo* - otevře formulář přidání loga společnosti
+** *Nahrát banner* - otevře formulář přidání banneru společnosti
+** *Smazat* - nevratně smaže společnost
+!administration/list-companies.png!

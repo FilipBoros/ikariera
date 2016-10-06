@@ -79,7 +79,7 @@ div.jobOfferItem.topPos {
 
             <br>
             <br>
-            <g:paginateFoundation total="${jobOfferInstanceTotal}" params="${params}"
+            <g:paginateFoundation controller="studentAccountRecommended" action="index" total="${jobOfferInstanceTotal}" params="${params}"
                                   maxsteps="4"
                                   next="${message(code: "list.paginate.next")}"
                                   prev="${message(code: "list.paginate.prev")}"/>

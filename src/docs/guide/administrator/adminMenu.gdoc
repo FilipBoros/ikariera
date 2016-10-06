@@ -1,0 +1,24 @@
+Po otevření odkazu správa budete přesměrováni na okno "Výpis společností"
+
+Pod nápisem Administrační rozhraní se nachází administrátorské menu.
+* *Společnosti*
+** *Společnosti* - Seznam společností registrovaných na iKariéře
+** *Inzeráty* - Seznam veškerých inzerátů
+* *Uživatelé*
+** *Firemní* - Seznam firemních uživatelů
+** *Studenti* - Seznam studentů
+** *Administrátoři* - Seznam administrátorů webu
+* *Služby*
+** *Přehled služeb* - Seznam služeb umožňující jejich editaci (poplatek, doba expirace)
+** *Bannery* - Seznam nahraných bannerů umožňující jejich editaci
+** *Loga* - Seznam společností, které mají aktivovanou službu *Logo Partner portálu iKariéra* nebo *Logo Generální partner portálu iKariéra*
+** *Mailing* - Nástroj pro hromadné rozesílaní emailů firmám
+** *Projekty* - Seznam samostatné rubriky inzerátů IAESTE (umožňuje jejich správu)
+** *Veletrhy* - Seznam registrovaných veletrhů (umožňuje jejich správu)
+** *Katalog* - Seznam nahraných katalogů IAESTE (umožňuje jejich správu)
+** *Anketa* - Seznam anket portálu iKariéra (umožňuje jejich správu)
+** *Výsledky ankety* - Seznam anket s možností náhledu odpovědí studentů
+** *FAQ* - Seznam Otázek a Odpovědí (umožňuje jejich správu)
+* *Zakoupené služby* - seznam všech proběhlých transakcí kreditů
+* *Statistiky* - Přehled základních statistik portálu
+* *Kontakt* - Formulář editace kontaktních informací správce portálu

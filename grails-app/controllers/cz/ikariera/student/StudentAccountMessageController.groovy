@@ -1,4 +1,4 @@
-package ikariera.student
+package cz.ikariera.student
 
 import cz.ikariera.company.Company
 import cz.ikariera.company.JobOffer
@@ -275,6 +275,7 @@ class StudentAccountMessageController {
             }
         }
         def g2 = totalCountDialogs
+
         render totalCountDialogs
     }
 

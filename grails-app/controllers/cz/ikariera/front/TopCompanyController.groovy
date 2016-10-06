@@ -1,4 +1,4 @@
-package ikariera.front
+package cz.ikariera.front
 
 import cz.ikariera.company.Company
 import cz.ikariera.company.ServicesExpire

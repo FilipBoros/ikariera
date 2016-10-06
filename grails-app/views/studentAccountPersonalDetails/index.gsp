@@ -68,7 +68,8 @@
                         <img src="${createLink(controller: 'studentAccountPhoto', action: "getMedia", id: userInstance?.studentAccount?.photo?.newFilename, absolute: true)}"/>
                     </g:if>
                     <g:else>
-                        <img src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+                        <asset:image src="/ikariera/no-profile-image2.png" />
+                        %{--<img src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>--}%
                     </g:else>
                 </p>
 

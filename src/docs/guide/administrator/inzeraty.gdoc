@@ -1,0 +1,11 @@
+V seznamu inzerátů můžete vyhledávat hned podle několika kritérií: Názvu inzerátu, jména společnosti nebo IČA.
+Sloupce Vloženo a Aktivní do jsou vyplněny pouze pokud byl inzerát publikován.
+Z/K
+*Z - Počet zobrazení daného inzerátu.
+*K - Počet zobrazení kontaktních údajů.
+
+Akce
+* *Editovat* - Otevře editační formulář inzerátu
+* *Smazat* - Nevratně smaže inzerát
+
+ !administration/advertisement.png!

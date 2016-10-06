@@ -1,0 +1,13 @@
+Seznam firem, které mají aktivovanou službu "Logo Partner portálu iKariera" nebo "Logo Generální partner iKariera".
+
+h2. Upravit
+Zde upravujete nastavení loga
+* *Pozice* - Jako kolikáté bude logo zobrazeno
+* *Aktivováno* - Od kdy se logo bude zobrazovat
+* *Expiruje* - Do kdy se bude logo zobrazovat
+
+h2. Nahrát logo
+Pokud už má společnost nahrané logo, zobrazí se jeho náhled.
+Jedinou položkou je nahrání loga. Povolené formáty jsou jpg, jpeg, png a bmp. Maximální velikost je 320x100px.
+
+!administration/activated-logos.png!

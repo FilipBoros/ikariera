@@ -1,4 +1,4 @@
-package ikariera.company
+package cz.ikariera.company
 
 import cz.ikariera.admin.AdminEmails
 import cz.ikariera.company.*

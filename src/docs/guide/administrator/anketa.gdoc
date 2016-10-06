@@ -1,0 +1,21 @@
+V seznamu máte možnost publikovat, tvořit a mazat ankety.
+* *publikuj* - studenti anketu uvidí a budou ji moci vyplnit
+* *smaž* - nevratně smaže anketu
+!administration/survey_list.png!
+
+h2. Nová anketa
+Ve formuláři zadáte název ankety, úvodní a závěrečný text.
+Poté přidáváte jednotlivé otázky, kde máte možnost zadat text otázky a formát odpovědi.
+* *text* - student napíše krátkou odpověď
+!administration/survey_shortAnswer.png!
+
+* *textArea* - student napíše dlouho odpověď
+!administration/survey_longAnswer.png!
+
+* *checkBox* - student vybere jednu a více nabízených odpovědí
+** pomocí tlačítka + postupně přidávejte texty odpovědí
+!administration/survey_chBox.png!
+
+* *radioButton* - student vybere právě jednu odpověď
+** pomocí tlačítka + postupně přidávejte texty odpovědí
+!administration/survey_radio.png!

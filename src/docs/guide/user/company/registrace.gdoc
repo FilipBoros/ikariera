@@ -1,0 +1,35 @@
+Na hlavní stránce (není přihlášen uživatel) klikněte na Vložit nabídku.Budete přesměrováni na registrační formulář.
+
+!/regCompany.png!
+
+h2. Registrace společnosti
+
+Údaje o firmě je nutné vyplnit důsledně, neboť administrátor kontroluje korektnost údajů předtím, než aktivuje účet.
+Všechny položky kromě DIČ a webové adresy jsou povinné. Pokud chcete zadat webovou adresu musíte ji zadat ve formátu
+http://www.seznam.cz/. Dále je třeba dát si pozor na název a ičo firmy, tyto dva údaje musí být unikátní.
+
+h2. Výběr společnosti
+
+Zde prosím vyberte jeden nebo více oborů, které nejlépe charakterizují Vaši firmu.
+
+!/regFormCategories.png!
+
+h2. Popis
+
+Zde můžete napsat co se do kolonek nevešlo. Nevkládejte žádné formátovací tagy!
+
+h2. Registrace uživatele
+
+Všechny údaje kromě pozice ve společnosti a telefonního čísla jsou povinné. Dávejte si pozor při vyplňování položky
+Mailová adresa (login). Musíte do ní zadat aktivní emailovou adresu, neboť vám na ní bude zaslán aktivační email.
+Telefonní číslo sice není povinné, ale doporučujeme, aby jste jej vyplnili.
+
+!/regForm4.png!
+
+h2. Capcha
+
+Poslední věc, která je povinná, je vyplnění kontrolního textu tzv. Capcha. Capcha dokáže rozlišit, jestli se jedná o
+skutečného uživatele, který se chce registrovat a nebo jestli se jedná pouze o robota. Capcha může obsahovat malá,
+velká písmenka a také číslice viz obr. č. 8.
+
+!/regForm3.png!

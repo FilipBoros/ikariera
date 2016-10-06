@@ -1,0 +1,32 @@
+h2. Seznam nabídek
+
+V seznamu se vypisují veškeré inzeráty přihlášené firmy. Pole Publikováno a Expirace budou vyplněna pouze pokud byl
+inzerát publikován. Pokud nebyl článek ještě publikován kontextové pole Akce bude obsahovat možnosti: edituj,
+smaž, publikuj a náhled.
+
+!/companyJobOffersList1.png!
+
+Pokud je článek publikován změní se možné akce na: prodluž, zruš, náhled a smaž.
+* *prodluž* - otevře se kalendář, ve kterém můžete změnit datum expirace
+* *zruš* - nastaví datum expirace na aktuální datum
+
+!/companyJobOffersList2.png!
+
+h2. Přidání nabídky
+
+Než začnete vyplňovat formulář věnujte pozornost jeho druhé položce - Druh nabídky.
+* *Nabídka práce* - defaultní možnost
+* *Diplomová práce* - Obsahuje všechna pole jako Nabídka práce kromě polí Datum nástupu a Vhodné pro absolventy
+* *Praxe a stáže* - Obsahuje všechna pole jako Nabídka práce kromě pole Vhodné pro absolventy
+
+!/companyJobOffersAddMenu.png!
+
+h2. Editace nabídky
+
+Jedná se o stejný formulář jako u tvorby inzerátu.
+
+h2. Publikace nabídky
+
+Aby se inzerát zobrazil v seznamu aktuálních nabídek, musí být nejdříve publikován. Dejte si pozor, protože ve chvíli,
+kdy článek publikujete jej již nemůžete editovat. Pokud jste vybrali, že se má jednat o Top nabídku bude z účtu odečten
+odpovídající počet kreditů.

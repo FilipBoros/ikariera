@@ -1,0 +1,88 @@
+introduction:
+ title: Úvod
+user:
+ title: Uživatelská příručka
+ student:
+  title: Student
+  registrace2:
+    title: Registrace studenta
+  heslo2:
+    title: Zapomenuté heslo
+  sProfil:
+    title: Editování profilu
+  sCV:
+    title: Nahrání CV
+  sSoutez:
+    title: Soutěž
+  sSledovane:
+    title: Sledované
+  sNavod:
+    title: Návod
+ company:
+  title: Společnost
+  registrace:
+    title: Registrace
+  heslo:
+    title: Zapomenuté heslo
+  profil:
+    title: Profil
+  uzivatele:
+    title: Uživatelé
+  nabidky:
+    title: Nabídky
+  slAktivace:
+    title: Aktivace služby
+  slMail:
+    title: Hromadný email
+  slZivotopis:
+    title: Životopisy studentů
+  slProfil:
+    title: Rozšířený profi
+  slClanek:
+    title: Články
+  slKredity:
+    title: Přehled pohybu kreditů
+  slPrehled:
+    title: Přehled
+  slCenik:
+    title: Ceník služeb
+
+administrator:
+ title: Administrátor
+ adminMenu: Administrátorské menu
+ spolecnosti:
+  title: Společnosti
+ inzeraty:
+  title: Inzeráty
+ uzivFiremni:
+  title: Firemní uživatelé
+ uzivStudenti:
+  title: Studenti
+ uzivAdmins:
+  title: Administrátoři
+ sluzby:
+  title: Služby
+ bannery:
+  title: Bannery
+ loga:
+  title: Loga
+ mailing:
+  title: Mailing
+ projekty:
+  title: Projekty
+ veletrhy:
+  title: Veletrhy
+ katalog:
+  title: Katalog
+ anketa:
+  title: Anketa
+ anketaVysledky:
+  title: Výsledky ankety
+ FAQ:
+  title: FAQ
+ zakSluzby:
+  title: Zakoupené služby
+ statistiky:
+  title: Statistiky
+ kontakt:
+  title: Kontakt

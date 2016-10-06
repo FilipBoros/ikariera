@@ -1,4 +1,4 @@
-package ikariera.company
+package cz.ikariera.company
 
 import cz.ikariera.security.RandomGenerationService
 import cz.ikariera.security.Role

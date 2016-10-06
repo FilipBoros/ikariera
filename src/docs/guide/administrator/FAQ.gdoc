@@ -1,0 +1,15 @@
+Seznam rubriky Otázek a odpovědí.
+Důležité sloupce:
+* *Pozice* - Jako kolikátá se otázka zobrazí.
+* *Jazyk* - V jaké jazykové verzi se otázka zobrazí.
+Akce:
+* *Náhled* - Detail FAQ
+* *Upravit* - Editace
+* *Smazat* - Nevratně smaže FAQ
+
+!administration/faq-administration.png!
+
+h2. Přidat novou položku
+Všechny položky jsou povinné. Je důležité aby jste vybrali správný jazyk!
+
+!administration/faq-add.png!

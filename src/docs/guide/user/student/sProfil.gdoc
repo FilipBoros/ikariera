@@ -1,0 +1,8 @@
+Zaregistrovaný student si může změnit svoje údaje když klikne na tlačítko Editovat profilv pravém menu na hlavní stránce
+viz obr. č. 1 a nebo na tlačítko v Profil ve studentském účtu viz obr. č. 2. Profil obsahuje sekce Osobní údaje, Zájem o
+práci v oborech, Kontaktní údaje, Vzdělání, Jazyky, Technické znalosti, certifikáty a kurzy, Pracovní zkušenosti, Osobní
+dovednosti, Capcha jako při registraci viz Návod registrace
+
+Všechny sekce jsou ale předvyplněny údaji co uživatel již má uloženy. V editaci profilu je oproti registraci navíc
+položka "Souhlasím se zasíláním informačních emailů". Další změna je v tom, že uživatel si nemůže změnit unikátní
+uživatelské jméno (email). Heslo lze změnit když klikneme na tlačítko "změnit heslo".

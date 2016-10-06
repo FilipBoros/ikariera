@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package ikariera.company
+package cz.ikariera.company
 
 import cz.ikariera.company.CompanyEmails
 import cz.ikariera.security.User

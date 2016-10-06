@@ -1,0 +1,14 @@
+V seznamu bannerů vidíte jaké firmy mají vložený banner a do kdy se bude zobrazovat. Také je zobrazena jeho priorita.
+Čím je nižší číslo priority tím je priorita vyšší.
+!administration/baners.png!
+
+h2. Editace
+Můžete zde editovat:
+* *priorita* - Jak často se banner zobrazuje.
+* *rotace* - Kolikrát se banner dosud zobrazil.
+* *aktivováno* - Od kdy byl banner aktivován.
+* *expiruje* - Do kdy se bude banner zobrazovat.
+
+h2. Nahrání banneru
+Je dostupné z administrátorského seznamu firem. Odkaz je třeba psát ve formátu http://www.adresa.cz/
+!administration/save-banner.png!

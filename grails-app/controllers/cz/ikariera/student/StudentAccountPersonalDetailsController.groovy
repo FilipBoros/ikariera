@@ -1,4 +1,4 @@
-package ikariera.student
+package cz.ikariera.student
 
 import cz.ikariera.company.JobCategory
 import cz.ikariera.security.User
@@ -17,7 +17,7 @@ class StudentAccountPersonalDetailsController {
         if (!user) {
             redirect(controller: "login")
         }
-
+        log.error('Controller: StudentAccountPersonalDetailsController, action: index')
 
 
 

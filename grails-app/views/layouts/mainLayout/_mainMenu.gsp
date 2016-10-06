@@ -53,7 +53,7 @@
             <ul class="right">
 
                 <li>
-                    <g:link mapping="${message(code: 'joboffers.link')}">
+                    <g:link mapping="">
                         ${message(code: 'jobOffer.jobOffers.label')}
                     </g:link>
                 </li>

@@ -1,4 +1,6 @@
 /*
+*= require foundation/normalize.css
+*= require foundationIcons/foundation-icons.css
 *= require foundation/foundation.css
 *= require main.css
 *= require adminTopMenu.css

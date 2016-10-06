@@ -1,0 +1,29 @@
+h2. Seznam článků
+
+V seznamu se vypisují veškeré články přihlášené firmy. Pole Publikováno a Expirace budou vyplněna pouze pokud byl
+inzerát publikován.
+
+Pokud nebyl článek ještě publikován kontextové pole Akce bude obsahovat možnosti: edituj, smaž, publikuj a náhled.
+
+!/companyArticlesList1.png!
+
+Pokud je článek publikován změní se možné akce na: prodluž, zruš, náhled a smaž.
+* *prodluž* - otevře se kalendář, ve kterém můžete změnit datum expirace
+* *zruš* - nastaví datum expirace na aktuální datum
+
+!/companyArticlesList2.png!
+
+h2. Tvorba článků
+
+Při tvorbě článku pouze vyplníte jméno článku (6-300 znaků) znaků a text článku (200-4000 znaků)
+
+!/companyArticlesAdd.png!
+
+h2. Editace článků
+
+Jedná se o stejný formulář jako u tvorby inzerátu.
+
+h2. Publikace článků
+
+Aby se článek zobrazil v seznamu aktuálních článků, musí být nejdříve publikován. Dejte si pozor, protože ve chvíli,
+kdy článek publikujete jej již nemůžete editovat.

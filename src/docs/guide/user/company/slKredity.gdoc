@@ -1,0 +1,3 @@
+Vypíše seznam veškerých provedených akcích souvisejících s pohybem kreditů. V seznamu najdete informaci o tom, jaká
+proběhla akce, kdy proběhla, kolik kreditů bylo přidáno nebo odečteno, jméno a username uživatele, který akci provedl.
+Poslední údaj obsahuje doplňkové informace o službě.

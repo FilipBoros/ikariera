@@ -1,0 +1,15 @@
+h2. List
+
+Seznam katalogů seřazený od nejnovějšího po nejstarší.
+* *Edituj* - otevře formulář editace katalogu
+* *Smaž* - nevratně smaže katalog
+
+h2. Nahrát nový katalog
+
+* *Název* - jediná povinná položka
+* *Koordinátor* -
+* *Odkaz* - je třeba zadat ve formátu http://www.stranky.cz/
+* *Nahrát obálku* - lze nahrát obrázky do velikosti 1MB a rozměrů 300x300 px, povolené formáty jsou jpg, jpeg, png a bmp
+* *Vydán* - z rozbalovacího menu vyberte rok vydání
+* *Popis* - zde můžete vložit dlouhý popis
+

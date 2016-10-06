@@ -1,4 +1,4 @@
-package ikariera.student
+package cz.ikariera.student
 
 import cz.ikariera.security.User
 
@@ -15,10 +15,10 @@ class StudentAccountController {
 
     def index() {
         User user = springSecurityService.getCurrentUser()
+        /*log.error('Controller: StudentAccountController, action: index')*/
         if (!user) {
             redirect(controller: "login")
         }
-
         render(view: "index")
     }
 

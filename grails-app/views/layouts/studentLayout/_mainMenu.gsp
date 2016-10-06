@@ -4,9 +4,9 @@
         <ul class=" admin-menu">
             <li class="logo">
                 <a class="home " href="${createLink(uri: '/')}">
-                    <img style="height: 70px"
-                         src="${resource(dir: 'images/ikariera', file: 'apple-touch-icon.png')}" alt="iKariera"
-                         style="border-width: 0px; margin-bottom: 10px;"/>
+                    <asset:image
+                         src="ikariera/apple-touch-icon.png" alt="iKariera"
+                         style="height: 70px ;border-width: 0px; margin-bottom: 10px;"/>
                 </a>
             </li>
 
@@ -24,9 +24,9 @@
 
     |
 
-    <span class="automaticAjaxLoad" style="display: inline;"
+    %{--<span class="automaticAjaxLoad" style="display: inline;" TODO uncomment me
           ajaxLoadingUrl="${createLink(controller: 'studentAccountMessage', action: 'dialogUnreadCountAll')}">
-    </span>
+    </span>--}%
 
     <span class="fi-mail"></span>
 

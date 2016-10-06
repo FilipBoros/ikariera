@@ -1,4 +1,4 @@
-package ikariera.company
+package cz.ikariera.company
 
 import cz.ikariera.company.ContactDetails
 import cz.ikariera.company.JobOffer

@@ -1,0 +1,29 @@
+h2. Přehled emailů
+
+Výpis všech připravených a odeslaných emailů.
+
+!/companyMailingList.png!
+
+h2. Nový email
+
+Pole Předmět a text zprávy jsou povinná. Příloha je volitelná. Do textu zprávy nepište žádné formátovací značky, pro
+formátování využijte redakční systém.
+
+!/companyMailingAdd.png!
+
+h2. Úprava emailu
+
+Jedná se o stejný formulář, jako u tvorby email. Týkají se ho tedy stejná omezení.
+
+h2. Odeslání emailu
+
+Odeslaní emailu se provádí ve dvou krocích. V prvním kroku vybíráte parametry pro selekci z databáze studentů.
+Můžete vybírat podle univerzity, zájem o práci v oboru, jazyka nebo jejich kombinací. Pole podporují multivýběr
+(při výběru držte tlačítko ctrl). Až dokončíte výběr, stiskněte hledat.
+
+!/companyMailingSend1.png!
+
+Pod formulářem se vygeneruje přehled, který obsahuje info o emailu s odkazem na náhled. Pod ním jsou vypsána filtrovací
+kritéria. Nakonec je vypsán počet příjemců a kalkulace ceny.
+
+!/companyMailingSend2.png!

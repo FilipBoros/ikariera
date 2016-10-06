@@ -1,0 +1,9 @@
+Sekce statistiky slouží pro zobrazení přehledu všech statistik v databázi ikariéra.
+Jsou zde 2 tabulky:
+
+* informace o počtu uživatelích (firem, studentů a adminech)
+* informace o počtu nabídek práce a článků
+
+Statistiky do tabulek je možné vygenerovat v určitém období pomocí nastavitelných polí od a do a poté stiskem tlačítka "ZJISTI".
+
+!administration/statistics.png!

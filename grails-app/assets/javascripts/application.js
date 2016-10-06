@@ -27,7 +27,6 @@ $(document).ready(function () {
     $(".automaticAjaxLoad").each(function () {
 
 
-
         var url = $(this).attr("ajaxLoadingUrl");
 
         if (url != "") {

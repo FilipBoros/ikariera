@@ -1,0 +1,24 @@
+Tato sekce zobrazí přehled všech projektů. Seznam lze libovolně řadit. Dole je uvedený počet projektů a stránek seznamu.
+V seznamu jsou uvedené následující sloupce
+
+* Název
+* Odkaz
+* Pozice
+* Jazyk
+* Obr
+* Akce
+
+h3. Akce
+
+S projekty lze pracovat a pro jejich administrátorskou správu lze využít tyto akce:
+
+* Editovat
+* Smazat
+
+ h3. Přidat projekt
+
+Vytvoří nový projekt.
+
+
+
+!administration/projects.png!

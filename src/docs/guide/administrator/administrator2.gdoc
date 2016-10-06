@@ -1,0 +1,41 @@
+This is an example documentation template. The syntax format is similar to "Textile":http://textile.thresholdstate.com/.
+
+You can apply formatting such as *bold*, _italic_ and @code@. Bullets are possible too:
+
+* Bullet 1
+* Bullet 2
+
+As well as numbered lists:
+
+# Number 1
+# Number 2
+
+The documentation also handles links to [guide items|guide:introduction] as well as [reference|items]
+ !/my-image.png!
+
+
+ !administration/activated-logos.png!
+ !administration/activate-service.png!
+ !administration/add-credits.png!
+
+ !administration/advert.png!
+ !administration/akce-inzeratu.png!
+
+ !administration/Company-edit-not-valid.png!
+ !administration/company-filter.png!
+ !administration/company-users-actions.png!
+ !administration/contaact-form.png!
+ !administration/edit-company.png!
+
+ !administration/list-companies.png!
+ !administration/list-company-users.png!
+ !administration/list-of-users-statistic.png!
+
+ !administration/login.png!
+ !administration/mailing-admin.png!
+ !administration/projects-admin-actions.png!
+ !administration/projects-admin-edit.png!
+ !administration/projects-admin.png!
+ !administration/company-actions.png!
+ !administration/send-mail-to-companies.png!
+ !administration/service-edit.png!

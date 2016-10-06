@@ -1,0 +1,54 @@
+Sekce veletrhy slouží pro zobrazení přehledu všech veletrhů v databázi ikariéra. Veletrhy se zobrazují na webu ikariéra. Zatím neproběhlé se zobrazují
+jako první s detailnější a zajímavější grafikou. Staré a proběhlé se zobrazují v sekci Archív.
+
+!userVeletrhy.png!
+
+První sloupec označuje název veletrhu, dále je zde uvedeno Místo konání veletrhu pokud ho uživatel zadal a datum konání.
+Velké modré tlačítko v pravé části stránky umožňuje přidat další veletrh.
+
+h2. Vytvořit nový Veletrh iKariéra
+
+Nový veletrh se vytvoří po kliknutí na tlačítko vytvořit veletrh. Povinné udaje jsou pouze datum konání a datum ukončení akce.
+Je možné tyto položky zadávat s přesností na minuty, ale není to potřeba jelikož se zatím taková přesnost nikde neprojevuje. Externí
+odkaz slouží pro zobrazení externího odkazu mimo web ikariera.cz. Výhodná pokud vlastní veletrh používá také další externí stránky.
+
+
+!adminCreateJobFair.png!
+
+h2. Tlačítko akce
+
+ Nejzajímavější
+a nejdůležitější položkou seznamu veletrhů je tlačítko akce. Tlačítko akce poskytuje tyto možnosti
+
+* Prezentace
+* Firmy
+* Místnosti
+* Editovat
+* Smazat
+
+
+!adminJobfairs.png!
+
+h2. Firmy
+
+Každého veletrhu se samozřejmě mohou účastnit firmy a vystavovatelé. Tato akce přesměruje na stránku, kde je možné tyto firmy zadávat, editovat a přidávat.
+
+
+!adminJobfairAddCompany.png!
+
+
+Při přidávání nové společnosti je nutné mít na paměti, že je nutné zadat název společnosti. V případě, že znáte i její skutečné id na ikariéře můžete zadat i jej.
+Slouží to k prolinkování firem účastnících se veletrhů s jejich skutečnými profily na ikariéře. Slouží to hlavně jako možnost účastnit se veletrhu bez toho
+aby firma byla zaregistrována na ikariéře, ale na druhou stranu ponechává otevřené dveře pro pozdější SEO optimalizaci.
+
+
+
+
+h2. Prezentace a Místnosti
+
+V případě, že účastnící se firmy mají na veletrhu předplacené prezentace. Je možné jim touto akcí přidat prezentaci. Důležitá věc při přidávání firem
+k prezentacím je ta, že nejprve se musejí přidat firmy jako účastníci veletrhu. Tedy i v případě, že na veletrhu nemají stánek, budou zadány
+v přehledu firem. Následně se musejí vytvořit všechny prezentační místnosti s popisem místa konání prezentací. Až následně poté je možné přidávat prezentace.
+
+
+!adminJobFairPresentation.png!

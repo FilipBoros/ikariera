@@ -1,0 +1,21 @@
+h2. Seznam uživatelů
+
+Ve výpisu všech uživatelů vaší firmy máte možnost přidat nového uživatele, editovat a mazat existující uživatele.
+(Nelze smazat uživatele, kterým jste se přihlásili.)
+
+!/companyUserList.png!
+
+h2. Přidání uživatele
+
+Všechny údaje kromě pozice ve společnosti a telefonního čísla jsou povinné. Dávejte si pozor při vyplňování položky
+Mailová adresa (login). Musíte do ní zadat aktivní emailovou adresu, neboť vám na ní bude zaslán aktivační email.
+Telefonní číslo sice není povinné, ale doporučujeme, aby jste jej vyplnili.
+
+!/companyUserAdd.png!
+
+h2. Editace uživatele
+
+Všechny údaje, kromě loginu je možné změnit, dejte si pozor abyste vyplnili povinné údaje. Položka Heslo se zobrazí
+pouze v případě, že editujete účet kterým jste se přihlásili.
+
+!/companyUserEdit.png!

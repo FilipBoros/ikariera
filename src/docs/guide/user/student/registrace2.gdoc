@@ -1,0 +1,72 @@
+Registrovat se student může na uvodní stránce když klikne na tlačítko Nová registrace viz obr. č. 1.
+Vyplni informace ve formuláři. Položky, které mají u popisku znak *, jsou povinné viz obr. č.2. Aplikace je
+intuitivní a automaticky Vám radí co máte vyplnit viz. obr. č. 2. Registrační formulář je rozdělen do několika sekcí.
+
+!/registration.png!
+
+h2. Osobní údaje
+
+V sekci "Osobní údaje" je potřeba vyplnit tyto údaje: Jméno, příjmení, uživatelské jméno, heslo, kontrolu hesla,
+členem studentské organizace a souhlas s podmínkami využití. Do položky jméno vložte své křesní jméno a do položky
+příjmení své příjmení. Do položky uživatelské jméno je potřeba vložit unikátní emailovou adresu. Tato emailová adresa
+se nesmí opakovat na serveru ikariera. Položka heslo je důležitá, vyplňte heslo, které bude dlouhé minimálně 6 znaků.
+Mělo by obsahovat obsahovat jak číslice tak písmena kvůli bezpečnosti. Jestli jste členem studentské organizace
+(např. IAESTE) yaškrtněte tuto položku. Položka "Souhlas s podmínkami využiti" je povinná zaškrtnout pro úspěšnou
+registraci. Tato položka obsahuje odkaz na tyto obchodní podmínky.
+
+!/regForm4.png!
+
+h2. Zájem o práci v oborech
+
+V sekci "Zájem o práci v oborech" si vyberte z levé části obory, v kterých byste se rádi uplatnili a dostali práci. V
+nabídce oborů stačí na daný obor kliknout 2x myší nebo nebo kliknout jednou na +. Obor se ihned objeví v levé části,
+takže máte přehled o tom co jste zadali viz obr. č. 3.
+
+!/regFormCategories.png!
+
+h2. Kontaktní údaje
+
+V této části jsou volitelné položky telefon, ulice, město a povinný údaj země, kde je přednastavena
+České republika. U telefonního čísla je potřeba zadat i meyinárodní předvolbu (+420 pro Českou republiku)
+Položky ulice, město a země jsou vztaženy k trvalému bydlišti.
+
+h2. Vzdělání
+
+V této části klikněte na tlačítko Přidat univerzitu. Objeví se řádek, kde vyplňte rok ukončení, jaký titul jste získali,
+v jakém oboru jste studovali, specializaci (např. studijní program) a univerzitu, kde jste studovali. Pro přidání další
+univerzity klikněte znovu na Přidat univerzitu. Pro odebrání některého ze záznamů stačí kliknout na mínus viz obr. č. 4.
+
+!/regFormEducatino.png!
+
+h2. Jazyky
+
+Zde zadáváte jazyky, které umíte a na jaké úrovní. Jak jazyk tak úroveň jazyka pouze vybíráte z nabídky. Manipulace
+přidávání a odebírání je stejná jako v případě vzdělání (+ přidá jazyk, - odebere jazyk) viz obr. č. 5.
+
+!/regFormJazyky.png!
+
+h2. Technické znalosti, certifikáty a kurzy
+
+V této části můžete vložit pracovní znalosti, které máte. Vyplňuje se název, úroveň a popis, ve kterém můžete blíže
+specifikovat danou znalost, certifikat nebo kurz. Opět tlačítkem + se přídává a - se odebírá.
+
+!/regFormCourses.png!
+
+h2. Pracovní zkušenosti
+
+V této části přidáváte svoje pracovní zkušenosti, když nejaké máte. Zadává se období ve kterém jste danou praxi měl,
+pracovní pozici, název zaměstnavatele a náplň práce, kterou jste dělal. Opět tlačítkem + se přídává a - se odebírá.
+
+!/regFormExperience.png!
+
+h2. Osobní dovednosti
+
+Zde máte prostor napsat osobní dovednosti a to mohou být jak v oboru práce i mimo něj.
+
+h2. Capcha
+
+Poslední věc, která je povinná, je vyplnění kontrolního textu tzv. Capcha. Capcha dokáže rozlišit, jestli se jedná o
+skutečného uživatele, který se chce registrovat a nebo jestli se jedná pouze o robota. Capcha může obsahovat malá, velká
+písmenka a také číslice viz obr. č. 8.
+
+!/regForm3.png!

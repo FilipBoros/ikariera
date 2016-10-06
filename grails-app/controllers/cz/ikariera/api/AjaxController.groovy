@@ -4,6 +4,10 @@ import cz.ikariera.admin.MaintenanceMessage
 import cz.ikariera.company.*
 import org.hibernate.criterion.CriteriaSpecification
 
+/* Michal Dolnak 4.10.2016
+*
+*/
+
 class AjaxController {
 
     def index() {}
@@ -40,7 +44,7 @@ class AjaxController {
         def listSize = list.totalCount
 
 
-        render(view: "/articles/list", model:
+        render(template: "/articles/list", model:
                 [
                         articleInstanceList : list,
                         displayedResults    : listSize < params.max + params.offset ? listSize - params.offset : params.max,
@@ -53,7 +57,7 @@ class AjaxController {
         def listActualPosition = cz.ikariera.company.JobOffer.findAll(
                 "from JobOffer  as j where datePublished!=null and company.active=true and company.banned=false  and willExpire>:date order by datePublished desc ", [max: 6, date: new Date()])
 
-        render(view: '/ajax/actualPositionColumn', model: [listActualPosition: listActualPosition])
+        render(template: '/ajax/actualPositionColumn', model: [listActualPosition: listActualPosition])
     }
 
     def hotPosition() {
@@ -61,7 +65,7 @@ class AjaxController {
                 "from JobOffer  as j where datePublished!=null and company.banned=false and company.active=true and willExpire>:date and topPos=true order by datePublished desc ", [max: 3, date: new Date()])
         //def result = ikariera.company.JobOffer.findAll()
         if (!result.isEmpty()) {
-            render(view: '/ajax/hotPositionColumn', model: [listHotPosition: result])
+            render(template: '/ajax/hotPositionColumn', model: [listHotPosition: result])
         } else {
             def listArticles = Articles.list(max: 3, sort: "id", order: "desc")
             /*def listbodyTexts
@@ -72,7 +76,7 @@ class AjaxController {
                 listbodyTexts.add(it.bodyText)
                 print " ${it.bodyText}"
             }*/
-            render(view: '/ajax/articlesAndTips', model: [listArticles: listArticles]) //, listbodyTexts: listbodyTexts
+            render(template: '/ajax/articlesAndTips', model: [listArticles: listArticles]) //, listbodyTexts: listbodyTexts
         }
     }
 
@@ -81,7 +85,7 @@ class AjaxController {
         def listArticles = Articles.findAll("from Articles where datePublished!=null order by datePublished", [max: 2])
         //def listArticles = Articles.findAll("from Articles as p where p.datePublished!=:null order by p.datePublished",[lang:session['org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE'].toString()], [max: 4])
 
-        render(view: "/ajax/__articlesAndTips", model: [listArticles: listArticles])
+        render(template: "/ajax/__articlesAndTips", model: [listArticles: listArticles])
     }
 
     def getMaintanceMessage() {
@@ -90,7 +94,7 @@ class AjaxController {
         def msg = MaintenanceMessage.find("FROM MaintenanceMessage where dateBegin <= :now  and dateEnd > :now  order by dateBegin desc ", [now: now])
 
 
-        render(view: "/ajax/maintanceMessage", model: [msg: msg])
+        render(template: "/ajax/maintanceMessage", model: [msg: msg])
 
     }
 /*
@@ -129,11 +133,10 @@ class AjaxController {
             jobOffersCategoriesCountList.push(jobCountMap)
 
         }
-        render(view: '/ajax/categoriesWithCount', model: [jobOffersCategoriesCountList: jobOffersCategoriesCountList])
+        render(template: '/ajax/categoriesWithCount', model: [jobOffersCategoriesCountList: jobOffersCategoriesCountList])
     }
 
     def getLocalitiesWithCount() {
-
         def localitiesList = Locality.list(sort: "posOrder", order: "desc")
         def localitiesCountList = []
         localitiesList.each { locality ->
@@ -160,8 +163,9 @@ class AjaxController {
 
             localitiesCountList.push(jobCountMap)
 
+
         }
-        render(view: '/ajax/localitiesWithCount', model: [localitiesCountList: localitiesCountList])
+        render(template: '/ajax/localitiesWithCount', model: [localitiesCountList: localitiesCountList])
     }
 
 
@@ -194,7 +198,7 @@ class AjaxController {
             jobOffersTypesCountList.push(jobCountMap)
 
         }
-        render(view: '/ajax/jobOfferTypesWithCount', model: [jobOffersTypesCountList: jobOffersTypesCountList])
+        render(template: '/ajax/jobOfferTypesWithCount', model: [jobOffersTypesCountList: jobOffersTypesCountList])
     }
 
 

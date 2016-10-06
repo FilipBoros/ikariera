@@ -3,10 +3,124 @@ import cz.ikariera.security.Role
 /**
  * Created by Michal Dolnak on 23.7.2016.
  */
+
+grails.web.url.converter = 'hyphenated'
+
+grails.app.context = "/"
+
+grails.project.groupId = ikariera // change this to alter the default package name and Maven publishing destination
+
+grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
+grails.mime.use.accept.header = false
+
+
+grails.project.fork = [
+        // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
+        //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+        //debug: [maxMemory: 768, minMemory: 64, debug: true, maxPerm: 256, forkReserve: false],
+        // configure settings for the test-app JVM, uses the daemon by default
+        test: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, daemon: true],
+        // configure settings for the run-app JVM
+        run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve: false],
+        // configure settings for the run-war JVM
+        war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve: false],
+        // configure settings for the Console UI JVM
+        console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
+]
+
+
+// Find problem with css from here
+
+//grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
+//grails.mime.types = [
+ //       all          : '*/*',
+//        atom         : 'application/atom+xml',
+/*
+        css          : 'text/css',
+        csv          : 'text/csv',
+        form         : 'application/x-www-form-urlencoded',
+        html         : ['text/html', 'application/xhtml+xml'],
+        js           : 'text/javascript',
+        json         : ['application/json', 'text/json'],
+        multipartForm: 'multipart/form-data',
+        rss          : 'application/rss+xml',
+        text         : 'text/plain',
+        hal          : ['application/hal+json', 'application/hal+xml'],
+        xml          : ['text/xml', 'application/xml']
+]
+
+// URL Mapping Cache Max Size, defaults to 5000
+//grails.urlmapping.cache.maxsize = 1000
+
+// What URL patterns should be processed by the resources plugin
+// grails.resources.adhoc.patterns = ['/images*/
+/*', '/css*/
+/*', '/js*/
+/*', '/plugins*/
+/*', '/catalog*/
+/*']
+
+// The default codec used to encode data with ${}
+grails.views.default.codec = "html" // none, html, base64
+
+// The default scope for controllers. May be prototype, session or singleton.
+// If unspecified, controllers are prototype scoped.
+grails.controllers.defaultScope = 'singleton'
+
+grails.views.gsp.encoding = "UTF-8"
+
+grails.databinding.dateFormats = ['yyyy-MM-dd', 'yyyy-MM-dd HH:mm:ss.S']
+
+grails {
+    views {
+        gsp {
+            encoding = 'UTF-8'
+            htmlcodec = 'xml' // use xml escaping instead of HTML4 escaping
+            codecs {
+                expression = 'html' // escapes values inside ${}
+                scriptlet = 'html' // escapes output from scriptlets in GSPs
+                taglib = 'none' // escapes output from taglibs
+                staticparts = 'none' // escapes output from static template parts
+            }
+        }
+        // escapes all not-encoded output at final stage of outputting
+        filteringCodecForContentType {
+            //'text/html' = 'html'
+        }
+    }
+}
+
+grails.converters.encoding = "UTF-8"
+grails.converters.json.date = "javascript"
+grails.converters.default.pretty.print = true
+
+// enable Sitemesh preprocessing of GSP pages
+grails.views.gsp.sitemesh.preprocess = true
+// scaffolding templates configuration
+grails.scaffolding.templates.domainSuffix = 'Instance'
+
+// Set to false to use the new Grails 1.2 JSONBuilder in the render method
+grails.json.legacy.builder = false
+// enabled native2ascii conversion of i18n properties files
+grails.enable.native2ascii = true
+// packages to include in Spring bean scanning
+grails.spring.bean.packages = []
+// whether to disable processing of multi part requests
+grails.web.disable.multipart = false
+
+// request parameters to mask when logging exceptions
+grails.exceptionresolver.params.exclude = ['password', 'passwordConfirm', 'password1', 'password2', 'passwordOld']
+
+// enable query caching by default
+grails.hibernate.cache.queries = true
+*/
+
+// until here
+
 environments {
     development {
         grails.logging.jul.usebridge = true
-        server.port = 8090  // funguje
+        server.port = 8089  // funguje
 
     }
     production {
@@ -21,6 +135,44 @@ environments {
 
     }
 }
+
+def homeDirectory = ""
+
+environments {
+    development {
+
+        homeDirectory = System.getProperty("user.home") + "/ikariera/" //premenna prostredia je zle nastavena
+
+
+    }
+    production {
+
+        homeDirectory = "/var/uploads/ikariera/"
+
+    }
+    test {
+
+        homeDirectory = System.getProperty("user.home") + "/ikariera/"
+
+
+    }
+}
+
+upload.directory.hero = homeDirectory + "hero"
+upload.directory.mediaFile = homeDirectory + "media"
+upload.directory.studentPhoto = homeDirectory + "photo"
+upload.directory.studentCv = homeDirectory + "cv"
+upload.directory.emailAttachments = homeDirectory + "attachment"
+upload.directory.companyMainLogo = homeDirectory + "mainLogo"
+upload.directory.adminMainLogo = homeDirectory + "adminMainLogo"
+upload.directory.adminLogo = homeDirectory + "adminLogo"
+upload.directory.banner = homeDirectory + "advertisement"
+upload.directory.advertisement = homeDirectory + "advertisement"
+upload.directory.companyLogo = homeDirectory + "smallLogo"
+upload.directory.companyGallery = homeDirectory + "companyGallery"
+upload.directory.companyGalleryView = homeDirectory + "companyGallery"
+
+
 
 // Added by the Spring Security Core plugin:
 
@@ -91,3 +243,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/fonts/*']
 grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**', '/fonts/**']
+
+grails.controllers.upload.maxFileSize = 5242880
+grails.controllers.upload.maxRequestSize = 5242880

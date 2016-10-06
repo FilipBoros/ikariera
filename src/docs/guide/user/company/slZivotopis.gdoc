@@ -1,0 +1,11 @@
+Nad seznamem studentů se nachází formulář pro nastavení kritérií filtrování. Můžete vybírat podle univerzity,
+zájem o práci v oboru, jazyka nebo jejich kombinací.
+
+Pole podporují multivýběr (při výběru držte tlačítko ctrl).
+
+Až dokončíte výběr, stiskněte hledat.
+
+!/manualCompanyServicesCV.png!
+
+Pokud kliknete na jméno, příjmení nebo z menu akce/zobrazit profil budete přesměrováni na detail studenta.
+Druhou akcí je Stáhnout CV (tato možnost se zobrazí pouze, když student nahrál své CV). CV bude staženo v pdf.

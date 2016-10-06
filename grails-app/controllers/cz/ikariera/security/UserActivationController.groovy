@@ -1,4 +1,4 @@
-package ikariera.security
+package cz.ikariera.security
 
 import cz.ikariera.security.User
 

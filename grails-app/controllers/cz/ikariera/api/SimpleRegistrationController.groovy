@@ -1,4 +1,4 @@
-package ikariera.api
+package cz.ikariera.api
 
 import cz.ikariera.admin.ApiKey
 import cz.ikariera.security.Role

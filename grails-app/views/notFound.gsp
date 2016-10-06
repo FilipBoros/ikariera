@@ -17,7 +17,7 @@
         <div class="error-container">
             <h1><g:message code="page.not.found" /> </h1>
             <div style="display: block; margin: auto">
-                <g:img style="height: 300px; vertical-align: top" dir="/images/ikariera" file="404.jpg"/>
+                <asset:image style="height: 300px; vertical-align: top" src="ikariera/404.jpg"/>
 
                 <div style="width: 200px; display: inline-block;">
                     <h2 style="margin-top: 90px; margin-left: -90px;">Looking other page you are, young jedi.</h2>
@@ -39,3 +39,10 @@
 
 </body>
 </html>
+
+%{--<a class="home show-for-medium" href="${createLink(uri: '/')}">
+    <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; margin-bottom: 10px;"/>
+    --}%%{--<img style="height: 70px"
+         src="${resource(dir: 'images/ikariera', file: 'apple-touch-icon.png')}" alt="iKariera"
+         style="border-width: 0px; margin-bottom: 10px;"/>--}%%{--
+</a>--}%

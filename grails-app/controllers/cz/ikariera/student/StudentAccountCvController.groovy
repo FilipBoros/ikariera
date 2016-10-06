@@ -1,13 +1,16 @@
-package ikariera.student
+package cz.ikariera.student
 
 import cz.ikariera.security.User
 import cz.ikariera.student.Cv
+import grails.core.GrailsApplication
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.multipart.MultipartHttpServletRequest
 
 class StudentAccountCvController {
 
     def springSecurityService
+
+    GrailsApplication grailsApplication
 
     def index() {
 
@@ -26,6 +29,7 @@ class StudentAccountCvController {
         String uploadDirectory = grailsApplication.config.upload.directory.studentCv
 
         try {
+
 
             def picFile = new File(uploadDirectory + "/" + params.id)
 
@@ -48,9 +52,9 @@ class StudentAccountCvController {
         User user = springSecurityService.getCurrentUser()
         if (!user) {
             redirect(controller: "login")
-
-
         }
+
+
 
         // def results = []
         if (request instanceof MultipartHttpServletRequest) {
@@ -98,15 +102,13 @@ class StudentAccountCvController {
 
 
                 String storageDirectory = grailsApplication.config.upload.directory.studentCv
+
                // storageDirectory = "C:\\Users\\Senman\\uploads\\ikariera\\cv"
                 File newFile = new File("$storageDirectory/$newFilename")
                 file.transferTo(newFile)
                 //println "file transferred : " + "$storageDirectory/$newFilename"
 
 
-
-                log.error("Original File name " + file.originalFilename)
-                log.error("New File name" + newFilename)
 
 
 

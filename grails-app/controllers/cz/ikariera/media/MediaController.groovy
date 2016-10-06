@@ -1,4 +1,4 @@
-package ikariera.media
+package cz.ikariera.media
 
 import cz.ikariera.admin.PictureMedia
 

@@ -359,6 +359,10 @@ class UrlMappings {
 
         }
 
+
+        "/student-account-university/save"(controller: "studentAccountUniversity", action: 'save') {
+
+        }
     }
 
     /*

@@ -1,0 +1,16 @@
+h2. List
+
+Seznam služeb seřazených podle abecedy.
+V seznamu jsou uvedené následující sloupce
+
+* Název
+* Poplatek v kreditech
+* Doba expirace služby (dny)
+* Akce
+
+h3. Akce
+
+* Edituj - otevře formulář editace služby, kde můžeme změnit poplatek v kreditech a dobu expirace
+
+!administration/services.png!
+

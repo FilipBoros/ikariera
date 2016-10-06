@@ -1,0 +1,23 @@
+Tato sekce zobrazí přehled všech adminů, kteří se na serveru iKariéra zarigostrovali. Defaultně zobrazí seznam seřazený od posledního zaregistrovaného admina.
+Seznam lze libovolně řadit. Dole je uvedený počet uživatelů a stránek seznamu.
+
+V seznamu jsou uvedené následující sloupce
+
+* Jméno
+* Příjmení
+* Uživatelské jméno
+* Datum vytvoření
+
+h3. Akce
+
+S uživateli lze pracovat a pro jejich administrátorskou správu lze využít tyto akce:
+
+* Editovat
+
+ h3. Nový administrátor
+
+Vytvoří nový účet administrátora.
+
+
+
+!administration/list-admin-users.png!

@@ -1,4 +1,4 @@
-package ikariera.front
+package cz.ikariera.front
 
 class CatalogController {
 

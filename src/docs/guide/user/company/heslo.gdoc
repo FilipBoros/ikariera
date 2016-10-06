@@ -1,0 +1,9 @@
+Když student zapomene své heslo tak si ho může změnit. Do přihlašovací části zadá své uživatelské jméno a klikne na
+Login. Ukáže se mu zpráva viz obr. č. 9, že nezadal heslo a má 2 možnosti buď zkusit heslo znovu a nebo když ho neví
+klikne na "Zapomenuté heslo". Na jeho email poté dorazí zpráva viz obr. č. 10. V tomto emailu je odkaz kde si může
+nastavit nové heslo.
+
+
+!/forgottenPassword.png!
+
+!/mailForgottenPassword.png!

@@ -1,0 +1,28 @@
+m2. Seznam emailů
+
+Akce
+* *Smazat* - Nevratně smaže email
+* *Upravit* - Editace emailu
+
+!administration/mailing-admin.png!
+
+h2. Vytvořin nový email
+Načte se formulář pro tvorbu emailu.
+Předmět a Text zprávy jsou povinná pole. Minimální počet znaků je 2 pro předmět a 20 pro Text zprávy.
+Příloha je nepovinná.
+
+h2. Odeslat
+Odesílání probýhá ve dvou krkocích.
+
+Nejdříve je třeba vyfiltrovat společnosti.
+
+Po stisknutí hledat se zobrazí informace o emailu.
+* *Email* - odkaz na náhled emailu
+* *Datum vytvoření* - kdy byl email vytvořen
+* *Počet příjemců* - počet firem, které byly vyfiltrovány
+
+A seznam společností, kterým bude odeslán email.
+V každý řádek obsahuje následující informaci: "Jméno kontaktní osoby" "Název společnosti" emailová adresa kontaktní osoby.
+Před každým kontaktem je zaškrtávací pole. Odškrtnutím pole zrušíte odeslání emailu nalezené firmě.
+
+!administration/send-mail-to-companies.png!

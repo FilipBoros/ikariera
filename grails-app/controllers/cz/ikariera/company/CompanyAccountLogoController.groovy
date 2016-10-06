@@ -1,4 +1,4 @@
-package ikariera.company
+package cz.ikariera.company
 
 import cz.ikariera.security.User
 import org.springframework.web.multipart.MultipartFile
