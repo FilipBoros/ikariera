@@ -32,7 +32,7 @@
 <li>
 
     <g:link action="activation" id="articles-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
     </g:link>
 
@@ -60,7 +60,7 @@
 </li>
 <li>
     <g:link action="activation" id="mail-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
     </g:link>
 
@@ -87,7 +87,7 @@
 </li>
 <li>
     <g:link action="activation" id="cv-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
     </g:link>
     <g:link action="activation" id="cv-service">
@@ -115,7 +115,7 @@
 </li>
 <li>
     <g:link action="activation" id="top-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
     </g:link>
 
@@ -145,7 +145,7 @@
 <li>
 
     <g:link action="activation" id="message-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
     </g:link>
     <g:link action="activation" id="message-service">
         <h4><g:message code="company.service.messages"/></h4>
@@ -171,7 +171,7 @@
 <li>
 
     <g:link action="activation" id="remote-post">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
     </g:link>
     <g:link action="activation" id="remote-post">
         <h4><g:message code="company.service.remoteJobOffers"/></h4>
@@ -195,7 +195,7 @@
 <li>
 
     <g:link action="activation" id="jobofferapi">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
     </g:link>
     <g:link action="activation" id="jobofferapi">
         <h4><g:message code="company.jobOffer.api"/></h4>
@@ -222,7 +222,7 @@
 
 <li>
     <g:link action="activation" id="share-service">
-        <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
     </g:link>
 

@@ -11,6 +11,10 @@ class StudentAccountUniversityController {
 
     def index() {
 
+        log.error('saddddddddddddddddddddddd')
+        log.error('controller: StudentAccountUniversityController action: index'  )
+
+
         User user = springSecurityService.getCurrentUser()
         if (!user) {
             redirect(controller: "login")
@@ -21,6 +25,9 @@ class StudentAccountUniversityController {
 
 
     def save() {
+
+        log.error('saddddddddddddddddddddddd')
+        log.error('controller: StudentAccountUniversityController action: save'  )
 
         User userInstance = springSecurityService.getCurrentUser() as User
         if (!userInstance) {

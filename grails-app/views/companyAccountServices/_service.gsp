@@ -2,7 +2,7 @@
 
 <div class="large-4 columns">
 
-    <img class="th" src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>
+    <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
 
 </div>
 

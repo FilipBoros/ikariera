@@ -85,7 +85,7 @@ Treba naistalovat grails 3.1.9 // viz. http://sdkman.io/usage.html
 gvm install grails 3.1.9 // alebo sdk install grails 3.1.9
 Este treba mat naistalovany gradle, gradle 2.13 funguje
 
-Bezi to na porte 8089 namiesto 8090 a databaza sa vola ikariera3 namiesto ikariera.
+Bezi to na porte 8089 namiesto 8090 a databaza sa vola ikariera.
 
 Zmenilo sa loadovaci system assetov z resource pluginu na asset pipeline. Viz. ApplicationResources.groovy in ikariera2.
 Zmenila sa 1 domenova trieda, konkretne trieda uzivatela.

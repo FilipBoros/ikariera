@@ -6,9 +6,9 @@
             <ul class=" admin-menu">
                 <li class="logo">
                     <a class="home " href="${createLink(uri: '/')}">
-                        <img style="height: 70px"
-                             src="${resource(dir: 'images/ikariera', file: 'apple-touch-icon.png')}" alt="iKariera"
-                             style="border-width: 0px; margin-bottom: 10px;"/>
+                        <asset:image
+                             src="/ikariera/apple-touch-icon.png" alt="iKariera"
+                             style="border-width: 0px;height: 70px; margin-bottom: 10px;"/>
                     </a>
                 </li>
 

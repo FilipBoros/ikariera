@@ -40,7 +40,7 @@ dependencyManagement {
     }
     applyMavenExclusions false
 }
-
+final SELENIUM_VERSION = "2.53.0"
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -78,8 +78,11 @@ dependencies {
     runtime "com.h2database:h2"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18" // pre testovanie treba toto vyhodit !
+
+    testCompile "org.seleniumhq.selenium:selenium-support:$SELENIUM_VERSION"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$SELENIUM_VERSION"
+
+
 
 }
 
