@@ -14,6 +14,8 @@ extends SavedRequestAwareAuthenticationSuccessHandler {
     protected String determineTargetUrl(HttpServletRequest request,
                                         HttpServletResponse response) {
 
+
+
         boolean hasAdmin = SpringSecurityUtils.ifAllGranted("ROLE_ADMIN");
         boolean hasCompany = SpringSecurityUtils.ifAllGranted("ROLE_COMPANY");
         boolean hasStudent = SpringSecurityUtils.ifAllGranted("ROLE_STUDENT");

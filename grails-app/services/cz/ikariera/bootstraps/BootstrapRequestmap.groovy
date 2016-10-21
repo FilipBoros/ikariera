@@ -60,6 +60,12 @@ class BootstrapRequestmap {
         new Requestmap(url: '/student-account-contact/**', configAttribute: 'ROLE_STUDENT').save()
         new Requestmap(url: '/student-account-password/**', configAttribute: 'ROLE_STUDENT').save()
 
+        new Requestmap(url: '/student-account-university/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+        new Requestmap(url: '/student-account-language/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+        new Requestmap(url: '/student-account-certificate/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+        new Requestmap(url: '/student-account-experience/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+        new Requestmap(url: '/student-account-generate-cv/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+
         new Requestmap(url: '/company-account/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
         new Requestmap(url: '/company/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
@@ -76,7 +82,7 @@ class BootstrapRequestmap {
 
         new Requestmap(url: '/company-account-user/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
         new Requestmap(url: '/company-account-job-offers/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
-        new Requestmap(url: '/company-account-email/mailing-org.grails.list/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
+        new Requestmap(url: '/company-account-email/mailing-list/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
 
         new Requestmap(url: '/company-account-user/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
         new Requestmap(url: '/company-account-job-offers/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
@@ -102,7 +108,9 @@ class BootstrapRequestmap {
 
         new Requestmap(url: '/company-account-email-search/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
 
-
+        new Requestmap(url: '/company-job-offer-api/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak
+        new Requestmap(url: '/company-contacts/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak TODO Zakomentuj ma a naviguj na company contacts => nefunguje error
+        new Requestmap(url: '/company-account-feedback/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak
 
         new Requestmap(url: '/admin-remote-register/**', configAttribute: 'ROLE_ADMIN').save()
         new Requestmap(url: '/password-reset/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()

@@ -51,9 +51,8 @@
 
             <!-- Left Nav Section -->
             <ul class="right">
-
                 <li>
-                    <g:link mapping="">
+                    <g:link mapping="${message(code: 'joboffers.link')}">
                         ${message(code: 'jobOffer.jobOffers.label')}
                     </g:link>
                 </li>

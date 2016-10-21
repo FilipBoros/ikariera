@@ -12,6 +12,7 @@ class CompanyAccountController {
 
     def index() {
 
+        log.error('sddddddddddddddddddddddddddd')
 
         User user = springSecurityService.getCurrentUser()
         if (!user) {
@@ -20,8 +21,10 @@ class CompanyAccountController {
         }
 
         def companyInstance = user.company
-        [companyInstance: companyInstance]
 
+        log.error('controller: CompanyAccountController action: index')
+
+        render view: 'index', model: [companyInstance: companyInstance]
     }
 
 

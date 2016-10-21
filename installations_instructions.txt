@@ -91,6 +91,21 @@ Zmenilo sa loadovaci system assetov z resource pluginu na asset pipeline. Viz. A
 Zmenila sa 1 domenova trieda, konkretne trieda uzivatela.
 Zmenilo sa loadovanie templatov pri ajaxe z render view na render template.
 
+Prepisal som Filter na Interceptor.
+
+V controlleroch nefunguje implicitne reslvovanie view, oba riadky by mali robit to iste,ale
+(Controller s menom index)
+[companyInstance: companyInstance] - nefunguje
+render(view: "index" ,model:[companyInstance: companyInstance]) - funguje
+
+TODO nefunguje generovanie PDF
+TODO nefunguju errory, zobrazia sa biele stranky, viz boostrap service, tam je navod ako to zopakovat
+TODO upratat configuration
+TODO upratat manifesty
+TODO rozbehat testy
+TODO vygenerovat war a nasadit lokalne
+TODO prehodit ikariera.eu:8080
+
 Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory. Staci checknut riadok 132 v config.groovy.
 
 Pre development verziu toto netreba

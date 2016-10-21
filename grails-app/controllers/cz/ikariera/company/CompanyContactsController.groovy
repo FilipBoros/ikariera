@@ -9,7 +9,7 @@ class CompanyContactsController {
     def springSecurityService
 
     def index() {
-        redirect( action: "list")
+        return redirect( action: 'list')
     }
 
     def list(){
@@ -27,6 +27,7 @@ class CompanyContactsController {
         }
 
         def contactsInstanceListTotal = contactsList?.size()
+
 
         render(view: "index",
                 model: [

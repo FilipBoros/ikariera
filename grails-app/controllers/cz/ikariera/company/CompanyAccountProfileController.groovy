@@ -10,6 +10,7 @@ class CompanyAccountProfileController {
     def index() {
         def user = springSecurityService.getCurrentUser() as User
 
+
         if (!user) {
             redirect(controller: "login")
             return
@@ -18,7 +19,7 @@ class CompanyAccountProfileController {
         def companyInstance = user.company
 
 
-        [companyInstance: companyInstance]
+        render(view: "index" ,model:[companyInstance: companyInstance])
     }
 
 
