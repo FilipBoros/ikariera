@@ -17,7 +17,6 @@ class StudentAccountPersonalDetailsController {
         if (!user) {
             redirect(controller: "login")
         }
-        log.error('Controller: StudentAccountPersonalDetailsController, action: index')
 
 
 

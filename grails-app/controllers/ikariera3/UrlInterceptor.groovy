@@ -7,13 +7,12 @@ import org.springframework.web.servlet.support.RequestContextUtils
 class UrlInterceptor {
 
     UrlInterceptor(){
-        match(controllerName: '*',actionName:'*')
+        match(controller: '*',action:'*')
     }
 
         boolean before() {
 
             def locale = RequestContextUtils.getLocaleResolver(request)
-
             if (params.lang == null && locale == null) {
 
                 // this is for redirection

@@ -99,7 +99,11 @@ V controlleroch nefunguje implicitne reslvovanie view, oba riadky by mali robit 
 render(view: "index" ,model:[companyInstance: companyInstance]) - funguje
 
 TODO nefunguje generovanie PDF
+-fixed by moving fonts from assets to /src/main/webapp
 TODO nefunguju errory, zobrazia sa biele stranky, viz boostrap service, tam je navod ako to zopakovat
+-fixed see mainlayout/mainmenu
+TODO nefuguje odovzdanie foriem s errormi
+
 TODO upratat configuration
 TODO upratat manifesty
 TODO rozbehat testy

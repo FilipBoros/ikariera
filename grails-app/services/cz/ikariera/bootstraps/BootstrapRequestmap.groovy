@@ -109,7 +109,10 @@ class BootstrapRequestmap {
         new Requestmap(url: '/company-account-email-search/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
 
         new Requestmap(url: '/company-job-offer-api/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak
-        new Requestmap(url: '/company-contacts/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak TODO Zakomentuj ma a naviguj na company contacts => nefunguje error
+
+        new Requestmap(url: '/company-contacts*//**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save()
+        // Michal Dolnak TODO Zakomentuj ma a naviguj na company contacts => nefunguje error
+
         new Requestmap(url: '/company-account-feedback/**', configAttribute: 'ROLE_COMPANY, ROLE_ADMIN').save() // Michal Dolnak
 
         new Requestmap(url: '/admin-remote-register/**', configAttribute: 'ROLE_ADMIN').save()
