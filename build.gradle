@@ -46,7 +46,12 @@ dependencies {
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
-    compile "org.springframework.boot:spring-boot-starter-tomcat"
+
+    /*http://grails.1312388.n4.nabble.com/Grails-3-0-1-to-tomcat-7-0-55-deploy-issue-similar-to-GRAILS-12105-but-the-fix-doesn-t-work-td4659381.html*/
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
+    /*if(!useTomcat7){
+        compile "org.springframework.boot:spring-boot-starter-tomcat"
+    }*/
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
     compile "org.grails.plugins:cache"

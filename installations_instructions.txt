@@ -103,11 +103,21 @@ TODO nefunguje generovanie PDF
 TODO nefunguju errory, zobrazia sa biele stranky, viz boostrap service, tam je navod ako to zopakovat
 -fixed see mainlayout/mainmenu
 TODO nefuguje odovzdanie foriem s errormi
-
+Nefunguje aj na ikariere.cz cize bug
+//= require chosen_v1.1.0/chosen.jquery
+tento require v main.js sposobuje problemy
+TODO nefunguje prepinanie jazyka, moznosti sa zobrazuju dole namiesto hore
 TODO upratat configuration
 TODO upratat manifesty
 TODO rozbehat testy
 TODO vygenerovat war a nasadit lokalne
+vygenerovat war, zatial som skusal len grails dev war
+vlozit do webapps tomcatu 8
+da sa nasadzovat aj na tomcat 7, ale treba nejako odpojit ten tomcat 7, ktory tam uz je
+Mozno bude treba zvecsit heap size
+v /usr/share/tomcat8/bin treba vytvorit subor setenv.sh
+a dat tam CATALINA_OPTS="-Xms512M -Xmx1024M"
+
 TODO prehodit ikariera.eu:8080
 
 Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory. Staci checknut riadok 132 v config.groovy.
