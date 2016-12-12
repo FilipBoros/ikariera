@@ -1,7 +1,8 @@
 /*
-*= require foundation/normalize.css
+
 *= require foundationIcons/foundation-icons.css
 *= require foundation/foundation.css
+*= require foundation/normalize.css
 *= require main.css
 *= require adminTopMenu.css
 *= require chosen_v1.1.0/chosen.css

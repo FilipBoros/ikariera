@@ -179,6 +179,36 @@ upload.directory.companyLogo = homeDirectory + "smallLogo"
 upload.directory.companyGallery = homeDirectory + "companyGallery"
 upload.directory.companyGalleryView = homeDirectory + "companyGallery"
 
+// log4j configuration
+/*
+log4j = {
+
+    appenders {
+        environments {
+            production {
+
+                rollingFile name: 'errLog', maxFileSize: 1024, file: "/var/log/tomcat6/ikariera/errlog.log" //, threshold: org.apache.log4j.Level.ERROR
+               // rollingFile name: 'infoLog', maxFileSize: 1024, file: "/var/log/tomcat6/ikariera/infoLog.log", threshold: org.apache.log4j.Level.INFO
+            }
+        }
+
+    }
+
+    root {
+
+    }
+
+    // other shared config
+    info "grails.app.controller"
+
+    environments {
+        production {
+            // Override previous setting for 'grails.app.controller'
+            error "grails.app.controllers"
+        }
+    }
+}
+*/
 
 
 // Added by the Spring Security Core plugin:
@@ -266,7 +296,7 @@ environments {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/*environments {
+environments {
     test {
         grails {
             mail {
@@ -296,7 +326,7 @@ environments {
     }
 
 
-}*/
+}
 
 internalEmailService {
     name = " - iKariera.cz"

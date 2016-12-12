@@ -3,7 +3,13 @@
 <head>
     <meta name="layout" content="administrator">
 
-    <r:require modules="mainStyle, application, studentEducation"/>
+    %{--<r:require modules="mainStyle, application, studentEducation"/>--}%
+
+    <asset:stylesheet src="application.css"/>
+
+    <asset:javascript src="main.js"/>
+    <asset:javascript src="application.js"/>
+    <asset:javascript src="studentEducation.js"/>
 
 
 

@@ -102,6 +102,12 @@ TODO nefunguje generovanie PDF
 -fixed by moving fonts from assets to /src/main/webapp
 TODO nefunguju errory, zobrazia sa biele stranky, viz boostrap service, tam je navod ako to zopakovat
 -fixed see mainlayout/mainmenu
+TODO nefunguje pridavanie vzdelania,jazyka atd.
+var universityChildCount = $("#universities-table-list").attr("universityChildCount");
+var languageChildCount = $("#languages-table-list").attr("languageChildCount");
+var experienceChildCount = $("#experiences-table-list").attr("experienceChildCount");
+var certificateChildCount = $("#certificates-table-list").attr("certificateChildCount");
+presunute do document.ready();
 TODO nefuguje odovzdanie foriem s errormi
 Nefunguje aj na ikariere.cz cize bug
 //= require chosen_v1.1.0/chosen.jquery
@@ -110,6 +116,7 @@ TODO nefunguje prepinanie jazyka, moznosti sa zobrazuju dole namiesto hore
 TODO upratat configuration
 TODO upratat manifesty
 TODO rozbehat testy
+
 TODO vygenerovat war a nasadit lokalne
 vygenerovat war, zatial som skusal len grails dev war
 vlozit do webapps tomcatu 8

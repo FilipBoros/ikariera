@@ -21,14 +21,16 @@
 
 
 
- var universityChildCount = $("#universities-table-list").attr("universityChildCount");
- var languageChildCount = $("#languages-table-list").attr("languageChildCount");
- var experienceChildCount = $("#experiences-table-list").attr("experienceChildCount");
- var certificateChildCount = $("#certificates-table-list").attr("certificateChildCount");
+
 
 
 
 $(document).ready(function () {
+
+    var universityChildCount = $("#universities-table-list").attr("universityChildCount");
+    var languageChildCount = $("#languages-table-list").attr("languageChildCount");
+    var experienceChildCount = $("#experiences-table-list").attr("experienceChildCount");
+    var certificateChildCount = $("#certificates-table-list").attr("certificateChildCount");
 
     $(".studentUniversitySelect").on("change", function () {
         if ($(this).val() == "1") {

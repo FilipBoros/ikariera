@@ -9,9 +9,12 @@ import cz.ikariera.company.JobOfferType
 import cz.ikariera.company.Locality
 import cz.ikariera.company.CompanyAccount
 import cz.ikariera.company.JobCategory
+import cz.ikariera.student.Education
 import cz.ikariera.student.StudentAccount
 import cz.ikariera.student.LanguageType
 import cz.ikariera.admin.Country
+import cz.ikariera.student.StudyCategory
+import cz.ikariera.student.University
 import grails.converters.XML
 import grails.util.Environment
 import cz.ikariera.bootstraps.*
@@ -194,6 +197,14 @@ class BootStrap {
             if (!michalUser.authorities.contains(companyRole)) {
                 UserRole.create(michalUser, companyRole, true)
             }
+
+
+            Education education = new  Education(
+                    university: University.first(),
+                    studyCategory: StudyCategory.first(),
+            )
+            studentUser.studentAccount.addToEducations(education)
+
 
             println("... processing of Bootstrap files finished.")
         }
