@@ -1,7 +1,6 @@
 package cz.ikariera.company
 
-import cz.ikariera.admin.PublishService
-import cz.ikariera.company.Company
+import cz.ikariera.admin.PublishSetting
 import cz.ikariera.security.User
 
 class CompanyPublishServiceController {
@@ -24,7 +23,7 @@ class CompanyPublishServiceController {
         def sort = params.sort ? params.sort : 'prize'
         def order = params.order ? params.order : 'asc'
 
-        def heroImageList = PublishService.createCriteria().list(max: max, offset: offset, order: order, sort: sort ) {
+        def heroImageList = PublishSetting.createCriteria().list(max: max, offset: offset, order: order, sort: sort ) {
 
         }
 
@@ -39,7 +38,7 @@ class CompanyPublishServiceController {
 
 
 
-        def heroImageListTotal = PublishService.count
+        def heroImageListTotal = PublishSetting.count
 
         render(view: "index", model: [
                 heroImageList: heroImageList,
@@ -65,7 +64,7 @@ class CompanyPublishServiceController {
 
 
         //prepsat company service expire
-        def publishService = PublishService.get(params.id)
+        def publishService = PublishSetting.get(params.id)
 
         //check state of credits
         if(user.company.credits > publishService.prize){
@@ -93,7 +92,7 @@ class CompanyPublishServiceController {
 
 
 /*
-        def heroImageList = PublishService.createCriteria().list(max: max, offset: offset ) {
+        def heroImageList = PublishSetting.createCriteria().list(max: max, offset: offset ) {
 
         }
         //
@@ -106,7 +105,7 @@ class CompanyPublishServiceController {
         def servicesInstance = Services.findByUniqueName(uniqueName)
 
 
-        def heroImageListTotal = PublishService.count
+        def heroImageListTotal = PublishSetting.count
 
         render(view: "index", model: [
                 heroImageList: heroImageList,

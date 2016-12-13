@@ -1,8 +1,7 @@
 package cz.ikariera.company
 
-import cz.ikariera.admin.PublishService
+import cz.ikariera.admin.PublishSetting
 import cz.ikariera.admin.RemoteServer
-import cz.ikariera.company.*
 import cz.ikariera.security.User
 import cz.ikariera.service.CompanyServicesService
 import grails.plugins.rest.client.RestBuilder
@@ -384,9 +383,10 @@ class CompanyAccountJobOffersController {
             render(view: "/notFound", model: [:])
             return
         }
+
         def offset = params.offset ? params.int('offset') : 0
         def max = Math.min(params.max ? params.int('max') : 10, 100)
-        def publishServiceList = PublishService.createCriteria().list(max: max, offset: offset) {
+        def publishServiceList = PublishSetting.createCriteria().list(max: max, offset: offset) {
 
         }
 

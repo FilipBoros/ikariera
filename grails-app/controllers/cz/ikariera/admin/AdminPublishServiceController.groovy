@@ -1,6 +1,6 @@
 package ikariera.admin
 
-import cz.ikariera.admin.PublishService
+import cz.ikariera.admin.PublishSetting
 import cz.ikariera.security.User
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -23,11 +23,11 @@ class AdminPublishServiceController {
         def max = Math.min(params.max ? params.int('max') : 10, 100)
 
 
-        def heroImageList = PublishService.createCriteria().list(max: max, offset: offset) {
+        def heroImageList = PublishSetting.createCriteria().list(max: max, offset: offset) {
 
         }
 
-        def heroImageListTotal = PublishService.count
+        def heroImageListTotal = PublishSetting.count
 
         render(view: "index", model: [
                 heroImageList    : heroImageList,
@@ -36,11 +36,11 @@ class AdminPublishServiceController {
     }
 
     def create() {
-        render(view: '/adminPublishService/create', model: [faqInstance: new PublishService(params)])
+        render(view: '/adminPublishService/create', model: [faqInstance: new PublishSetting(params)])
     }
 
     def save() {
-        def faqInstance = new PublishService(params)
+        def faqInstance = new PublishSetting(params)
         if (!faqInstance.save(flush: true)) {
             render(view: "/adminFaq/create", model: [faqInstance: faqInstance])
             return
@@ -51,7 +51,7 @@ class AdminPublishServiceController {
 
     def deleteIt() {
 
-        def logo = PublishService.get(params.id)
+        def logo = PublishSetting.get(params.id)
         if (!logo) {
             flash.error = message(code: 'default.not.found.message', args: [message(code: 'banner.label', default: 'Banner'), params.id])
             redirect(action: "index")
@@ -71,7 +71,7 @@ class AdminPublishServiceController {
     }
 
     def edit() {
-        def heroImageInstance = PublishService.get(params.id)
+        def heroImageInstance = PublishSetting.get(params.id)
         if (!heroImageInstance) {
             flash.message = message(code: 'not.found.message')
             redirect(action: "index")
@@ -83,7 +83,7 @@ class AdminPublishServiceController {
 
     def update() {
 
-        def heroImageInstance = PublishService.get(params.id)
+        def heroImageInstance = PublishSetting.get(params.id)
 
         if (!heroImageInstance) {
             flash.message = message(code: 'not.found.message')
