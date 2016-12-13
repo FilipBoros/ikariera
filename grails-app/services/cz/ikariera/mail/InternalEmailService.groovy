@@ -135,7 +135,7 @@ class InternalEmailService {
 
         //def mailService = new MailService()
         messageToAddress = messageToAddress?.toString()?.toLowerCase()
-        EmailValidator emailValidator = EmailValidator.getInstance()
+        EmailValidator emailValidator = EmailValidator.getInstance() /*TODO  https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/EmailValidator.html*/
         if (emailValidator.isValid(messageToAddress)) {
           //  println("validation successfull")
 

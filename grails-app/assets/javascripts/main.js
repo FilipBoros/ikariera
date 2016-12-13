@@ -1,7 +1,7 @@
 //= require vendor/jquery
 //= require vendor/jquery-ui
 //= require vendor/modernizr
-//= require foundation/foundation
+//= require foundation/foundation.min
 //= require detail
 //= require fileinput/jquery.fileinput
 //= require ckeditor/ckeditor

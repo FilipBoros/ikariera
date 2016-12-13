@@ -76,8 +76,10 @@ class PdfService {
     */
     private def generateDocument(Document document, StudentAccount studentAccount, String studentPhotoDirectory) {
         String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')// TODO could couse problems in grails 3
+        println(unicodeArialFont)
         // Parameters
-        FontFactory.register(unicodeArialFont+"/font/arial-unicode-ms.ttf","Arial Unicode MS")
+        FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
+        println(FontFactory.getFont("Arial Unicode MS"))
         Font titleFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,20,Font.BOLD,BaseColor.BLUE)
         Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.NORMAL)
         Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.BOLD)
