@@ -85,12 +85,17 @@
 
 
             <li>
-
-                <a href="http://veletrhy.ikariera.cz" target="_blank">
-
-                    <g:message code="ikariera.jobfairs.label"/>
-
-                </a>
+                %{--This is so far just a proof of concept--}%
+                <g:if test="${grailsApplication.config.language.equals('cz')}">
+                    <a href="http://veletrhy.ikariera.cz" target="_blank">
+                        ${grailsApplication.config.language} Veletrhy cz
+                    </a>
+                </g:if>
+                <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                    <a href="http://iaeste.sk" target="_blank">
+                        ${grailsApplication.config.language} Iaeste sk
+                    </a>
+                </g:elseif>
 
             </li>
 

@@ -36,11 +36,15 @@ html, body {
 
             <a href="#" data-options="align:top" data-dropdown="dropLang" class="button dropdown tiny secondary" >
                 <g:if test="${g.message( code:  org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)).equals("cs_CZ")}">
-                 Čestina
+                    Čestina
                 </g:if>
-                <g:else>
+                <g:elseif test="${g.message( code:  org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)).equals("en_US")}">
                     English
-                </g:else>
+                </g:elseif>
+                <g:elseif test="${g.message( code:  org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)).equals("sk")}">
+                    Slovenčina
+                </g:elseif>
+
             </a>
             <ul id="dropLang" class="tiny f-dropdown" data-dropdown-content>
                 <li>
@@ -54,6 +58,12 @@ html, body {
                     <g:link params="[lang: 'en_US', f: request.forwardURI]" controller="index"
                             action="fakeAction"><g:message
                             code="language.english"/></g:link>
+                </li>
+                <li>
+
+                    <g:link params="[lang: 'sk', f: request.forwardURI]" controller="index"
+                            action="fakeAction"><g:message
+                            code="language.slovak"/></g:link>
                 </li>
             </ul>
 

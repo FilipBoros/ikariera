@@ -127,7 +127,7 @@ a dat tam CATALINA_OPTS="-Xms512M -Xmx1024M"
 
 TODO prehodit ikariera.eu:8080
 
-Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory. Staci checknut riadok 132 v config.groovy.
+
 
 Pre development verziu toto netreba
 For production version
@@ -135,6 +135,12 @@ download tomcat
 https://tomcat.apache.org/download-80.cgi
 add ikariera.jar to tomcat/webapps
 
+
+Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory.
+skd install grails 3.1.9
+sdk install grails 2.13
+treba naistalovat java 1.8 viz. hore
+treba nainstalovat apache tomcat 8
 
 Users:
 

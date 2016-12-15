@@ -3,12 +3,18 @@ package spring
 import cz.ikariera.security.AuthExtendedSuccessHandler
 import cz.ikariera.security.UserExtendedDetailsService
 import grails.plugin.springsecurity.SpringSecurityUtils
+import org.springframework.web.servlet.i18n.SessionLocaleResolver
 
 
 // Place your Spring DSL code here
 
 
 beans = {
+
+    localeResolver(SessionLocaleResolver) {
+        defaultLocale = new Locale(application.config.language)
+        Locale.setDefault(defaultLocale)
+    }
 
     authenticationSuccessHandler(AuthExtendedSuccessHandler) {
         def conf = SpringSecurityUtils.securityConfig
