@@ -1,4 +1,4 @@
-import cz.ikariera.security.Role
+
 
 /**
  * Created by Michal Dolnak on 23.7.2016.
@@ -17,14 +17,15 @@ import cz.ikariera.security.Role
 
 /*Country specific configuration*/
 
-    language = "cz"
-    /*language = "sk"*/
+    /*language = "cz"*/
+    language = "sk"
     /*language = "en"*/
+
+    /*currency ?*/
 
 /*End of country specific configuration*/
 
     defaultCountry="cze" // used for contry selects
-    /*defaultCountry="sk"*/ // TODO Zistit naco je ten riadok
 
 internalEmailService {
     name = " - iKariera.cz"

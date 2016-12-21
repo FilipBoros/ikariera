@@ -24,7 +24,6 @@ environments:
              dbCreate: create-drop
              dialect: org.hibernate.dialect.MySQL5InnoDBDialect
              url: jdbc:mysql://localhost/ikariera?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
-
     test:
         dataSource:
               driverClassName: com.mysql.jdbc.Driver
@@ -40,9 +39,9 @@ environments:
         dataSource:
             driverClassName: com.mysql.jdbc.Driver
             pooled: true
-            username: ikariera
+            username: root
             zeroDateTimeBehavior: convertToNull
-            password: ikariera
+            password: password
             dbCreate: update
             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
             url: jdbc:mysql://localhost/ikariera?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
@@ -54,7 +53,7 @@ environments:
                 minIdle: 5
                 maxIdle: 25
                 maxWait: 10000
-                maxAge: 10 * 600000
+                maxAge: 6000000
                 timeBetweenEvictionRunsMillis: 5000
                 minEvictableIdleTimeMillis: 60000
                 validationQuery: SELECT 1
@@ -64,5 +63,5 @@ environments:
                 testWhileIdle: true
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState;StatementCache(max=200)
-                defaultTransactionIsolation: java.sql.Connection.TRANSACTION_READ_COMMITTED
+                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 ---

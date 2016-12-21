@@ -7,7 +7,7 @@ class BootstrapConstant {
 
         ArrayList<Constants> constantsArrayList = new ArrayList();
 
-        def constant = new Constants(
+        def constant = Constants.findByCmName("ExpireAddArticle") ?: new Constants(
                 cmName: "ExpireAddArticle",
                 cmComment: "Doba o kterou se prodlouží platnost článku. (Ve dnech)",
                 cmValue: 365
@@ -15,7 +15,7 @@ class BootstrapConstant {
 
         constantsArrayList.add(constant)
 
-        constant = new Constants(
+        constant = Constants.findByCmName("ExpireAdd") ?: new Constants(
                 cmName: "ExpireAdd",
                 cmComment: "Doba o kterou se prodlouží platnost inzerátu. (Ve dnech)",
                 cmValue: 28
@@ -23,7 +23,7 @@ class BootstrapConstant {
 
         constantsArrayList.add(constant)
 
-        constant = new Constants(
+        constant = Constants.findByCmName("ServiceExpireTime") ?: new Constants(
                 cmName: "ServiceExpireTime",
                 cmComment: "Doba na kterou se společnosti aktivuje zakoupená služba (Ve dnech).",
                 cmValue: 356
@@ -31,7 +31,7 @@ class BootstrapConstant {
 
         constantsArrayList.add(constant)
 
-        constant = new Constants(
+        constant = Constants.findByCmName("AdvExpireTime") ?: new Constants(
                 cmName: "AdvExpireTime",
                 cmComment: "Doba na kterou se aktivuje reklama na hlavní stránce (Ve dnech).",
                 cmValue: 90

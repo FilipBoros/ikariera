@@ -59,7 +59,10 @@ class BootStrap {
         jobOffer.put("expire",)
         jobOffer.put("updated",)
 * */
-        if (Environment.current == Environment.DEVELOPMENT) {
+
+
+        /*if (Environment.current == Environment.DEVELOPMENT) was formerly*/
+        if (Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.PRODUCTION) {
             BootstrapRequestmap.init();
 
             println("Processing Bootstrap files ...")
@@ -99,7 +102,7 @@ class BootStrap {
                 UserRole.create(companyUser, companyRole, true)
             }
 
-            def companyAccountUser = new CompanyAccount(
+            def companyAccountUser = CompanyAccount.findByUser(companyUser) ?: new CompanyAccount(
                     titleBefore: "Ing.",
                     telephone: "+420 723 327 901",
                     publicEmail: "karl@seznam.cz",
@@ -132,7 +135,7 @@ class BootStrap {
                     password: springSecurityService.encodePassword('student', 'student@ikariera.eu'),
                     passwordExpired: false).save(failOnError: true)
 
-            def student = new StudentAccount(
+            def student = StudentAccount.findByUser(studentUser) ?: new StudentAccount(
                     telephone: '111111',
                     user: studentUser,
                     nationality: 'CZ').save(failOnError: true)

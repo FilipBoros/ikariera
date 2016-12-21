@@ -2,7 +2,7 @@ package cz.ikariera.company
 
 import cz.ikariera.admin.PictureMedia
 import cz.ikariera.security.User
-import grails.orm.PagedResultList
+import grails.gorm.PagedResultList
 import org.grails.list.ListDistinct
 import org.hibernate.criterion.CriteriaSpecification
 

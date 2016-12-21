@@ -1,7 +1,7 @@
 package cz.ikariera.company
 import cz.ikariera.admin.Country
 import cz.ikariera.student.LanguageType
-import grails.orm.PagedResultList
+import grails.gorm.PagedResultList
 import org.grails.list.ListDistinct
 import org.hibernate.criterion.CriteriaSpecification
 

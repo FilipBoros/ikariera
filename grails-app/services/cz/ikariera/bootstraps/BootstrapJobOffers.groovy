@@ -39,7 +39,7 @@ class BootstrapJobOffers {
             ).save(failOnError: true)
 
 
-            def companyAccountUser1 = new CompanyAccount(
+            def companyAccountUser1 = CompanyAccount.findByUser(companyUser) ?: new CompanyAccount(
                     titleBefore: "Ing.",
                     telephone: "+420 723 327 901",
                     publicEmail: "kdsfsdfdsfdsfsdfarl@seznam.cz",

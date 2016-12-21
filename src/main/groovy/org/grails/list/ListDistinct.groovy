@@ -1,6 +1,6 @@
 package org.grails.list
 
-import grails.orm.PagedResultList
+import grails.gorm.PagedResultList
 
 /**
  * Used as workaround for Criteria.org.grails.list(...) bug resulting in rows duplicity.

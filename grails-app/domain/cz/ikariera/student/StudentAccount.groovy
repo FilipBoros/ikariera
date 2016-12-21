@@ -2,7 +2,7 @@ package cz.ikariera.student
 
 import cz.ikariera.company.JobCategory
 import cz.ikariera.security.User
-import grails.orm.PagedResultList
+import grails.gorm.PagedResultList
 import org.grails.list.ListDistinct
 import org.hibernate.criterion.CriteriaSpecification
 

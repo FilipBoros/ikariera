@@ -1,6 +1,6 @@
 package cz.ikariera.security
 
-import grails.orm.PagedResultList
+import grails.gorm.PagedResultList
 import org.apache.commons.lang.builder.HashCodeBuilder
 import org.grails.list.ListDistinct
 import org.hibernate.criterion.CriteriaSpecification

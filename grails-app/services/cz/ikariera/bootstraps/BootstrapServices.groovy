@@ -11,7 +11,7 @@ class BootstrapServices {
         ArrayList<Services> services = new ArrayList();
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("send-mail-var") ?: new Services(
 
                 uniqueName: "send-mail-var",
                 name: "Hromadny mailing cena za odeslani jednoho emailu",
@@ -20,7 +20,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("send-mail-fix") ?: new Services(
                 uniqueName: "send-mail-fix",
                 name: "Hromadny mailing cena za odeslani jednoho emailu",
                 creditPrice: 20,
@@ -28,7 +28,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("mail-service") ?: new Services(
 
                 uniqueName: "mail-service",
                 name: "Hromadny mailing",
@@ -37,7 +37,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("banner-service") ?: new Services(
 
                 uniqueName: "banner-service",
                 name: "Banery",
@@ -45,7 +45,7 @@ class BootstrapServices {
                 description: "Kecy keci keci keci keci",
                 posOrder: 1).save(failOnError: true))
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("top") ?: new Services(
 
                 uniqueName: "top",
                 name: "Topnabidka",
@@ -53,7 +53,7 @@ class BootstrapServices {
                 description: "Kecy keci keci keci keci",
                 posOrder: 1).save(failOnError: true))
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("advanced-profile-service") ?: new Services(
 
                 uniqueName: "advanced-profile-service",
                 name: "Rozšířený profil",
@@ -61,7 +61,7 @@ class BootstrapServices {
                 description: "Kecy keci keci keci keci",
                 posOrder: 1).save(failOnError: true))
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("cv-service") ?: new Services(
 
                 uniqueName: "cv-service",
                 name: "CV Search",
@@ -70,7 +70,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("partner-service") ?: new Services(
 
                 uniqueName: "partner-service",
                 name: "Logo partner portálu iKariera",
@@ -79,7 +79,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("general-partner-service") ?: new Services(
 
                 uniqueName: "general-partner-service",
                 name: "Generální partner cz.cz.ikariera",
@@ -87,7 +87,7 @@ class BootstrapServices {
                 description: "Kecy keci keci keci keci",
                 posOrder: 1).save(failOnError: true))
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("articles-service") ?: new Services(
 
                 uniqueName: "articles-service",
                 name: "Služba články",
@@ -96,7 +96,7 @@ class BootstrapServices {
                 posOrder: 1).save(failOnError: true))
 
 
-        services.add(new Services(
+        services.add(Services.findByUniqueName("credits") ?: new Services(
 
                 uniqueName: "credits",
                 name: "Přidání kreditů",
