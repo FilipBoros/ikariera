@@ -11,8 +11,7 @@ class BootstrapArticle {
 
         ArrayList<Articles> articles = new ArrayList();
 
-        def article =
-            new Articles(
+        def article = Articles.findByCompany(companies.first()) ?: new Articles(
                     header: "UK: Šance i pro absolventy technických fakult",
                     bodyText: " Nabídka zaměstnání pro vedoucího vědecké skupiny, postdoktorandy, studenty doktorského studia a techniky\n" +
                             "\n" +

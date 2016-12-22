@@ -41,7 +41,7 @@ class PdfService {
     def grailsApplication
 
 
-    def generateCV(StudentAccount studentAccount) throws DocumentException,IOException {
+    def generateCV(StudentAccount studentAccount) throws DocumentException, IOException {
 
         String cvDirectory = grailsApplication.config.upload.directory.studentCv
         String studentPhotoDirectory = grailsApplication.config.upload.directory.studentPhoto
@@ -67,7 +67,7 @@ class PdfService {
                 newFilename: newFilename,
                 name: "cv.pdf",
                 fileSize: file.length()
-        ).save()
+        ).save(flush:true)
     }
 
     /**
@@ -76,10 +76,9 @@ class PdfService {
     */
     private def generateDocument(Document document, StudentAccount studentAccount, String studentPhotoDirectory) {
         String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')// TODO could couse problems in grails 3
-        println(unicodeArialFont)
+        /*println(unicodeArialFont)*/
         // Parameters
         FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
-        println(FontFactory.getFont("Arial Unicode MS"))
         Font titleFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,20,Font.BOLD,BaseColor.BLUE)
         Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.NORMAL)
         Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.BOLD)
@@ -142,10 +141,10 @@ class PdfService {
                 String university = education.university.name // i18n ?
                 String endYear = education.endingYear.toString().split("-").first()
                 String specialization = education.specialization
-                String educationDesciption = "x-"+endYear+", "+specialization // TODO add stEDUCATIONCart year
-
+                String educationDesciption = "x-"+endYear+", "+specialization // TODO add student education start year
                 document.add(new Paragraph(university,boldFont))
                 document.add(new Paragraph(educationDesciption,regularFont))
+
                 document.add(new Paragraph(" "))
                 // TODO add according to Profesia cv
                 /*String startYear = education.
@@ -167,6 +166,7 @@ class PdfService {
                 Paragraph paragraph = new Paragraph(certificatePhrase)
                 document.add(paragraph)
                 document.add(new Paragraph(certificate.description))
+
                 document.add(new Paragraph(" "))
             }
         }
@@ -184,6 +184,7 @@ class PdfService {
                 String experienceDetail = experienceDate+", "+experience.occupation
                 document.add(new Paragraph(experienceDetail))
                 document.add(new Paragraph(experience.activities))
+
                 document.add(new Paragraph(" "))
             }
         }
@@ -197,7 +198,6 @@ class PdfService {
             for(LanguageCombination languageCombination : studentAccount.languages) {
                 String languageName  = languageCombination.languageType.name
                 String languageLevel = languageCombination.level.name
-                log.error(languageLevel) //TODO fix itext to print mekcene a dlzkne
                 document.add(new Paragraph(languageName+"-"+languageLevel,boldFont))
 
                 document.add(new Paragraph(" "))

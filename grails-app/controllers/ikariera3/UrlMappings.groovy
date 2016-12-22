@@ -97,12 +97,18 @@ class UrlMappings {
 
 
 
+        /*name czjobOffers : "/firemni-profily"(
+                controller: "companyProfiles", TODO delete me
+        )
+        name czjobOffers :"/firemni-profily/$id"(
+                controller: "companyProfiles", TODO delete me
+                action: 'detail'
+        )*/
 
-
-        "/firemni-profily"(
+        name czjobOffers : "/firemni-profily"(
                 controller: "companyProfiles",
         )
-        "/firemni-profily/$id"(
+        name czjobOffers :"/firemni-profily/$id"(
                 controller: "companyProfiles",
                 action: 'detail'
         )

@@ -27,7 +27,7 @@ class BootstrapJobOffers {
         companies.eachWithIndex { it, i ->
 
 
-            def companyUser = new User(
+            def companyUser =  User.findByUsername('company@cz.cz.ikariera' + i + '.cz') ?: new User(
                     username: 'company@cz.cz.ikariera' + i + '.cz',
                     firstName: 'Jon' + i,
                     lastName: 'Connor' + i,

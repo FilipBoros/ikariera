@@ -17,7 +17,7 @@ class Partner {
         partnerType(inList: ["general", "medial", "normal", "cover", "support"])
 
         logo()
-        link(nullabe: true, blank: true, url: true)
+        link(nullable: true, blank: true, url: true)
 
     }
 }
