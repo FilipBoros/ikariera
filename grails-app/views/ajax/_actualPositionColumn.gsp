@@ -18,7 +18,7 @@
 
         <li >
 		
-            <g:link class="actual-position-header" mapping="${message(code: 'joboffers.link')}" 
+            <g:link class="actual-position-header" mapping="${message(code: 'joboffer.link')}"
                     id="${jobOfferInstance.id}">
 
                 <h8>
@@ -28,7 +28,7 @@
 
             <br/>
 
-        <g:link mapping="${message(code: 'companies.link')}" id="${jobOfferInstance?.company?.id}">
+        <g:link mapping="${message(code: 'company.link')}" id="${jobOfferInstance?.company?.id}">
             <h5 style="font-weight: 300; font-size: 90%">
             ${jobOfferInstance.company.companyName}
 

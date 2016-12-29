@@ -125,9 +125,9 @@ Mozno bude treba zvecsit heap size
 v /usr/share/tomcat8/bin treba vytvorit subor setenv.sh
 a dat tam CATALINA_OPTS="-Xms512M -Xmx1024M"
 
-TODO prehodit ikariera.eu:8080
-
-
+Ako rozbehat testy:
+SERVER_PORT=8089 grails test-app -integration
+viz. https://github.com/grails/grails-core/issues/9970
 
 Pre development verziu toto netreba
 For production version

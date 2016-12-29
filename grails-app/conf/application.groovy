@@ -18,8 +18,8 @@
 /*Country specific configuration*/
 
     /*language = "cz"*/
-    language = "sk"
-    /*language = "en"*/
+    /*language = "sk"*/
+    language = "en"
 
     /*currency ?*/
 
@@ -55,7 +55,7 @@ recaptcha {
     forceLanguageInURL = false
 
 // Set to false to disable the display of captcha
-    enabled = true
+    enabled = false
 
 // Communicate using HTTPS
     useSecureAPI = true
@@ -184,7 +184,7 @@ environments {
     test {
 
         grails.logging.jul.usebridge = false
-        grails.serverURL = 'http://localhost:8090'//8090
+        server.port = 8089
 
     }
 }
@@ -357,8 +357,8 @@ environments {
             mail {
                 host = "smtp.gmail.com"
                 port = 465
-                username = "grailsdevelop@gmail.com"
-                password = "hamachi42"
+                username = "camarerotest@gmail.com"
+                password = "heslo123456"
                 props = ["mail.smtp.security"              : "true",
                          "mail.smtp.socketFactory.port"    : "465",
                          "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",

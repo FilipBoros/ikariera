@@ -31,7 +31,13 @@ class BootstrapRequestmap {
         new Requestmap(url: '/company-profiles/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
         new Requestmap(url: '/error/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
         new Requestmap(url: '/articles/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
-        new Requestmap(url: '/job-offer/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+
+        new Requestmap(url: '/ponuky-prace/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+        new Requestmap(url: '/nabidky-prace/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+        new Requestmap(url: '/job-offers/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+
+        new Requestmap(url: '/clanky-a-rady/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save() /*Sk is the same*/
+        new Requestmap(url: '/tips-and-articles/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
         new Requestmap(url: '/menu-item/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
@@ -69,7 +75,8 @@ class BootstrapRequestmap {
         new Requestmap(url: '/company-account/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
         new Requestmap(url: '/company/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
-
+        new Requestmap(url: '/firemni-profil/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+        new Requestmap(url: '/firemny-profil/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
 
         new Requestmap(url: '/company-articles/**', configAttribute: 'ROLE_COMPANY').save()

@@ -52,13 +52,13 @@
             <!-- Left Nav Section -->
             <ul class="right">
                 <li>
-                    <g:link uri="/job-offers"> %{--mapping="${message(code: 'joboffers.link')}" in old project--}%
+                    <g:link mapping="${message(code: 'joboffers.link')}">
                         ${message(code: 'jobOffer.jobOffers.label')}
                     </g:link>
                 </li>
 
                 <li>
-                    <g:link uri="/companies" > %{--mapping="${message(code: 'companies.link')}" in old project--}%
+                    <g:link mapping="${message(code: 'companies.link')}">
                         <g:message code="company.companies.label"/>
                     </g:link>
                 </li>
@@ -66,7 +66,7 @@
 
 
                 <li>
-                    <g:link uri="/tips-and-articles" > %{--mapping="${message(code: 'arcticles.link')}" in old project--}%
+                    <g:link mapping="${message(code: 'arcticles.link')}">
                         ${message(code: 'company.articles.label')}
                     </g:link>
                 </li>

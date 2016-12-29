@@ -354,7 +354,7 @@ div.senman_rotator ul li.show {
 
 
                 <span style="margin-right: 15px;  ">
-                <g:link mapping="${message(code: 'joboffers.link')}" id="${jobOffer.id}">
+                <g:link mapping="${message(code: 'joboffer.link')}" id="${jobOffer.id}">
                         <strong>${jobOffer?.positionName}</strong>
                     </g:link>
                 </span>

@@ -16,27 +16,55 @@ class UrlMappings {
         )
 
 
-        "/clanky-a-rady" (
+        name skarticles: "/clanky-a-rady" (
+             controller: "articles",
+        )
+
+        name skarticle : "/clanky-a-rady/$id" (
+             controller: "articles",
+             action: 'detail'
+        )
+
+        name czarticles: "/clanky-a-rady" (
                 controller: "articles",
         )
-        "/clanky-a-rady/$id" (
+
+        name czarticle : "/clanky-a-rady/$id" (
                 controller: "articles",
                 action: 'detail'
         )
-        "/tips-and-articles"(
+
+        name enarticles :"/tips-and-articles"(
                 controller: "articles",
         )
-        "/tips-and-articles/$id"(
+        name enarticle : "/tips-and-articles/$id"(
                 controller: "articles",
                 action: 'detail'
         )
+
 
         "/veletrhy-ikariera" (
                 controller: "index",
                 action: "veleterhy"
         )
 
-        "/nabidky-prace" (
+
+       name skjobOffers : "/ponuky-prace" (
+                controller : 'jobOffer',
+                action : 'index'
+        )
+
+        "/doporucene-nabidky-prace" ( /*TODO kde je to pouzite? Mozno to nebude fungovat a bude to treba dorobit podla ostatnych*/
+                controller : 'jobOffer',
+                action : 'recommendedJobOffers'
+        )
+
+        name skjobOffer : "/ponuky-prace/$id" (
+                controller : 'jobOffer',
+                action : 'detail'
+        )
+
+        name czjobOffers :"/nabidky-prace" (
                 controller : 'jobOffer',
                 action : 'index'
         )
@@ -46,12 +74,12 @@ class UrlMappings {
                 action : 'recommendedJobOffers'
         )
 
-        "/nabidky-prace/$id" (
+        name czjobOffer :"/nabidky-prace/$id" (
                 controller : 'jobOffer',
                 action : 'detail'
         )
 
-        "/job-offers"(
+        name enjobOffers :"/job-offers"(
                 controller : 'jobOffer',
                 action : 'index'
         )
@@ -61,10 +89,11 @@ class UrlMappings {
                 action : 'recommendedJobOffers'
         )
 
-        "/job-offers/$id"(
+        name enjobOffer :"/job-offers/$id"(
                 controller: "jobOffer",
                 action: "detail"
         )
+
 
 
 
@@ -95,27 +124,24 @@ class UrlMappings {
 
         )
 
-
-
-        /*name czjobOffers : "/firemni-profily"(
-                controller: "companyProfiles", TODO delete me
-        )
-        name czjobOffers :"/firemni-profily/$id"(
-                controller: "companyProfiles", TODO delete me
-                action: 'detail'
-        )*/
-
-        name czjobOffers : "/firemni-profily"(
+        name companyProfilesSk : "/firemne-profily"(
                 controller: "companyProfiles",
         )
-        name czjobOffers :"/firemni-profily/$id"(
+        name companyProfileSk :"/firemny-profil/$id"(
                 controller: "companyProfiles",
                 action: 'detail'
         )
-        "/companies"(
+        name companyProfilesCz : "/firemni-profily"(
                 controller: "companyProfiles",
         )
-        "/companies/$id"(
+        name companyProfileCz :"/firemni-profil/$id"(
+                controller: "companyProfiles",
+                action: 'detail'
+        )
+        name companyProfilesEn :"/companies"(
+                controller: "companyProfiles",
+        )
+        name companyProfileEn :"/company/$id"(
                 controller: "companyProfiles",
                 action: 'detail'
         )

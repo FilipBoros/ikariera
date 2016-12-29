@@ -17,7 +17,7 @@
 
 
 
-        <g:link mapping="${message(code: 'companies.link')}" id="${articleInstance?.company?.id}">
+        <g:link mapping="${message(code: 'company.link')}" id="${articleInstance?.company?.id}">
             <h3 style="font-weight: 300">${articleInstance?.company?.companyName}</h3>
 
         </g:link>

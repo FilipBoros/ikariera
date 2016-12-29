@@ -153,7 +153,14 @@ class BootStrap {
             }
 
             BootstrapConstant.init()
-            BootstrapRequestmap.init();
+
+            /*TODO change BootsrapRequestMap to use ?: for each permission*/
+            if (!Requestmap.findByUrl('/security/**')) {
+                println('Bootstrap of request has started')
+                BootstrapRequestmap.init();
+                println('Bootstrap of request has finished')
+            }
+
             BootstrapServices.init();
             BootstrapLocalization.init();
 

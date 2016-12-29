@@ -1,6 +1,6 @@
 <div class="articleItem">
 
-    <g:link mapping="${message(code: 'arcticles.link')}" id="${articleInstance.id}">
+    <g:link mapping="${message(code: 'arcticle.link')}" id="${articleInstance.id}">
         <h3>
             %{--<g:link controller="articles" action="detail"
                     id="${articleInstance.id}">${articleInstance?.header}
@@ -12,7 +12,7 @@
 
     </g:link>
 
-    <g:link mapping="${message(code: 'companies.link')}" id="${articleInstance?.company?.id}">
+    <g:link mapping="${message(code: 'company.link')}" id="${articleInstance?.company?.id}">
         <h5 style="font-weight: 300">${articleInstance?.company?.companyName}</h5>
 
     </g:link>

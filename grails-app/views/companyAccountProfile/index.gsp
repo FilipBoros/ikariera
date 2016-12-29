@@ -48,7 +48,7 @@
 
 
 
-            <g:link class="button expand success" target="_blank" mapping="${message(code: 'companies.link')}" id="${companyInstance?.id}">
+            <g:link class="button expand success" target="_blank" mapping="${message(code: 'company.link')}" id="${companyInstance?.id}">
                 <g:message code="company.show.profile"/>
 
             </g:link>

@@ -68,7 +68,7 @@ div.companyProfileItem.topCompany {
 
                         <div class="large-8 columns">
 
-                            <g:link mapping="${message(code: 'companies.link')}" id="${companyInstance?.id}">
+                            <g:link mapping="${message(code: 'company.link')}" id="${companyInstance?.id}">
                                 <h3 style="font-weight: 300">${companyInstance?.companyName}</h3>
 
 

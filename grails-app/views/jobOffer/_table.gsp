@@ -10,7 +10,7 @@
 
         <div class="large-12 columns">
 
-            <g:link mapping="${message(code: 'joboffers.link')}" id="${jobOfferInstance?.id}">
+            <g:link mapping="${message(code: 'joboffer.link')}" id="${jobOfferInstance?.id}">
                 <h3 style="font-weight: 500">
                     <g:if test="${jobOfferInstance?.topPos}">
                         ${jobOfferInstance?.positionName}
@@ -30,7 +30,7 @@
 
         <div class="large-12 columns">
 
-            <g:link mapping="${message(code: 'companies.link')}" id="${jobOfferInstance?.company?.id}">
+            <g:link mapping="${message(code: 'company.link')}" id="${jobOfferInstance?.company?.id}">
 
                 <h5 style="font-weight: 300">${jobOfferInstance?.company?.companyName}
                 </h5>
