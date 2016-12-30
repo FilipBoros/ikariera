@@ -24,10 +24,7 @@
 
     <div class="large-7 columns">
 
-        <g:form controller="company" action="saveRegistration">
-
-
-
+        <g:form mapping="companySaveRegistraion">
 
             <g:render template="form" model="[companyInstance: companyInstance]"/>
 
@@ -42,7 +39,7 @@
 
             <g:render template="userTermOfUse"/>
 
-            <button action="updateProfile" name="submit"
+            <button type="submit" name="submit"
                     class="button">${message(code: 'company.registration.button')}</button>
 
         </g:form>

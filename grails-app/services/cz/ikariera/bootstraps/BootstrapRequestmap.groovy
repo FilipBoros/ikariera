@@ -189,6 +189,7 @@ class BootstrapRequestmap {
 
 
         new Requestmap(url: '/confirm-user/**', configAttribute: 'permitAll').save()
+        new Requestmap(url: '/confirm-company-user/**', configAttribute: 'permitAll').save()
         new Requestmap(url: '/user-activation/**', configAttribute: 'permitAll').save()
 
 

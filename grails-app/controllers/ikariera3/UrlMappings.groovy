@@ -111,6 +111,11 @@ class UrlMappings {
 
         )
 
+        "/confirm-company-user/$token" (
+                controller: "userActivation",
+                action: "enableCompanyUser"
+        )
+
         "/user-logout-email/$token" (
                 controller : "signOutInfoEmail",
                 action: "logoutEmail"
@@ -177,10 +182,15 @@ class UrlMappings {
         )
 
 
-        "/registrace-spolecnosti" (
+        name companyRegistraion : "/registrace-spolecnosti" (
                 controller: "company",
                 action: "registration"
         )
+
+       name companySaveRegistraion : "/company/save-registration" (
+                controller: "company",
+                action: "saveRegistration"
+       )
 
         "/api-companies/?(.${format})?"(controller: "apiCompanies") {
             action = [GET: "list"]

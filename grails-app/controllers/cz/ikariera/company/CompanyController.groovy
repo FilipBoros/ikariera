@@ -109,8 +109,8 @@ class CompanyController {
 
         sendNotificationEmail(companyInstance)
 
-        redirect(action: "registrationComplete")
-
+        /*redirect controller: "company", action: "registrationComplete"*/
+        render(view: "/company/emailSent")
     }
 
     private void sendEmail(Company companyInstance, User userInstance) {

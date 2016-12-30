@@ -367,8 +367,20 @@ environments {
                 overrideAddress = "iaeste@atlas.cz"
             }
         }
-
-
+    }
+    production { /* TODO normal mail service like camarero*/
+        grails {
+            mail {
+                host = "smtp.gmail.com"
+                port = 465
+                username = "camarerotest@gmail.com"
+                password = "heslo123456"
+                props = ["mail.smtp.security"              : "true",
+                         "mail.smtp.socketFactory.port"    : "465",
+                         "mail.smtp.socketFactory.class"   : "javax.net.ssl.SSLSocketFactory",
+                         "mail.smtp.socketFactory.fallback": "false"]
+            }
+        }
     }
 
 
