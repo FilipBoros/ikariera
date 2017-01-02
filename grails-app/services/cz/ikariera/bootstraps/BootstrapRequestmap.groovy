@@ -36,6 +36,8 @@ class BootstrapRequestmap {
         new Requestmap(url: '/nabidky-prace/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
         new Requestmap(url: '/job-offers/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
+        new Requestmap(url: '/job-offer/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
+
         new Requestmap(url: '/clanky-a-rady/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save() /*Sk is the same*/
         new Requestmap(url: '/tips-and-articles/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 
