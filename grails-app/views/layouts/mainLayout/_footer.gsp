@@ -1,7 +1,12 @@
 <div class="row">
     <div class="small-6 medium-6 large-5 columns">
 
-        <asset:image src="ikariera/iaeste-bile.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image src="ikariera/iaeste-bile.png"/>
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image src="ikariera_sk/iaeste-white.png"/>
+        </g:elseif>
         <br/>     <br/>
 
 
@@ -9,7 +14,7 @@
 
             <g:message code="ikariera.owner.label"/>
             <br>
-            <a href="http://www.iaeste.cz"><g:message code="iaesteCR.label"/></a>.
+            <a href="http://www.iaeste.${grailsApplication.config.language}"><g:message code="iaesteCR.label"/></a>.
             <br/>
 
         </p>
@@ -26,7 +31,7 @@
         <br>
         <h4><g:message code="footer.contact"/></h4>
         <ul class="no-bullet">
-            <li>Email: <a href="mailto:${contactInstance?.contactEmail}">info@ikariera.cz</a></li>
+            <li>Email: <a href="mailto:${contactInstance?.contactEmail}">info@ikariera.${grailsApplication.config.language}</a></li>
 
             <li>Web:  <a href="${contactInstance?.contactWeb}"><g:message code="iaesteCR.label"/></a></li>
 
