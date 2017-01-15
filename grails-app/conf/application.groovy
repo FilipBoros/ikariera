@@ -18,8 +18,8 @@
 /*Country specific configuration*/
 
     /*language = "cz"*/
-    language = "sk"
-    /*language = "en"*/
+    /*language = "sk"*/
+    language = "en"
 
     /*currency ?*/
 

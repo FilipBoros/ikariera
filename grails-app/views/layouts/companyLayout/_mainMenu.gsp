@@ -22,7 +22,6 @@
 
                         <li>
                             <g:link controller="companyAccountJobOffers">
-
                                 <g:message code="company.jobOffers.label"/>
                             </g:link>
                         </li>

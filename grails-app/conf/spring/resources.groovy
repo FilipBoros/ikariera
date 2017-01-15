@@ -11,10 +11,10 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver
 
 beans = {
 
-    localeResolver(SessionLocaleResolver) {
+    /*localeResolver(SessionLocaleResolver) {
         defaultLocale = new Locale(application.config.language)
         Locale.setDefault(defaultLocale)
-    }
+    }*/
 
     authenticationSuccessHandler(AuthExtendedSuccessHandler) {
         def conf = SpringSecurityUtils.securityConfig

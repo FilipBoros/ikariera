@@ -7,10 +7,9 @@
 
 
     <asset:stylesheet src="application.css"/>
-    <asset:javascript src="admin.js"/>
     <asset:javascript src="main.js"/>
     <asset:javascript src="application.js"/>
-
+    <asset:javascript src="admin.js"/>
     <g:render template="/layouts/mainLayout/pageHead"/>
 
 

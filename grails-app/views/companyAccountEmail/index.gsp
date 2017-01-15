@@ -106,7 +106,7 @@
                         </g:if>
                         <g:elseif test="${!companyEmailsInstance.dateSent}">
 
-                            <g:link   mapping="companyAccountEmailSearch"  params="[emailId: companyEmailsInstance.id]" class="button success round">
+                            <g:link   mapping="companyAccountEmailSearch"  params="[emailId: companyEmailsInstance.id]" class="button success round">%{--TODO fix me--}%
                                 ${message(code: 'companyEmails.sentEmail.label')}
 
                             </g:link>

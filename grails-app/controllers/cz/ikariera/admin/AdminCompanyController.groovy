@@ -67,9 +67,12 @@ class AdminCompanyController {
         def company = Company.get(companyId)
         company.active = false
         company.save(flush: true)
-        def result = [companyId: companyId, data: "N"]
+
+        /*def result = [companyId: companyId, data: "N"]
         def converter = result as JSON;
-        render converter.toString();
+        render converter.toString();*/
+
+        redirect action:'index';
 
     }
 
@@ -100,10 +103,11 @@ class AdminCompanyController {
         }
         company.save(flush: true)
 
-        def result = [companyId: companyId, data: "N"]
+        /*def result = [companyId: companyId, data: "N"]
         def converter = result as JSON;
-        render converter.toString();
+        render converter.toString();*/
 
+        redirect action:'index';
     }
 
 
@@ -133,9 +137,11 @@ class AdminCompanyController {
         }
         company.save(flush: true)
 
-        def result = [companyId: companyId, data: "A"]
+        /*def result = [companyId: companyId, data: "A"]
         def converter = result as JSON;
-        render converter.toString();
+        render converter.toString();*/
+
+        redirect action:'index';
 
     }
     /**
@@ -209,14 +215,16 @@ class AdminCompanyController {
                 }
             }
 
-            def result = [companyId: companyId, data: "A"]
+            /*def result = [companyId: companyId, data: "A"]
             def converter = result as JSON;
-            render converter.toString(); // Return JSON for JAVA
+            render converter.toString();*/ // Return JSON for JAVA
+
+            redirect action:'index';
 
 
         } else {
 
-            render([text: "companyId: false"]) as JSON
+            render([text: "companyId: false"]) as JSON /*TODO This could be changed, because no one knows what happened*/
 
         }
 
@@ -247,10 +255,12 @@ class AdminCompanyController {
         company.personalAgency = true;
 
         company.save(flush: true)
-        def result = [companyId: companyId, data: "P"]
-        def converter = result as JSON;
-        render converter.toString();
 
+        /*def result = [companyId: companyId, data: "P"]
+        def converter = result as JSON;
+        render converter.toString();*/
+
+        redirect action:'index';
     }
 
     /**
@@ -280,10 +290,12 @@ class AdminCompanyController {
         company.personalAgency = false;
 
         company.save(flush: true)
-        def result = [companyId: companyId, data: "-"]
-        def converter = result as JSON;
-        render converter.toString();
 
+        /*def result = [companyId: companyId, data: "-"]
+        def converter = result as JSON;
+        render converter.toString();*/
+
+        redirect action:'index';
     }
 
     /**
@@ -314,12 +326,10 @@ class AdminCompanyController {
 
         companyInstance.save(flush: true)
 
-
-
-        def result = [companyId: companyId, data: "Ban"]
+       /* def result = [companyId: companyId, data: "Ban"]
         def converter = result as JSON;
-        render converter.toString();
-
+        render converter.toString();*/
+        redirect action: 'index'
     }
 
     /**
@@ -345,12 +355,11 @@ class AdminCompanyController {
 */
         companyInstance.save(flush: true)
 
-
-
-        def result = [companyId: companyId, data: "-"]
+        /*def result = [companyId: companyId, data: "-"]
         def converter = result as JSON;
-        render converter.toString();
+        render converter.toString();*/
 
+        redirect action: 'index'
     }
 
     /**
@@ -435,8 +444,6 @@ class AdminCompanyController {
         filter.mainJobCategories = lst
 
         redirect(controller: "adminCompany", params: filter)
-
-
     }
 
 

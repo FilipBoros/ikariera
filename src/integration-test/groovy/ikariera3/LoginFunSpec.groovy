@@ -27,6 +27,8 @@ class LoginFunSpec extends GebReportingSpec {
 
         void "loginTest" () {
             when:
+                to LoginPage
+                at LoginPage
                 loginForm.with {
                     security_username = 'student@ikariera.eu'
                     security_password = 'student'

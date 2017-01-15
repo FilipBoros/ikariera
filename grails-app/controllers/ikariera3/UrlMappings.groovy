@@ -232,19 +232,19 @@ class UrlMappings {
                 controller: "jobOffer", action: [POST:"jobOfferApi", PUT:"publishOfferAPi"]
         )
 
-        "/admin-remote-register"(
+        name adminRemoteRegister : "/admin-remote-register"(
                 controller: "adminRemoteRegister"
         )
 
-        "/admin-credits"(
+        name adminCredits : "/admin-credits"(
                 controller: "adminCredits"
         )
 
-        "/admin-banner"(
+        name adminBanner : "/admin-banner"(
                 controller: "adminBanner"
         )
 
-        "/admin-faq"(
+        name adminFaq : "/admin-faq"(
                 controller: "adminFaq"
         )
 
@@ -253,13 +253,13 @@ class UrlMappings {
         )
 
 
-        "/admin-company"(
+        name adminCompany : "/admin-company"(
                 controller: "adminCompany"
         )
 
 
 
-        "/admin-hero"(
+        name adminHero : "/admin-hero"(
                 controller: "adminHeroImage"
         )
 
@@ -267,17 +267,17 @@ class UrlMappings {
                 controller: "admin"
         )
 
-        "/admin-services"(
+        name adminServices : "/admin-services"(
                 controller: "adminServices"
         )
 
 
-        "/admin-partners"(
+        name adminPartners : "/admin-partners"(
                 controller: "adminPartner"
         )
 
 
-        "/admin-media"(
+        name adminMedia :"/admin-media"(
                 controller: "adminMedia"
         )
 
@@ -303,11 +303,12 @@ class UrlMappings {
         "/admin-mobile"(
                 controller: "adminMobile"
         )
-        "/admin-job-offer"(
+
+        name adminJobOffer : "/admin-job-offer"(
                 controller: "adminJobOffer"
         )
 
-        "/admin-contact"(
+        name adminContact : "/admin-contact"(
                 controller: "adminContact"
         )
 
@@ -318,21 +319,23 @@ class UrlMappings {
                 controller: "adminConstants"
         )
 
-        "/admin-user-admin"(
+        name adminUserAdmin : "/admin-user-admin"(
                 controller: "adminUserAdmin"
         )
 
-        "/admin-user-company"(
+        name adminUserCompany : "/admin-user-company"(
                 controller: "adminUserCompany"
         )
-        "/admin-user-all"(
+
+        name adminUserAll : "/admin-user-all"(
                 controller: "adminUserAll"
         )
 
-        "/admin-user-student"(
+        name adminUserStudent :"/admin-user-student"(
                 controller: "adminUserStudent"
         )
-        "/admin-api-key"(
+
+        name adminApiKey : "/admin-api-key"(
                 controller: "adminApiKey"
         )
 

@@ -61,8 +61,7 @@ class BootStrap {
 * */
 
 
-        /*if (Environment.current == Environment.DEVELOPMENT) was formerly*/
-        if (Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.PRODUCTION) {
+        /*if (Environment.current == Environment.DEVELOPMENT)*/ /*All data should be not loaded in production, but for now this is unnecessary.*/
             BootstrapRequestmap.init();
 
             println("Processing Bootstrap files ...")
@@ -84,19 +83,22 @@ class BootStrap {
                     active: true
             ).save(failOnError: true)
 
-            def companyUser = User.findByUsername('company@ikariera.eu') ?: new User(
-                    username: 'company@ikariera.eu',
-                    firstName: 'Jon',
-                    lastName: 'Connor',
-                    /*company: company1,*/ //  toto nefuguje
-                    password: springSecurityService.encodePassword('company', 'company@ikariera.eu'),
-                    accountExpired: false,
-                    accountLocked: false,
-                    enabled: true,
-                    passwordExpired: false
-            ).save(flush: true, failOnError: true)
-            companyUser.company = company1
-            companyUser.save(flush: true, failOnError: true)
+            def companyUser = User.findByUsername('company@ikariera.eu')
+            if(!companyUser) {
+                companyUser = new User(
+                        username: 'company@ikariera.eu',
+                        firstName: 'Jon',
+                        lastName: 'Connor',
+                        /*company: company1,*/ //  toto nefuguje
+                        password: springSecurityService.encodePassword('company', 'company@ikariera.eu'),
+                        accountExpired: false,
+                        accountLocked: false,
+                        enabled: true,
+                        passwordExpired: false
+                ).save(flush: true, failOnError: true)
+                companyUser.company = company1
+                companyUser.save(flush: true, failOnError: true)
+            }
 
             if (!companyUser.authorities.contains(companyRole)) {
                 UserRole.create(companyUser, companyRole, true)
@@ -155,11 +157,9 @@ class BootStrap {
             BootstrapConstant.init()
 
             /*TODO change BootsrapRequestMap to use ?: for each permission*/
-            if (!Requestmap.findByUrl('/security/**')) {
-                println('Bootstrap of request has started')
-                BootstrapRequestmap.init();
-                println('Bootstrap of request has finished')
-            }
+            println('Bootstrap of request has started')
+            BootstrapRequestmap.init();
+            println('Bootstrap of request has finished')
 
             BootstrapServices.init();
             BootstrapLocalization.init();
@@ -189,35 +189,29 @@ class BootStrap {
 //
 //            BootstrapHeroImage2.init(uploadHeroDirectory);
 
-            def michalUser = User.findByUsername('donkmichal@gmail.com') ?: new User(
-                    username: 'donkmichal@gmail.com',
-                    firstName: 'Michal',
-                    lastName: 'Dolnak',
-                    /*company: company1,*/
-                    password: springSecurityService.encodePassword('michal', 'donkmichal@gmail.com'),
-                    accountExpired: false,
-                    accountLocked: false,
-                    enabled: true,
-                    passwordExpired: false
-            ).save(flush: true, failOnError: true)
-            michalUser.company = companies.get(2)
-            michalUser.save(flush: true, failOnError: true)
-
+            def michalUser = User.findByUsername('donkmichal@gmail.com')
+            if(!michalUser) {
+                michalUser = new User(
+                        username: 'donkmichal@gmail.com',
+                        firstName: 'Michal',
+                        lastName: 'Dolnak',
+                        /*company: company1,*/
+                        password: springSecurityService.encodePassword('michal', 'donkmichal@gmail.com'),
+                        accountExpired: false,
+                        accountLocked: false,
+                        enabled: true,
+                        passwordExpired: false
+                ).save(flush: true, failOnError: true)
+                michalUser.company = companies.get(2)
+                michalUser.save(flush: true, failOnError: true)
+            }
 
             if (!michalUser.authorities.contains(companyRole)) {
                 UserRole.create(michalUser, companyRole, true)
             }
 
 
-            Education education = new  Education(
-                    university: University.first(),
-                    studyCategory: StudyCategory.first(),
-            )
-            studentUser.studentAccount.addToEducations(education)
-
-
             println("... processing of Bootstrap files finished.")
-        }
     }
 
     def destroy = {
