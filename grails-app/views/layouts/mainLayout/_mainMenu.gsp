@@ -13,30 +13,30 @@
         <ul class="title-area">
             <li class="namel">
                 <h1>
-
                     <a class="home show-for-medium" href="${createLink(uri: '/')}">
-                        <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
-                        %{--<img style="height: 70px"
-                             src="${resource(dir: 'images/ikariera', file: 'apple-touch-icon.png')}" alt="iKariera"
-                             style="border-width: 0px; margin-bottom: 10px;"/>--}%
+                        <g:if test="${grailsApplication.config.language.equals('cz')}">
+                            <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:if>
+                        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                            <asset:image src="ikariera_sk/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:elseif>
                     </a>
-
-
                     <a class="home show-for-large-up" href="${createLink(uri: '/')}">
-                        <asset:image src="ikariera/ikariera-special.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
-                        %{--<img style="height: 70px"
-                             src="${resource(dir: 'images/ikariera', file: 'ikariera-special.png')}" alt="iKariera"
-                             style="border-width: 0px; margin-bottom: 10px;"/>--}%
+                        <g:if test="${grailsApplication.config.language.equals('cz')}">
+                            <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:if>
+                        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                            <asset:image src="ikariera_sk/ikariera-special.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:elseif>
                     </a>
-
-
                     <a class="home show-for-small" href="${createLink(uri: '/')}">
-                        <asset:image src="ikariera/ikariera-special.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
-                        %{--<img style="height: 70px"
-                             src="${resource(dir: 'images/ikariera', file: 'ikariera-special.png')}" alt="iKariera"
-                             style="border-width: 0px; margin-bottom: 10px;"/>--}%
+                        <g:if test="${grailsApplication.config.language.equals('cz')}">
+                            <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:if>
+                        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                            <asset:image src="ikariera_sk/ikariera-special.png" alt="iKariera" style="height: 70px; border-width: 0px; padding-bottom: 15px;"/>
+                        </g:elseif>
                     </a>
-
                 </h1>
             </li>
 

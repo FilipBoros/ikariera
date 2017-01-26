@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.admin.RemoteApiKey
 import grails.transaction.Transactional
@@ -11,7 +11,8 @@ class AdminRemoteApiKeyController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond RemoteApiKey.list(params), model: [remoteApiKeyInstanceCount: RemoteApiKey.count()]
+        /*respond RemoteApiKey.list(params), model: [remoteApiKeyInstanceCount: RemoteApiKey.count()]*/ /*TODO responds does not work*/
+        render view: 'index', model: [remoteApiKeyInstanceCount: RemoteApiKey.count()]
     }
 
     def show(RemoteApiKey remoteApiKeyInstance) {

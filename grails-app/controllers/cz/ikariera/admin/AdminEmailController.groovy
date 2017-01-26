@@ -1,7 +1,5 @@
-package ikariera.admin
+package cz.ikariera.admin
 
-import cz.ikariera.admin.AdminEmails
-import cz.ikariera.admin.RemoteApiKey
 import cz.ikariera.security.User
 import grails.plugins.rest.client.RestBuilder
 import org.springframework.dao.DataIntegrityViolationException

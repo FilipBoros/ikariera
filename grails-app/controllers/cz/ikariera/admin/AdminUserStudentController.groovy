@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.security.User
 import cz.ikariera.security.UserRole
@@ -74,11 +74,9 @@ class AdminUserStudentController {
         studentInstance.infoEmails = false;
         studentInstance.save(flush: true)
 
-
         def result = [userId: userId, data: "N"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     def addUserToMailingList() {
@@ -108,7 +106,6 @@ class AdminUserStudentController {
         def result = [userId: userId, data: "E"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
 

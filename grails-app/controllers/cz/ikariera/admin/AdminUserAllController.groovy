@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.security.User
 import cz.ikariera.security.UserRole
@@ -118,11 +118,9 @@ class AdminUserAllController {
         userInstance.enabled = true;
         userInstance.save(flush: true)
 
-
         def result = [userId: userId, data: "E"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     /**
@@ -154,7 +152,6 @@ class AdminUserAllController {
         def result = [userId: userId, data: "N"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     /**
@@ -186,7 +183,6 @@ class AdminUserAllController {
         def result = [userId: userId, data: "Ban"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     /**
@@ -217,7 +213,6 @@ class AdminUserAllController {
         def result = [userId: userId, data: "-"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     /**
@@ -248,7 +243,6 @@ class AdminUserAllController {
         def result = [userId: userId, data: "-"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     /**
@@ -279,7 +273,6 @@ class AdminUserAllController {
         def result = [userId: userId, data: "EXPIR"]
         def converter = result as JSON;
         render converter.toString();
-
     }
 
     def delete(User userInstance) {

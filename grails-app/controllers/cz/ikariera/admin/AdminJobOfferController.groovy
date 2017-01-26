@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.company.*
 import cz.ikariera.security.User
@@ -112,7 +112,10 @@ class AdminJobOfferController {
         def selectedAdvertisement = JobOffer.get(params.id)
         def selectedCompany = selectedAdvertisement.company
 
-        if (user.company) {
+        user.company = selectedCompany
+        user.save(flush: true)
+
+        /*if (user.company) {
 
             user.company = selectedCompany
 
@@ -128,15 +131,14 @@ class AdminJobOfferController {
                     belongToAdmin: true
             )
 
-            if (!companyUser.save(flush: true)) {
+            if (!companyUser.save(flush: true) ) {
                 flash.error = message(code: 'system.unspecifiedError.error')
                 return
             }
-        }
+        }*/
+
         def listOfContacts = ContactDetails.createCriteria().list { eq('company', user.company) }
         redirect(controller: "companyAccountJobOffers", action: "edit", params: [id: selectedAdvertisement.id])
-
-
     }
 
     def publish() {
@@ -150,7 +152,10 @@ class AdminJobOfferController {
         def selectedAdvertisement = JobOffer.get(params.id)
         def selectedCompany = selectedAdvertisement.company
 
-        if (user.company) {
+        user.company = selectedCompany
+        user.save(flush: true)
+
+        /*if (user.company) {
 
             user.company = selectedCompany
 
@@ -166,11 +171,11 @@ class AdminJobOfferController {
                     belongToAdmin: true
             )
 
-            if (!companyUser.save(flush: true)) {
+            if (!companyUser.save(flush: true) ) {
                 flash.error = message(code: 'system.unspecifiedError.error')
                 return
             }
-        }
+        }*/
 
         selectedAdvertisement.properties.datePublished = new Date()
         selectedAdvertisement.properties.willExpire = new Date() + 30
@@ -198,7 +203,10 @@ class AdminJobOfferController {
         def jobOfferInstance = JobOffer.get(params.id)
         def companyInstance = jobOfferInstance.company
 
-        if (user.company) {
+        user.company = companyInstance
+        user.save(flush: true)
+
+        /*if (user.company) {
             user.company = companyInstance
             user.save(flush: true)
 
@@ -216,7 +224,7 @@ class AdminJobOfferController {
                 flash.error = message(code: 'system.unspecifiedError.error')
                 return
             }
-        }
+        }*/
 
 
         if (!CompanyServicesService.isActivated("top-service", companyInstance)) {
@@ -278,7 +286,10 @@ class AdminJobOfferController {
         def jobOfferInstance = JobOffer.get(params.id)
         def companyInstance = jobOfferInstance.company
 
-        if (user.company) {
+        user.company = companyInstance
+        user.save(flush: true)
+
+        /*if (user.company) {
             user.company = companyInstance
             user.save(flush: true)
         } else {
@@ -295,7 +306,7 @@ class AdminJobOfferController {
                 flash.error = message(code: 'system.unspecifiedError.error')
                 return
             }
-        }
+        }*/
 
         if (!CompanyServicesService.isActivated("remote-post", companyInstance)) {
             flash.error = "Služba není aktivní"

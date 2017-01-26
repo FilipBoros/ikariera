@@ -68,11 +68,9 @@ class AdminCompanyController {
         company.active = false
         company.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "N"]
+        def result = [companyId: companyId, data: "N"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action:'index';
+        render converter.toString();
 
     }
 
@@ -103,11 +101,9 @@ class AdminCompanyController {
         }
         company.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "N"]
+        def result = [companyId: companyId, data: "N"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action:'index';
+        render converter.toString();
     }
 
 
@@ -137,12 +133,9 @@ class AdminCompanyController {
         }
         company.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "A"]
+        def result = [companyId: companyId, data: "A"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action:'index';
-
+        render converter.toString();
     }
     /**
      * will enable company by ajax
@@ -215,12 +208,9 @@ class AdminCompanyController {
                 }
             }
 
-            /*def result = [companyId: companyId, data: "A"]
+            def result = [companyId: companyId, data: "A"]
             def converter = result as JSON;
-            render converter.toString();*/ // Return JSON for JAVA
-
-            redirect action:'index';
-
+            render converter.toString(); // Return JSON for JAVA
 
         } else {
 
@@ -256,11 +246,9 @@ class AdminCompanyController {
 
         company.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "P"]
+        def result = [companyId: companyId, data: "P"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action:'index';
+        render converter.toString();
     }
 
     /**
@@ -291,11 +279,9 @@ class AdminCompanyController {
 
         company.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "-"]
+        def result = [companyId: companyId, data: "-"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action:'index';
+        render converter.toString();
     }
 
     /**
@@ -326,10 +312,9 @@ class AdminCompanyController {
 
         companyInstance.save(flush: true)
 
-       /* def result = [companyId: companyId, data: "Ban"]
+        def result = [companyId: companyId, data: "Ban"]
         def converter = result as JSON;
-        render converter.toString();*/
-        redirect action: 'index'
+        render converter.toString();
     }
 
     /**
@@ -355,11 +340,9 @@ class AdminCompanyController {
 */
         companyInstance.save(flush: true)
 
-        /*def result = [companyId: companyId, data: "-"]
+        def result = [companyId: companyId, data: "-"]
         def converter = result as JSON;
-        render converter.toString();*/
-
-        redirect action: 'index'
+        render converter.toString();
     }
 
     /**
@@ -401,6 +384,15 @@ class AdminCompanyController {
         companyInstance.save(flush: true)*/
 
         companyInstance = Company.get(companyId)
+
+        /*Untested piece of code, it should disable the admin ability to delete itself.*/
+        def companyUsers = User.findAllByCompany(companyInstance)
+        for (User companyUser : companyUsers) {
+            if (companyUser.authorities.any{it.authority == 'ROLE_ADMIN'}){
+                flash.error = "Admin is among the users of this company, so you cannot delete it"
+            }
+        }
+
 
         //loop for CreditsReqests relationship
         companyInstance.each {

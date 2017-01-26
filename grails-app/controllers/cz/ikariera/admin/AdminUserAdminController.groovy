@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.security.Role
 import cz.ikariera.security.User

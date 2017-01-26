@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.admin.PublishSetting
 import cz.ikariera.security.User

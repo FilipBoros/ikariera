@@ -95,7 +95,7 @@ class BootStrap {
                         accountLocked: false,
                         enabled: true,
                         passwordExpired: false
-                ).save(flush: true, failOnError: true)
+                )
                 companyUser.company = company1
                 companyUser.save(flush: true, failOnError: true)
             }
@@ -201,7 +201,7 @@ class BootStrap {
                         accountLocked: false,
                         enabled: true,
                         passwordExpired: false
-                ).save(flush: true, failOnError: true)
+                )
                 michalUser.company = companies.get(2)
                 michalUser.save(flush: true, failOnError: true)
             }

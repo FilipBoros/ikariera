@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.admin.ApiKey
 import grails.transaction.Transactional
@@ -14,6 +14,8 @@ class AdminSimpleRegistrationController {
 
 
         def apiKeyInstance = ApiKey.findByServiceNameAndExpireGreaterThanEquals("SimpleRegistration", new Date())
+
+        println(apiKeyInstance)
 
         if(!apiKeyInstance) {
             flash.message = 'Simple Registration must me activated from Api keys first.'

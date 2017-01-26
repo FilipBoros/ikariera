@@ -1,4 +1,4 @@
-package ikariera.admin
+package cz.ikariera.admin
 
 import cz.ikariera.admin.Partner
 import grails.transaction.Transactional
@@ -11,15 +11,18 @@ class AdminPartnerController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Partner.list(params), model: [partnerInstanceCount: Partner.count()]
+        /*respond Partner.list(params), model: [partnerInstanceCount: Partner.count()]*/
+        render view: 'index', model: [partnerInstanceCount: Partner.count()]
     }
 
     def show(Partner partnerInstance) {
-        respond partnerInstance
+        /*respond partnerInstance*/
+        render view: 'show', model: [partnerInstance: partnerInstance]
     }
 
     def create() {
-        respond new Partner(params)
+        /*respond new Partner(params)*/
+        render view: 'create', model: [partnerInstance: new Partner(params)]
     }
 
     @Transactional
@@ -30,7 +33,8 @@ class AdminPartnerController {
         }
 
         if (partnerInstance.hasErrors()) {
-            respond partnerInstance.errors, view: 'create'
+            /*respond partnerInstance.errors, view: 'create'*/
+            render partnerInstance.errors, view: 'create'
             return
         }
 
@@ -46,7 +50,7 @@ class AdminPartnerController {
     }
 
     def edit(Partner partnerInstance) {
-        respond partnerInstance
+        render partnerInstance
     }
 
     @Transactional
@@ -57,7 +61,8 @@ class AdminPartnerController {
         }
 
         if (partnerInstance.hasErrors()) {
-            respond partnerInstance.errors, view: 'edit'
+            /*render partnerInstance.errors, view: 'edit'*/
+            render partnerInstance.errors, view: 'edit'
             return
         }
 
@@ -68,7 +73,7 @@ class AdminPartnerController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Partner.label', default: 'Partner'), partnerInstance.id])
                 redirect action: "index", controller: "adminPartner"
             }
-            '*' { respond partnerInstance, [status: HttpStatus.OK] }
+            '*' { /*respond partnerInstance, [status: HttpStatus.OK]*/ render status: HttpStatus.OK }
         }
     }
 

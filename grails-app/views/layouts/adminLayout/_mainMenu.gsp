@@ -14,10 +14,10 @@
                 <li class="dropdown">
                     <g:message code="admin.companies.label"/>
                     <ul>
-                        <li><g:link mapping="${message(code: 'admin.company.link')}"><g:message
+                        <li><g:link controller="adminCompany"><g:message
                                 code="admin.companies.label"/></g:link></li>
 
-                        <li><g:link mapping="${message(code: 'admin.joboffer.link')}"><g:message
+                        <li><g:link controller="adminJobOffer"><g:message
                                 code="admin.advertisement.label"/></g:link></li>
 
                         <li>
@@ -40,12 +40,12 @@
                 <li class="dropdown"><g:message code="admin.services.label"/>
                     <ul>
 
-                    <li><g:link mapping="${message(code: 'admin.services.link')}"><g:message
+                    <li><g:link controller="adminServices"><g:message
                             code="admin.services.label"/></g:link></li>
 
                     <li><g:link controller="adminPublishService" action="index"><g:message code="publishService.h2" /> </g:link></li>
 
-                    <li><g:link mapping="${message(code: 'admin.adminCredits.link')}" ><g:message
+                    <li><g:link controller="adminCredits" ><g:message
                             code="admin.creditsHistory.label"/></g:link></li>
 
                 </ul>
@@ -55,25 +55,25 @@
 
                 <li class="dropdown"><g:message code="admin.allUsers.label"/>
                     <ul>
-                        <li><g:link  mapping="${message(code: 'admin.adminUserAll.link')}">
+                        <li><g:link controller="adminUserAll">
                             <g:message code="admin.allUsers.label"/>
 
                         </g:link></li>
 
 
-                        <li><g:link mapping="${message(code: 'admin.adminUserCompany.link')}"><g:message
+                        <li><g:link controller="adminUserCompany"><g:message
                                 code="admin.companyUsers.label"/></g:link></li>
 
-                        <li><g:link mapping="${message(code: 'admin.adminUserStudent.link')}"><g:message
+                        <li><g:link controller="adminUserStudent"><g:message
                                 code="admin.studentUsers.label"/></g:link></li>
 
-                        <li><g:link mapping="${message(code: 'admin.adminUserAdmin.link')}"><g:message
+                        <li><g:link controller="adminUserAdmin"><g:message
                                 code="admin.adminUsers.label"/></g:link></li>
 
 
 
                     <li>
-                        <g:link mapping="${message(code: 'admin.adminRemoteRegister.link')}" action="list"> %{--TODO action="list"??--}%
+                        <g:link controller="adminRemoteRegister" action="list"> %{--TODO action="list"??--}%
                         <g:message code="admin.remoteRegister.label"/>
                         </g:link>
                     </li>
@@ -119,21 +119,21 @@
 
 
 
-                    <li><g:link mapping="${message(code: 'admin.adminPartners.link')}"><g:message code="admin.partners.label"/></g:link></li>
+                    <li><g:link controller="adminPartner"><g:message code="admin.partners.label"/></g:link></li>
 
-                    <li><g:link mapping="${message(code: 'admin.adminMedia.link')}" ><g:message code="study.category.media"/></g:link></li>
-
-
-
-
-
-                    <li><g:link mapping="${message(code: 'admin.adminBanner.link')}" ><g:message code="admin.banners.label"/></g:link></li>
+                    <li><g:link controller="adminMedia" ><g:message code="study.category.media"/></g:link></li>
 
 
 
 
 
-                        <li><g:link mapping="${message(code: 'admin.adminFaq.link')}"><g:message code="admin.faq.label"/></g:link></li>
+                    <li><g:link controller="adminBanner" ><g:message code="admin.banners.label"/></g:link></li>
+
+
+
+
+
+                        <li><g:link controller="adminFaq"><g:message code="admin.faq.label"/></g:link></li>
 
 %{--                        <li><g:link mapping="adminStatistics"><g:message
                                 code="admin.statistics.label"/></g:link></li>--}%
@@ -171,9 +171,9 @@
                     %{--<li><g:link mapping="adminEmail"><g:message code="admin.mailing.label"/></g:link></li>--}%
 
 
-                <li><g:link mapping="${message(code: 'admin.adminHero.link')}" ><g:message code="admin.hero.label"/></g:link></li>
+                <li><g:link controller="adminHeroImage" ><g:message code="admin.hero.label"/></g:link></li>
 
-                <li><g:link mapping="${message(code: 'admin.adminContact.link')}"><g:message
+                <li><g:link controller="adminContact"><g:message
                         code="admin.contactEdit.label"/></g:link></li>
 
                     <li><g:link controller="adminMaintenanceMessage"><g:message
@@ -192,7 +192,7 @@
                 <li class="dropdown"><g:message code="admin.apis.label"/>
                     <ul>
 
-                    <li><g:link mapping="${message(code: 'admin.adminApiKey.link')}"><g:message code="internal.api.keys"/></g:link></li>
+                    <li><g:link controller="adminApiKey"><g:message code="internal.api.keys"/></g:link></li>
 
                     <li><g:link controller="adminRemoteApiKey"><g:message
                             code="remote.api.keys"/></g:link></li>

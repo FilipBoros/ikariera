@@ -1,6 +1,4 @@
-package ikariera.admin
-
-import cz.ikariera.admin.Contact
+package cz.ikariera.admin
 
 class AdminContactController {
 

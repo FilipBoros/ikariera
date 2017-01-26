@@ -1,6 +1,5 @@
-package ikariera.admin
+package cz.ikariera.admin
 
-import cz.ikariera.admin.Faq
 import org.springframework.dao.DataIntegrityViolationException
 
 class AdminFaqController {

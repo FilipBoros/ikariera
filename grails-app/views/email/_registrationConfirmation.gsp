@@ -9,7 +9,7 @@
 
     <div>
         <g:message code="emailTemplate.registration.label2"/>
-        <a style=" color: #0079C5;" href="http://www.ikariera.cz" title="www.ikariera.cz">
+        <a style=" color: #0079C5;" href="http://www.ikariera.${grailsApplication.config.language}" title="www.ikariera.${grailsApplication.config.language}">
             <g:message code="emailTemplate.registration.link"/>.
         </a>
         <g:message code="emailTemplate.registration.link3"/>
@@ -37,8 +37,8 @@
 
     <div>
         <g:message code="emailTemplate.registration.activate1"/>   <br/>
-        <g:link url="http://www.ikariera.cz/confirm-user/${user.token}" absolute="true">
-            http://www.ikariera.cz/confirm-user/${user.token}</a>
+        <g:link url="http://www.ikariera.${grailsApplication.config.language}/confirm-user/${user.token}" absolute="true">
+            http://www.ikariera.${grailsApplication.config.language}/confirm-user/${user.token}</a>
         </g:link>
     </div>
 
