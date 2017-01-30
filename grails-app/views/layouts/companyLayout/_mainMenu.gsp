@@ -6,9 +6,15 @@
             <ul class=" admin-menu">
                 <li class="logo">
                     <a class="home " href="${createLink(uri: '/')}">
-                        <asset:image
-                             src="/ikariera/apple-touch-icon.png" alt="iKariera"
-                             style="border-width: 0px;height: 70px; margin-bottom: 10px;"/>
+                        <g:if test="${grailsApplication.config.language.equals('cz')}">
+                            <asset:image src="ikariera/apple-touch-icon.png" alt="iKariera"
+                                         style="border-width: 0px;height: 70px; margin-bottom: 10px;" />
+                        </g:if>
+                        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                            <asset:image src="ikariera_sk/apple-touch-icon.png" alt="iKariera"
+                                         style="border-width: 0px;height: 70px; margin-bottom: 10px;" />
+                        </g:elseif>
+
                     </a>
                 </li>
 

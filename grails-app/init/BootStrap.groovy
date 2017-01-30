@@ -104,14 +104,17 @@ class BootStrap {
                 UserRole.create(companyUser, companyRole, true)
             }
 
-            def companyAccountUser = CompanyAccount.findByUser(companyUser) ?: new CompanyAccount(
-                    titleBefore: "Ing.",
-                    telephone: "+420 723 327 901",
-                    publicEmail: "karl@seznam.cz",
-                    company: company1,
-                    user: companyUser,
-                    positionInCompany: "ríďa"
-            ).save(failOnError: true)
+            def companyAccountUser = CompanyAccount.findByUser(companyUser)
+            if(!companyAccountUser) {
+                 companyAccountUser = new CompanyAccount(
+                        titleBefore: "Ing.",
+                        telephone: "+420 723 327 901",
+                        publicEmail: "karl@seznam.cz",
+                        company: company1,
+                        user: companyUser,
+                        positionInCompany: "ríďa"
+                ).save(failOnError: true)
+            }
 
             def studentRole = Role.findByAuthority('ROLE_STUDENT') ?: new Role(authority: 'ROLE_STUDENT').save(flush: true, failOnError: true)
 
@@ -137,13 +140,16 @@ class BootStrap {
                     password: springSecurityService.encodePassword('student', 'student@ikariera.eu'),
                     passwordExpired: false).save(failOnError: true)
 
-            def student = StudentAccount.findByUser(studentUser) ?: new StudentAccount(
-                    telephone: '111111',
-                    user: studentUser,
-                    nationality: 'CZ').save(failOnError: true)
+            def student = StudentAccount.findByUser(studentUser)
+            if(!student) {
+                student = new StudentAccount(
+                        telephone: '111111',
+                        user: studentUser,
+                        nationality: 'CZ').save(failOnError: true)
 
-            studentUser.studentAccount = student
-            studentUser.save(failOnError: true)
+                studentUser.studentAccount = student
+                studentUser.save(failOnError: true)
+            }
 
             if (!adminUser.authorities.contains(adminRole)) {
                 UserRole.create(adminUser, adminRole, true)

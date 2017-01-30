@@ -68,7 +68,13 @@
                         <img src="${createLink(controller: 'studentAccountPhoto', action: "getMedia", id: userInstance?.studentAccount?.photo?.newFilename, absolute: true)}"/>
                     </g:if>
                     <g:else>
-                        <asset:image src="/ikariera/no-profile-image2.png" />
+                        <g:if test="${grailsApplication.config.language.equals('cz')}">
+                            <asset:image src="ikariera/no-profile-image2.png"/>
+                        </g:if>
+                        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+                            <asset:image src="ikariera_sk/no-profile-image2.png"/>
+                        </g:elseif>
+
                         %{--<img src="${resource(dir: '/images/ikariera', file: 'no-profile-image2.png')}"/>--}%
                     </g:else>
                 </p>

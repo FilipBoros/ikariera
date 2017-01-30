@@ -32,7 +32,12 @@
 <li>
 
     <g:link action="activation" id="articles-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
 
     </g:link>
 
@@ -60,7 +65,12 @@
 </li>
 <li>
     <g:link action="activation" id="mail-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
 
     </g:link>
 
@@ -87,7 +97,13 @@
 </li>
 <li>
     <g:link action="activation" id="cv-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
 
     </g:link>
     <g:link action="activation" id="cv-service">
@@ -115,7 +131,13 @@
 </li>
 <li>
     <g:link action="activation" id="top-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
 
     </g:link>
 
@@ -145,7 +167,12 @@
 <li>
 
     <g:link action="activation" id="message-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
     </g:link>
     <g:link action="activation" id="message-service">
         <h4><g:message code="company.service.messages"/></h4>
@@ -171,7 +198,12 @@
 <li>
 
     <g:link action="activation" id="remote-post">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
     </g:link>
     <g:link action="activation" id="remote-post">
         <h4><g:message code="company.service.remoteJobOffers"/></h4>
@@ -195,7 +227,12 @@
 <li>
 
     <g:link action="activation" id="jobofferapi">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
     </g:link>
     <g:link action="activation" id="jobofferapi">
         <h4><g:message code="company.jobOffer.api"/></h4>
@@ -222,7 +259,13 @@
 
 <li>
     <g:link action="activation" id="share-service">
-        <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+
+        <g:if test="${grailsApplication.config.language.equals('cz')}">
+            <asset:image class="th" src="ikariera/no-profile-image2.png" />
+        </g:if>
+        <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+            <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+        </g:elseif>
 
     </g:link>
 

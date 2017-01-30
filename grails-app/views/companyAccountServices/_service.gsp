@@ -1,8 +1,12 @@
 <div class="row">
 
 <div class="large-4 columns">
-
-    <asset:image class="th" src="/ikariera/no-profile-image2.png"/>
+    <g:if test="${grailsApplication.config.language.equals('cz')}">
+        <asset:image class="th" src="ikariera/no-profile-image2.png" />
+    </g:if>
+    <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+        <asset:image class="th" src="ikariera_sk/no-profile-image2.png" />
+    </g:elseif>
 
 </div>
 

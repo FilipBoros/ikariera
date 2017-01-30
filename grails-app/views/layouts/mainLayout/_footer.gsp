@@ -5,7 +5,7 @@
             <asset:image src="ikariera/iaeste-bile.png"/>
         </g:if>
         <g:elseif test="${grailsApplication.config.language.equals('sk')}">
-            <asset:image src="ikariera_sk/iaeste-white.png"/>
+            <asset:image src="ikariera_sk/iaeste-bile.png"/>
         </g:elseif>
         <br/>     <br/>
 
