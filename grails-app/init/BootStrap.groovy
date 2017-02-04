@@ -110,7 +110,6 @@ class BootStrap {
                         titleBefore: "Ing.",
                         telephone: "+420 723 327 901",
                         publicEmail: "karl@seznam.cz",
-                        company: company1,
                         user: companyUser,
                         positionInCompany: "ríďa"
                 ).save(failOnError: true)
@@ -162,7 +161,6 @@ class BootStrap {
 
             BootstrapConstant.init()
 
-            /*TODO change BootsrapRequestMap to use ?: for each permission*/
             println('Bootstrap of request has started')
             BootstrapRequestmap.init();
             println('Bootstrap of request has finished')

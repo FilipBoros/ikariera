@@ -97,7 +97,7 @@ class UrlMappings {
 
 
 
-        "/password-reset/$token" (
+        name passwordReset :"/password-reset/$token" (
                 controller : "password",
                 action : "resetPassword"
 
@@ -252,12 +252,9 @@ class UrlMappings {
                 controller: "adminCatalogue"
         )
 
-
         "/admin-company"(
                 controller: "adminCompany"
         )
-
-
 
         "/admin-hero"(
                 controller: "adminHeroImage"

@@ -7,7 +7,6 @@ class AdminController {
     def springSecurityService
     def mailService
 
-
     def index() {
         def user = springSecurityService.getCurrentUser()
         if (!user) {
