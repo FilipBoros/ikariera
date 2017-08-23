@@ -40,16 +40,10 @@ class JobOffer {
     Integer counter = 0
     Integer contactCounter = 0
 
-
-
-
     String positionName
     String jobOfferDescription
     String jobApplicantRequire
     String jobTypeDescription
-
-
-
 
     Date datePublished
     Date willExpire
@@ -99,7 +93,7 @@ class JobOffer {
 
             createAlias('company', '_company', CriteriaSpecification.LEFT_JOIN)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.fulltextSearch) {
                 or {
                     ilike('positionName', '%' + attrs.fulltextSearch + '%')
@@ -113,7 +107,7 @@ class JobOffer {
             // order
             org.grails.list.ListAssociationSort.associationOrder(attrs.sort, attrs.order, delegate)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.companyID) {
                 ilike('_company.companyID', '%' + attrs.companyID + '%')
             }
@@ -207,7 +201,7 @@ class JobOffer {
             if (attrs.graduatePosition)
                 eq('graduatePosition', true)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.fulltextSearch) {
                 or {
                     ilike('positionName', '%' + attrs.fulltextSearch + '%')

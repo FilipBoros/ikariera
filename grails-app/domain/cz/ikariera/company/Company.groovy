@@ -265,7 +265,7 @@ class Company {
                  }
              }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.companyID) {
                 ilike('companyID', '%' + attrs.companyID + '%')
             }
@@ -275,12 +275,12 @@ class Company {
 
             }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.companyCity) {
                 ilike('companyCity', '%' + attrs.companyCity + '%')
             }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.personalAgency) {
                 eq('personalAgency', true)
             }
@@ -344,7 +344,7 @@ class Company {
 
             createAlias('mainJobCategories', '_mainJobCategories', CriteriaSpecification.LEFT_JOIN)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.companyID) {
                 ilike('companyID', '%' + attrs.companyID + '%')
             }
@@ -374,12 +374,12 @@ class Company {
                 }
             }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.companyCity) {
                 ilike('companyCity', '%' + attrs.companyCity + '%')
             }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.personalAgency) {
                 eq('personalAgency', true)
             }
@@ -391,7 +391,7 @@ class Company {
                 }
             }
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.active) {
                 eq('active', true)
             }

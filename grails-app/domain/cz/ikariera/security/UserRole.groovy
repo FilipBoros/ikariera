@@ -80,7 +80,7 @@ class UserRole implements Serializable {
 
             createAlias('role', 'roleAlias', CriteriaSpecification.LEFT_JOIN)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.firstName) {
                 ilike('userAlias.firstName', '%' + attrs.firstName + '%')
             }

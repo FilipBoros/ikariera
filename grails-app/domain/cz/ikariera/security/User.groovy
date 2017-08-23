@@ -174,7 +174,7 @@ class User {
             // order
             org.grails.list.ListAssociationSort.associationOrder(attrs.sort, attrs.order, delegate)
 
-            // fulltext search in filters
+            // cz.ikariera.fulltext search in filters
             if (attrs.firstName) {
                 ilike('firstName', '%' + attrs.firstName + '%')
             }

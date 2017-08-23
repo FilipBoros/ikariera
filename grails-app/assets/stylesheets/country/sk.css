@@ -1,0 +1,21 @@
+.logo-medium{
+    height: 70px;
+    border-width: 0;
+    padding-bottom: 20px;
+    padding-left: 30px;
+}
+.logo-large{
+    height: 70px;
+    border-width: 0;
+    padding-bottom: 25px;
+}
+.logo-small{
+    height: 70px;
+    border-width: 0;
+    padding-bottom: 20px;
+    padding-left: 30px;
+}
+li.menu-icon{
+    margin-top: -25px !important;
+}
+

@@ -12,6 +12,12 @@
 
     <g:render template="/layouts/mainLayout/pageHead"/>
 
+    <g:if test="${grailsApplication.config.language.equals('cz')}">
+        <asset:stylesheet src="country/cz.css" />
+    </g:if>
+    <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+        <asset:stylesheet src="country/sk.css" />
+    </g:elseif>
 
     <g:layoutHead/>
 

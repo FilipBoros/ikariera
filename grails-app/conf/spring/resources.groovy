@@ -16,6 +16,7 @@ beans = {
         Locale.setDefault(defaultLocale)
     }*/
 
+
     authenticationSuccessHandler(AuthExtendedSuccessHandler) {
         def conf = SpringSecurityUtils.securityConfig
         requestCache = ref('requestCache')

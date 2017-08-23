@@ -21,8 +21,8 @@ environments:
              username: root
              zeroDateTimeBehavior: convertToNull
              password: password
-             dbCreate: update
-             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+             dbCreate: create-drop
+             dialect: cz.ikariera.MyMySqlDialect
              url: jdbc:mysql://localhost/ikariera?autoreconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     test:
         dataSource:

@@ -151,7 +151,10 @@ class UrlMappings {
                 action: 'detail'
         )
 
-
+        name fullTextSearchTest:"/test"(
+                controller: "jobOffer",
+                action: "fullTextFilter"
+        )
 
 
 

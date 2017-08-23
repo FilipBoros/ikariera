@@ -6,12 +6,18 @@
 
     <title><g:layoutTitle default="${message(code: 'page.main.title')}"/></title>
 
-
     <asset:stylesheet src="application.css"/>
-
     <asset:javascript src="main.js"/>
     <asset:javascript src="application.js"/>
     <asset:javascript src="studentEducation.js"/>
+
+
+    <g:if test="${grailsApplication.config.language.equals('cz')}">
+        <asset:stylesheet src="country/cz.css" />
+    </g:if>
+    <g:elseif test="${grailsApplication.config.language.equals('sk')}">
+        <asset:stylesheet src="country/sk.css" />
+    </g:elseif>
 
     <g:render template="/layouts/mainLayout/pageHead"/>
     <g:render template="/layouts/mainLayout/googleAnalytics"/>

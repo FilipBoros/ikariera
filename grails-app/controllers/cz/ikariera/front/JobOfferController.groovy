@@ -11,6 +11,7 @@ import grails.converters.XML
 class JobOfferController {
 
     def springSecurityService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def botJobs() {
@@ -435,8 +436,12 @@ class JobOfferController {
                 params: params
     }
 
+    def fulltextService
 
-
+    def fullTextFilter(){
+        log.error("Text" + fulltextService.getJobOfferByFullText())
+        render view: 'index'
+    }
 
     def cookieService
     /**
@@ -484,7 +489,7 @@ class JobOfferController {
      * Fultext search method returns a list of filtered JobOffers based
      */
     /*def fulltextSearch(SearchCommand searchCommand) {
-        def list = JobOffer.fulltext(searchCommand.searchParams)
+        def list = JobOffer.cz.ikariera.fulltext(searchCommand.searchParams)
 
         render view:'list',
             model:[

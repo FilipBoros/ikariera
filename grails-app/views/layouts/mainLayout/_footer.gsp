@@ -2,13 +2,15 @@
     <div class="small-6 medium-6 large-5 columns">
 
         <g:if test="${grailsApplication.config.language.equals('cz')}">
-            <asset:image src="ikariera/iaeste-bile.png"/>
+            <asset:image class="iaeste-logo" src="ikariera/iaeste-bile.png"/>
         </g:if>
         <g:elseif test="${grailsApplication.config.language.equals('sk')}">
-            <asset:image src="ikariera_sk/iaeste-bile.png"/>
+            <asset:image class="iaeste-logo" src="ikariera_sk/iaeste-bile.png"/>
         </g:elseif>
         <br/>     <br/>
 
+        %{--TODO delete me--}%
+        <g:link mapping="fullTextSearchTest" class="btn btn-lg btn-danger">fulltextSearch</g:link>
 
         <p style="max-width: 330px">
 
