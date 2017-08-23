@@ -63,14 +63,8 @@ Este treba mat naistalovany gradle, gradle 2.13 funguje
 Testy
 Stiahnite si tento firefox https://ftp.mozilla.org/pub/firefox/releases/46.0.1/linux-x86_64/en-US/firefox-46.0.1.tar.bz2 a rozbalte si ho pod /opt/firefox-46 viz. GebConfig.groovy
 
-Najlepsie je spustat testy cez 2 terminaly. V oboch otvorime domovsky folder projektu napr. ~/Desktop/ikariera/ikariera, ak mate projekt na ploche.
-V prvom rozbehneme aplikaciu pomocou grails run-app.
-V druhom spustime testy cez grails test-app functional: baseUrl="http://localhost:8090/". (port sa moze zmenit)
-Pozn. Spustame len funkcionalne testy proti beziacej aplikacii. Vyhoda je, ze sa spustaju rychlejsie. Nevyhoda je, ze v aplikacii ostavaju udaje po testoch.
-Da sa to zmenit, ak v testoch dorobime metodu cleanup a v nej vymazeme to, co sme do aplikacie pridali.
-
 Ak mate Ubuntu 16.04,
-tak jeden select cez criterio api vracia chybu.
+tak jeden select cez criteria api vracia chybu.
 tu je riesenie https://github.com/Piwigo/Piwigo/issues/376#issuecomment-230108109
 
 Pre verziu beziacu na grails 2.5.4
@@ -90,37 +84,6 @@ Bezi to na porte 8089 namiesto 8090 a databaza sa vola ikariera.
 Zmenilo sa loadovaci system assetov z resource pluginu na asset pipeline. Viz. ApplicationResources.groovy in ikariera2.
 Zmenila sa 1 domenova trieda, konkretne trieda uzivatela.
 Zmenilo sa loadovanie templatov pri ajaxe z render view na render template.
-
-Prepisal som Filter na Interceptor.
-
-V controlleroch nefunguje implicitne reslvovanie view, oba riadky by mali robit to iste,ale
-(Controller s menom index)
-[companyInstance: companyInstance] - nefunguje
-render(view: "index" ,model:[companyInstance: companyInstance]) - funguje
-
-TODO nefunguje generovanie PDF
--fixed by moving fonts from assets to /src/main/webapp
-TODO nefunguju errory, zobrazia sa biele stranky, viz boostrap service, tam je navod ako to zopakovat
--fixed see mainlayout/mainmenu
-TODO nefuguje odovzdanie foriem s errormi
-Nefunguje aj na ikariere.cz cize bug
-//= require chosen_v1.1.0/chosen.jquery
-tento require v main.js sposobuje problemy
-TODO nefunguje prepinanie jazyka, moznosti sa zobrazuju dole namiesto hore
-TODO upratat configuration
-TODO upratat manifesty
-TODO rozbehat testy
-TODO vygenerovat war a nasadit lokalne
-vygenerovat war, zatial som skusal len grails dev war
-vlozit do webapps tomcatu 8
-da sa nasadzovat aj na tomcat 7, ale treba nejako odpojit ten tomcat 7, ktory tam uz je
-Mozno bude treba zvecsit heap size
-v /usr/share/tomcat8/bin treba vytvorit subor setenv.sh
-a dat tam CATALINA_OPTS="-Xms512M -Xmx1024M"
-
-TODO prehodit ikariera.eu:8080
-
-Pre deploy, treba vytvorit adresare kam sa ukladaju uploadovane subory. Staci checknut riadok 132 v config.groovy.
 
 Pre development verziu toto netreba
 For production version

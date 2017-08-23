@@ -47,11 +47,8 @@ dependencies {
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
 
-    /*http://grails.1312388.n4.nabble.com/Grails-3-0-1-to-tomcat-7-0-55-deploy-issue-similar-to-GRAILS-12105-but-the-fix-doesn-t-work-td4659381.html*/
     provided "org.springframework.boot:spring-boot-starter-tomcat"
-    /*if(!useTomcat7){
-        compile "org.springframework.boot:spring-boot-starter-tomcat"
-    }*/
+
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
     compile "org.grails.plugins:cache"
@@ -69,7 +66,7 @@ dependencies {
 /*
     compile "org.grails.plugins:cache-headers:1.1.7" // !!! grails 2 plugin
 */
-    compile 'org.grails.plugins:recaptcha:3.0.1' // ako nahrada za staru recaptchu, treba este nakonfigurovat
+    compile 'org.grails.plugins:recaptcha:3.0.1'
 
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
 

@@ -176,24 +176,6 @@ class BootStrap {
 //
 //            BootstrapHeroImage2.init(uploadHeroDirectory);
 
-            def michalUser = User.findByUsername('donkmichal@gmail.com') ?: new User(
-                    username: 'donkmichal@gmail.com',
-                    firstName: 'Michal',
-                    lastName: 'Dolnak',
-                    /*company: company1,*/
-                    password: springSecurityService.encodePassword('michal', 'donkmichal@gmail.com'),
-                    accountExpired: false,
-                    accountLocked: false,
-                    enabled: true,
-                    passwordExpired: false
-            ).save(flush: true, failOnError: true)
-            michalUser.company = companies.get(2)
-            michalUser.save(flush: true, failOnError: true)
-
-
-            if (!michalUser.authorities.contains(companyRole)) {
-                UserRole.create(michalUser, companyRole, true)
-            }
 
             println("... processing of Bootstrap files finished.")
         }
