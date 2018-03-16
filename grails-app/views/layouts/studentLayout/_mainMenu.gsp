@@ -117,7 +117,13 @@
                             <g:message code="student.working.experience"/>
                         </g:link>
                     </li>
-                   
+
+                    <li>
+
+                        <g:link controller="studentAccountSkill">
+                            <g:message code="student.skills"/>
+                        </g:link>
+                    </li>
 
                 </ul>
             </li>

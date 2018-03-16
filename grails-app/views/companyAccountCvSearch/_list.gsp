@@ -76,6 +76,7 @@
                         <tbody>
                         <g:each in="${studentInstance?.educations}" var="university">
                             <tr>
+                                <td><g:formatDate format="yyyy" date="${university?.startYear}"/></td>
                                 <td><g:formatDate format="yyyy" date="${university?.endingYear}"/></td>
                                 <td>${university?.titleAwarded}</td>
                                 <td><g:message code="${university?.studyCategory?.i18NameFull}"/></td>

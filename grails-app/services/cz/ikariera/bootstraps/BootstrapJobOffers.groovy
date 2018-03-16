@@ -4,6 +4,7 @@ import cz.ikariera.admin.Country
 import cz.ikariera.company.*
 import cz.ikariera.security.User
 import cz.ikariera.student.LanguageType
+import cz.ikariera.student.SkillType
 import org.apache.commons.logging.LogFactory
 
 class BootstrapJobOffers {
@@ -15,6 +16,7 @@ class BootstrapJobOffers {
             ArrayList<Locality> localities,
             ArrayList<Country> countries,
             ArrayList<LanguageType> languages,
+            ArrayList<SkillType> skills,
             ArrayList<JobOfferType> jobOfferTypes
 
     ) {

@@ -63,6 +63,8 @@
 
         <g:render template="/adminUserStudent/languages" model="['studentInstance': userInstance?.studentAccount, 'userInstance': userInstance]"/>
 
+        <g:render template="/adminUserStudent/skills" model="['studentInstance': userInstance?.studentAccount, 'userInstance': userInstance]"/>
+
         <g:render template="/adminUserStudent/certificates" model="['studentInstance': userInstance?.studentAccount, 'userInstance': userInstance]"/>
 
         <g:render template="/adminUserStudent/experience" model="['studentInstance': userInstance?.studentAccount, 'userInstance': userInstance]"/>

@@ -1,12 +1,20 @@
 package cz.ikariera.student
 
+/*
+ * Edited by Filip Boroš
+ * Added: nameEN, nameSK
+ */
 class LanguageLevel {
-    String name
+    String nameCZ
+    String nameEN
+    String nameSK
     String i18Name
     Integer posOrder
 
     static constraints = {
-        name(blank: false, nullable: false, maxSize: 200)
+        nameCZ(blank: false, nullable: false, maxSize: 200)
+        nameEN(blank: false, nullable: false, maxSize: 200)
+        nameSK(blank: false, nullable: false, maxSize: 200)
         i18Name(unique: true, maxSize: 200)
     }
 

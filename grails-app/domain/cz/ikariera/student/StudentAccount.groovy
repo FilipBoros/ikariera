@@ -17,8 +17,9 @@ class StudentAccount {
             jobCategories     : JobCategory,
 
             languages         : LanguageCombination,
-            experiences        : Experience,
-            certificates        : Certificate
+            skills            : SkillCombination,
+            experiences       : Experience,
+            certificates      : Certificate
     ]
 
 
@@ -30,12 +31,15 @@ class StudentAccount {
 
     Collection languages
 
+    Collection skills
+
 
     static mapping = {
 
         educations cascade: "all-delete-orphan"
 
         languages cascade: "all-delete-orphan"
+        skills cascade: "all-delete-orphan"
         experiences cascade: "all-delete-orphan"
         certificates cascade: "all-delete-orphan"
 
@@ -58,12 +62,13 @@ class StudentAccount {
     String addressCountry
     String addressCity
 
+    String personalCharacteristic
 
     String telephone
 
 
     String nationality
-    Date birthday
+    String birthday
     String birthplace
 
 
@@ -89,10 +94,12 @@ class StudentAccount {
         addressCity(blank: true, nullable: true)
         addressZip(blank: true, nullable: true)
 
+        personalCharacteristic(blank: true, nullable: true, maxSize: 255)
+
         telephone(blank: true, nullable: true)
 
 
-        birthday(blank: true, nullable: true)
+        birthday(blank: true, nullable: true, maxSize: 255)
         birthplace(blank: true, nullable: true, maxSize: 255)
 
         nationality(blank: true, nullable: true)
@@ -103,7 +110,7 @@ class StudentAccount {
 
         jobCategories(nullable: true)
         languages(nullable: true)
-
+        skills(nullable: true)
 
 
 
@@ -138,7 +145,7 @@ class StudentAccount {
             createAlias('educations', '_educations', CriteriaSpecification.LEFT_JOIN)
             //  createAlias('studyCategories', '_studyCategories', CriteriaSpecification.LEFT_JOIN)
             createAlias('languages', '_languages', CriteriaSpecification.LEFT_JOIN)
-
+            createAlias('skills', '_skills', CriteriaSpecification.LEFT_JOIN)
             createAlias('user', '_user', CriteriaSpecification.LEFT_JOIN)
 
             // filter all chosen jobCategories
@@ -162,6 +169,12 @@ class StudentAccount {
                 }
             }
 
+            // filter all chosen skills
+            or {
+                attrs.skills?.each {
+                    like('_skills.skillType.id', it.id)
+                }
+            }
 
 
 
@@ -230,6 +243,7 @@ class StudentAccount {
             createAlias('educations', '_educations', CriteriaSpecification.LEFT_JOIN)
             //  createAlias('studyCategories', '_studyCategories', CriteriaSpecification.LEFT_JOIN)
             createAlias('languages', '_languages', CriteriaSpecification.LEFT_JOIN)
+            createAlias('skills', '_skills', CriteriaSpecification.LEFT_JOIN)
 
             createAlias('user', '_user', CriteriaSpecification.LEFT_JOIN)
 
@@ -261,6 +275,12 @@ class StudentAccount {
                 }
             }
 
+            // filter all chosen skill
+            or {
+                attrs.skills?.each {
+                    like('_skills.skillType.id', it.id)
+                }
+            }
 
 
 

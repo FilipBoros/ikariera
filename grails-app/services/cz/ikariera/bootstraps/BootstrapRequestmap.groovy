@@ -72,6 +72,7 @@ class BootstrapRequestmap {
         requestmap = Requestmap.findByUrl('/student-account-language/**') ?: new Requestmap(url: '/student-account-language/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
         requestmap = Requestmap.findByUrl('/student-account-certificate/**') ?: new Requestmap(url: '/student-account-certificate/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
         requestmap = Requestmap.findByUrl('/student-account-experience/**') ?: new Requestmap(url: '/student-account-experience/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
+        requestmap = Requestmap.findByUrl('/student-account-skill/**') ?: new Requestmap(url: '/student-account-skill/**', configAttribute: 'ROLE_STUDENT').save()
         requestmap = Requestmap.findByUrl('/student-account-generate-cv/**') ?: new Requestmap(url: '/student-account-generate-cv/**', configAttribute: 'ROLE_STUDENT').save() //Michal Dolnak
 
         requestmap = Requestmap.findByUrl('/company-account/**') ?: new Requestmap(url: '/company-account/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()

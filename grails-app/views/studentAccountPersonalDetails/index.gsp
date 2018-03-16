@@ -226,7 +226,7 @@
         %{--Michal Dolnak--}%
 
         <g:form action="index" controller="studentAccountGenerateCv">
-            <input type="submit" class="btn btn-danger" value="Generate pdf">
+            <input type="submit" class="btn btn-danger" value="${message(code: 'student.cv.generate')}">
         </g:form>
 
 

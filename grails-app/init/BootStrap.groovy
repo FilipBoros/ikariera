@@ -10,6 +10,7 @@ import cz.ikariera.company.Locality
 import cz.ikariera.company.CompanyAccount
 import cz.ikariera.company.JobCategory
 import cz.ikariera.student.Education
+import cz.ikariera.student.SkillType
 import cz.ikariera.student.StudentAccount
 import cz.ikariera.student.LanguageType
 import cz.ikariera.admin.Country
@@ -143,12 +144,20 @@ class BootStrap {
             if(!student) {
                 student = new StudentAccount(
                         telephone: '111111',
+                        //birthday: Date.parse("yyyy-MM-dd", "1990-06-22 00:00:00"),
                         user: studentUser,
                         nationality: 'CZ').save(failOnError: true)
 
                 studentUser.studentAccount = student
                 studentUser.save(failOnError: true)
             }
+
+           /* def jobCategory = JobCategory.findByUser(student)
+            if(!jobCategory) {
+                 jobCategory = new JobCategory(
+                    id: 20)
+
+                 }*/
 
             if (!adminUser.authorities.contains(adminRole)) {
                 UserRole.create(adminUser, adminRole, true)
@@ -175,8 +184,10 @@ class BootStrap {
             BootstrapBanner.init(companies);
             BootstrapStudyCategories.init();
             BootstrapLanguageLevels.init();
+            BootstrapSkillLevels.init();
 
             ArrayList<LanguageType> languages = BootstrapLanguages.init();
+            ArrayList<SkillType> skills = BootstrapSkills.init();
 
             BootstrapUniversities.init();
 
@@ -184,7 +195,7 @@ class BootStrap {
             ArrayList<JobOfferType> jobOfferTypes = BootstrapJobOfferType.init()
             ArrayList<Country> countries = BootstrapCountry.init();
 
-            BootstrapJobOffers.init(companies, jobCategories, localities, countries, languages, jobOfferTypes);
+            BootstrapJobOffers.init(companies, jobCategories, localities, countries, languages, skills, jobOfferTypes);
 
 //            String uploadDirectory = grailsApplication.config.upload.directory.mediaFile
 //            BootstrapPartners.init(uploadDirectory)

@@ -308,7 +308,7 @@ class CompanyAccountEmailController {
                 }
 
 
-                def link = createLink(controller: 'media', action: 'getAttachedImage', params: [path: serverFile?.getPath(), name: serverFile?.getName()], absolute: true)
+                def link = createLink(controller: 'media', action: 'getAttachedImage', params: [path: serverFile?.getPath(), name: serverFile?.name()], absolute: true)
 
                 render text: "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + funcNum + ", '$link', '$message');</script>"
             }

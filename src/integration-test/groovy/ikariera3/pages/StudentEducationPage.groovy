@@ -18,6 +18,7 @@ class StudentEducationPage extends Page{
 
         firstEducationDegree {$('input', id:'educations[0].titleAwarded')}
 
+        startYearSelector {$('select', id:'educations[0].startYear_year')}
         endingYearSelector {$('select', id:'educations[0].endingYear_year')}
         nextYearOption {endingYearSelector.find("option").find {it.value() == "2017"}}
         selectedYear {endingYearSelector.find('option', selected:'selected')}

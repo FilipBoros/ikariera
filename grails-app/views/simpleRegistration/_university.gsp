@@ -14,6 +14,23 @@
         </label>
     </div>
 
+    <div class="table-select large-6 columns">
+
+        <label>
+            ${message(code: "university.startYear.label")}
+
+
+
+            <g:select name="studentAccount.educations[0].startYearInteger" from="${2000..2040}"
+
+                      value="${userInstance?.studentAccount?.educations?.first()?.startYearInteger?: formatDate(date:  new Date(), format:  "yyyy" )}"
+            />
+
+
+        </label>
+
+    </div>
+
 
     <div class="table-select large-6 columns">
 

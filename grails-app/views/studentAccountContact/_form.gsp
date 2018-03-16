@@ -94,6 +94,18 @@
 
     </div>
 
+    <div class="large-12 columns">
+
+        <g:render template="/layouts/_fields/input" model="[
+                label: message(code: 'student.personalCharacteristic.label'),
+                name: 'studentAccount.personalCharacteristic',
+                field: 'personalCharacteristic',
+                maxLength: 255,
+                inputInstance: userInstance?.studentAccount,
+                errorMessage: message(code: 'userPersonal.personalCharacteristic.error')]"/>
+
+    </div>
+
 </div>
 %{--
 

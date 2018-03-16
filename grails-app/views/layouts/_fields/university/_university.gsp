@@ -16,7 +16,20 @@
     </td>
 
 
-    <td class="table-select large-6 columns">
+    <td class="table-select large-3 columns">
+
+        <label>
+            ${message(code: "university.startYear.label")}
+
+            <g:datePicker name="educations[${i}].startYear" class="exclude-from-clone" precision="year"
+                          placeholder="${message(code: "university.startYear.label")}"
+                          value="${education?.startYear}"/>
+
+        </label>
+
+    </td>
+
+    <td class="table-select large-3 columns">
 
         <label>
             ${message(code: "university.endYear.label")}
@@ -28,6 +41,7 @@
         </label>
 
     </td>
+    
 
 
     <td class="table-select large-12 columns ">

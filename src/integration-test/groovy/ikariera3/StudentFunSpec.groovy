@@ -98,6 +98,7 @@ class StudentFunSpec extends StudentAuthentificationFunSpec {
 
             firstEducationDegree = 'Ing'
 
+            startYearSelector.click()
             endingYearSelector.click()
             nextYearOption.click()
 
@@ -128,6 +129,13 @@ class StudentFunSpec extends StudentAuthentificationFunSpec {
             to StudentLanguagePage
         then:
             at StudentLanguagePage
+    }
+
+    void "Create update and delete skill of a Student"() {
+        when:
+            to StudentSkillPage
+        then:
+            at StudentSkillPage
     }
 
     void "Create update and delete certificate or course of a Student"() {

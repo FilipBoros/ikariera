@@ -29,6 +29,7 @@ $(document).ready(function () {
 
     var universityChildCount = $("#universities-table-list").attr("universityChildCount");
     var languageChildCount = $("#languages-table-list").attr("languageChildCount");
+    var skillChildCount = $("#skills-table-list").attr("skillChildCount");
     var experienceChildCount = $("#experiences-table-list").attr("experienceChildCount");
     var certificateChildCount = $("#certificates-table-list").attr("certificateChildCount");
 
@@ -78,8 +79,8 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var arraySelectInputs = new Array( "\\.id", "\\.titleAwarded", "\\.type", "\\.deleted", "\\.new", "\\.university\\.id", "\\.studyCategory\\.id", "\\.specialization", "\\.endingYear_year", "\\.endingYear", "\\.otherUniversity");
-        var arrayInputs = new Array( ".id", ".titleAwarded", ".type", ".deleted", ".new", ".university.id", ".studyCategory.id", ".specialization", ".endingYear_year", ".endingYear", ".otherUniversity");
+        var arraySelectInputs = new Array( "\\.id", "\\.titleAwarded", "\\.type", "\\.deleted", "\\.new", "\\.university\\.id", "\\.studyCategory\\.id", "\\.specialization", "\\.startYear_year", "\\.startYear", "\\.endingYear_year", "\\.endingYear", "\\.otherUniversity");
+        var arrayInputs = new Array( ".id", ".titleAwarded", ".type", ".deleted", ".new", ".university.id", ".studyCategory.id", ".specialization", ".startYear_year", ".startYear",".endingYear_year", ".endingYear", ".otherUniversity");
 
         addTableListRow(universityChildCount, "educations", "#university-row-clone ", "#universities-table-list", arrayInputs, arraySelectInputs);
         universityChildCount++;
@@ -99,6 +100,20 @@ $(document).ready(function () {
         addTableListRow(languageChildCount, "languages", "#language-row-clone   tr:first", "#languages-table-list", arrayInputs, arraySelectInputs);
 
         languageChildCount++;
+
+
+    });
+
+    $("#add-new-skill").click(function (e) {
+
+        e.preventDefault();
+
+        var arraySelectInputs = new Array("\\.id", "\\.type", "\\.deleted", "\\.new", "\\.skillType\\.id", "\\.level\\.id");
+        var arrayInputs = new Array(".id", ".type", ".deleted", ".new", ".skillType.id", ".level.id");
+
+        addTableListRow(skillChildCount, "skills", "#skill-row-clone   tr:first", "#skills-table-list", arrayInputs, arraySelectInputs);
+
+        skillChildCount++;
 
 
     });

@@ -26,6 +26,23 @@
 
 <div class="row">
 
+    <div class="large-6 columns">
+
+        <g:render template="/layouts/_fields/datePicker" model="[
+                label: message(code: 'user.birthday.label'),
+                field: 'birthday',
+                name: 'studentAccount.birthday',
+                placeholder: '',
+                maxLength: 150,
+                inputInstance: userInstance?.studentAccount]"/>
+
+    </div>
+
+</div>
+
+
+<div class="row">
+
     <div class="large-12 columns">
 
         <g:render template="/layouts/_fields/input" model="[

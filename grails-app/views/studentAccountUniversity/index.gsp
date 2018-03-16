@@ -51,7 +51,6 @@
 </div>
 
 
-
 <table style="display: none;" id="university-row-clone">
     <g:render template='/layouts/_fields/university/university' model="['university': null, 'i': '_clone']"/>
 </table>

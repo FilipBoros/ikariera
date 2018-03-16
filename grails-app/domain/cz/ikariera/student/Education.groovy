@@ -9,9 +9,12 @@ class Education {
 
     StudyCategory studyCategory
 
+    Date startYear
+
     Date endingYear
 
     Integer endingYearInteger
+    Integer startYearInteger
 
     String specialization
     String titleAwarded
@@ -30,7 +33,9 @@ class Education {
         university(nullable: true)
         studyCategory(nullable: true)
         endingYearInteger(nullable: true)
+        startYearInteger(nullable: true)
 
+        startYear(nullable: true)
         endingYear(nullable: true)
 
         otherUniversity(nullable: true)

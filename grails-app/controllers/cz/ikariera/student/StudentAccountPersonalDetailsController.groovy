@@ -40,7 +40,11 @@ class StudentAccountPersonalDetailsController {
         userInstance?.lastName = params?.lastName
         userInstance?.username = params?.username
 
+
+       //userInstance?.studentAccount.birthday = Date.parse("yyyy-MM-dd", "${params?.studentAccount.birthday[6..9]}-${params?.studentAccount.birthday[3..4]}-${params?.studentAccount.birthday[0..1]} 00:00:00")
+
         userInstance?.studentAccount?.jobCategories?.clear()
+
         List jobCategories = params.list("jobCategories")
         //println(jobCategories)
         for(int i = 0;i<jobCategories.size();i++){

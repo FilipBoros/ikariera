@@ -21,6 +21,7 @@ class StudentPersonalDetailsPage extends Page{
         streetAndAddress {$('input', id:'studentAccount.addressStreet')}
         city {$('input', id:'studentAccount.addressCity')}
         zip {$('input', id:'studentAccount.addressZip')}
+        zip {$('input', id:'studentAccount.shortInfo')}
 
         countrySelector {$('select', id:'studentAccount.addressCountry')}
         centralAfricaOption {$('select', id:'studentAccount.addressCountry').find('option').find {it.value() == 'caf'}}
