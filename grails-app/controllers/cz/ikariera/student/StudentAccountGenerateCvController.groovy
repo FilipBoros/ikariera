@@ -19,7 +19,7 @@ class StudentAccountGenerateCvController {
 
         def locale = RequestContextUtils.getLocale(request).toString()
         User user = springSecurityService.getCurrentUser()
-        pdfService.generateCV(user.studentAccount, 2, locale) // TODO change first parameter
+        pdfService.generateCV(user.studentAccount, 1, locale) // TODO change first parameter
         return redirect(controller: "studentAccountPersonalDetails")
     }
 }

@@ -22,8 +22,9 @@ import cz.ikariera.student.SkillCombination
 import cz.ikariera.student.StudentAccount
 import grails.transaction.Transactional
 import grails.web.context.ServletContextHolder
-import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfPCell
+import org.h2.table.Table
 
 /**
  * Service to generate student cv using itextpdf dependency
@@ -37,11 +38,14 @@ class PdfService {
     /**
      *  Method is called from controller and handles the specific application logic in generating the cv.
      *  @author Michal Dolnak
+     *  updated by Filip Boros
      */
 
     def grailsApplication
 
-
+    /*
+     * Second parameter changes CV template
+     */
     def generateCV(StudentAccount studentAccount, int CVnumber, String locale) throws DocumentException, IOException {
 
         String cvDirectory = grailsApplication.config.upload.directory.studentCv
@@ -57,18 +61,16 @@ class PdfService {
 
         document.open()
 
-
-
         switch (CVnumber) {
             case 1:  generateDocument1(document, studentAccount, studentPhotoDirectory, locale)
                 break
             case 2:  generateDocument2(document, studentAccount, studentPhotoDirectory, locale)
                 break
-            default:
+            case 3:  generateDocument3(document, studentAccount, studentPhotoDirectory, locale)
+                break
+            default: generateDocument1(document, studentAccount, studentPhotoDirectory, locale)
                 break
         }
-
-        //generateDocument1(document, studentAccount, studentPhotoDirectory)
 
         document.close()
 
@@ -85,17 +87,102 @@ class PdfService {
     /**
     *  Method creates the content of pdf using itext. Look and feel taken from profesia.sk.
     *  @author Michal Dolnak
+    *  updated by Filip Boros
     */
     private def generateDocument1(Document document, StudentAccount studentAccount, String studentPhotoDirectory, String locale) {
+        //Text mutations
+        String addressDescription = ""
+        String telephoneDescription = ""
+        String emailDescription = ""
+        String dateOfBirthDescription = ""
+        String educationsDescription = ""
+        String experiencesDescription = ""
+        String noEducation = ""
+        String noEmployment = ""
+        String languagesDescription = ""
+        String noLanguages = ""
+        String certificatesDescription = ""
+        String profileDescription = ""
+        String skillsDescription = ""
+        String noSkills = ""
+        switch (locale) {
+            case "cs_CZ":
+                addressDescription = "Adresa: "
+                telephoneDescription = "Tel.: "
+                emailDescription = "E-mail: "
+                dateOfBirthDescription = "Datum narození: "
+                educationsDescription = "Vzdělání"
+                noEducation = "Nedefinované žádné vzdelání"
+                experiencesDescription = "Průběh zaměstnání"
+                noEmployment = "Nedefinované žádné zaměstnání "
+                languagesDescription = "Jazykové znalosti"
+                noLanguages = "Nedefinované žádné jazyky"
+                certificatesDescription = "Kurzy a školení"
+                profileDescription = "Profil"
+                skillsDescription = "PC zručnosti"
+                noSkills = "Nedefinované žádné zručnosti"
+                break
+            case "en_US":
+                addressDescription = "Address: "
+                telephoneDescription = "Tel.: "
+                emailDescription = "E-mail: "
+                dateOfBirthDescription = "Date of birth: "
+                educationsDescription = "Education"
+                noEducation = "No education defined"
+                experiencesDescription = "Employment history"
+                noEmployment = "No employment history defined"
+                languagesDescription = "Language knowledge"
+                noLanguages = "No language knowledge defined"
+                certificatesDescription = "Courses and training"
+                profileDescription = "Profile"
+                skillsDescription = "Computer skills"
+                noSkills = "No computer skills defined"
+                break
+            case "sk":
+                addressDescription = "Adresa: "
+                telephoneDescription = "Tel.: "
+                emailDescription = "E-mail: "
+                dateOfBirthDescription = "Dátum narodenia: "
+                educationsDescription = "Vzdelanie"
+                noEducation = "Nedefinované žiadné vzdelanie"
+                experiencesDescription = "Priebeh zamestnaní"
+                noEmployment = "Nedefinované žiadné zamestnanie"
+                languagesDescription = "Jazykové znalosti"
+                noLanguages = "Nedefinované žiadné jazyky"
+                certificatesDescription = "Kurzy a školenia"
+                profileDescription = "Profil"
+                skillsDescription = "PC zručnosti"
+                noSkills = "Nedefinované žiadné zručnosti"
+                break
+            default:
+                addressDescription = "Address: "
+                telephoneDescription = "Tel.: "
+                emailDescription = "E-mail: "
+                dateOfBirthDescription = "Date of birth: "
+                educationsDescription = "Education"
+                noEducation = "No education defined"
+                experiencesDescription = "Employment history"
+                noEmployment = "No employment history defined"
+                languagesDescription = "Language knowledge"
+                noLanguages = "No language knowledge defined"
+                certificatesDescription = "Courses and training"
+                profileDescription = "Profile"
+                skillsDescription = "Computer skills"
+                noSkills = "No computer skills defined"
+                break
+        }
+
         String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')// TODO could couse problems in grails 3
-        /*println(unicodeArialFont)*/
-        // Parameters
+        //Fonts
         FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
         Font titleFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,20,Font.BOLD,BaseColor.BLUE)
-        Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.NORMAL)
-        Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.BOLD)
-        Font italicFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,12,Font.ITALIC)
-        Font blueSubtitlesFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,14,Font.NORMAL,BaseColor.BLUE, )
+        Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.NORMAL)
+        Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.BOLD)
+        Font italicFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.ITALIC)
+
+        //Column widths for tables
+        int[] languagesWidths = [6, 24]
+
         // Profile photo
         if (studentAccount.photo) {
             Photo photo = studentAccount.photo
@@ -104,79 +191,65 @@ class PdfService {
             image.scaleAbsolute(60, 80)
             document.add(image)
         }
+
         // Name
         String name = studentAccount.user.firstName+" "+studentAccount.user.lastName
         document.add(new Paragraph(name,titleFont))
-
         document.add(new Paragraph(" "))
+
         // Address
-        String addressDescription = "Address:"+" " // i18n first part
         String addressValue = ""
         if (studentAccount.addressStreet && studentAccount.addressZip && studentAccount.addressCity)
         {
             addressValue = studentAccount.addressStreet+", "+studentAccount.addressZip+" "+studentAccount.addressCity
-        } else {
-            addressValue = "- - - - "
         }
         Phrase addressPhrase = new Phrase()
         addressPhrase.add(new Chunk(addressDescription,boldFont))
         addressPhrase.add(new Chunk(addressValue,regularFont))
         Paragraph addressParagraph = new Paragraph(addressPhrase)
         document.add(addressParagraph)
+
         // Telephone
-        String telephoneDescription = "Tel.:"+" " // i18n first part
         String telephoneValue = ""
         if (studentAccount.telephone) {
            telephoneValue = studentAccount.telephone
-        } else {
-            telephoneValue = "- - - - "
         }
         Phrase telephonePhrase = new Phrase()
         telephonePhrase.add(new Chunk(telephoneDescription,boldFont))
         telephonePhrase.add(new Chunk(telephoneValue,regularFont))
         Paragraph telephoneParagraph = new Paragraph(telephonePhrase)
         document.add(telephoneParagraph)
-        // E-mail
-        String emailDescription = "E-mail:"+" " // i18n first part
+
+        //E-mail
         String emailValue = studentAccount.user.username
         Phrase emailPhrase = new Phrase()
         emailPhrase.add(new Chunk(emailDescription,boldFont))
         emailPhrase.add(new Chunk(emailValue,regularFont))
         Paragraph emailParagraph = new Paragraph(emailPhrase)
         document.add(emailParagraph)
-        // Date of birth dateOfBirth // TODO doplnit do profilu datum narodenia
-       /* String dateOfBirthDescription = "Date of birth:"+" " // i18n first part
-        String dateOfBirthValue = ""
-        if (studentAccount.birthday) {
-            dateOfBirthValue = studentAccount.birthday
-        }
-        dateOfBirthValue = dateOfBirthValue.substring(0,10)
-        Phrase dateOfBirthPhrase = new Phrase()
-        dateOfBirthPhrase.add(new Chunk(dateOfBirthDescription,boldFont))
-        dateOfBirthPhrase.add(new Chunk(dateOfBirthValue,regularFont))
-        Paragraph dateOfBirthParagraph = new Paragraph(dateOfBirthPhrase)
-        document.add(dateOfBirthParagraph)*/
-        String dateOfBirthDescription = "Date of birth:"+" " // i18n first part
+
+        //Date of births
         String dateOfBirthValue = ""
         if (studentAccount.birthday) {
             dateOfBirthValue = studentAccount.birthday[0..9]
-        } else {
-            dateOfBirthValue = "- - - - "
         }
         Phrase dateOfBirthPhrase = new Phrase()
         dateOfBirthPhrase.add(new Chunk(dateOfBirthDescription,boldFont))
         dateOfBirthPhrase.add(new Chunk(dateOfBirthValue,regularFont))
         Paragraph dateOfBirthParagraph = new Paragraph(dateOfBirthPhrase)
         document.add(dateOfBirthParagraph)
-
         document.add(new Paragraph(" "))
+
+        //Profile - short info
+        if (studentAccount.personalCharacteristic) {
+            addSubtitleCV1(document, profileDescription)
+            Paragraph profileShortInfo = new Paragraph(studentAccount.personalCharacteristic, regularFont)
+            document.add(profileShortInfo)
+        }
+        document.add(new Paragraph(" "))
+
         // Education
-        String educationsDescription = "EDUCATION"
-        document.add(new Paragraph(educationsDescription,blueSubtitlesFont))
-        LineSeparator ls2 = new LineSeparator()
-        ls2.setOffset(15)
-        ls2.setLineColor(BaseColor.BLUE)
-        document.add(new Chunk(ls2))
+        addSubtitleCV1(document, educationsDescription)
         if (studentAccount.educations.size()) {
             for (Education education : studentAccount.educations) {
                 String university = education.university.name // i18n ?
@@ -189,25 +262,15 @@ class PdfService {
                 String educationDesciption = startYear + "-"+endYear+specialization // TODO add student education start year
                 document.add(new Paragraph(university,boldFont))
                 document.add(new Paragraph(educationDesciption,regularFont))
-
                 document.add(new Paragraph(" "))
-                // TODO add according to Profesia cv
-                /*String startYear = education.
-            */}
+            }
         } else {
-            document.add(new Paragraph("No education defined", italicFont))
-            document.add(new Paragraph(" "))
-            document.add(new Paragraph(" "))
+            document.add(new Paragraph(noEducation, italicFont))
             document.add(new Paragraph(" "))
         }
 
         // Employment history
-        String experiencesDescription = "EMPLOYMENT HISTORY"
-        document.add(new Paragraph(experiencesDescription,blueSubtitlesFont))
-        LineSeparator ls4 = new LineSeparator()
-        ls4.setOffset(15)
-        ls4.setLineColor(BaseColor.BLUE)
-        document.add(new Chunk(ls4))
+        addSubtitleCV1(document, experiencesDescription)
         if(studentAccount.experiences.size()){
             for(Experience experience : studentAccount.experiences) {
                 String experienceName  = experience.employer
@@ -220,47 +283,77 @@ class PdfService {
                 document.add(new Paragraph(" "))
             }
         } else {
-            document.add(new Paragraph("No employment history defined", italicFont))
-            document.add(new Paragraph(" "))
-            document.add(new Paragraph(" "))
+            document.add(new Paragraph(noEmployment, italicFont))
             document.add(new Paragraph(" "))
         }
 
         // Language skill
-        String languagesDescription = "LANGUAGE KNOWLEDGE"
-        document.add(new Paragraph(languagesDescription,blueSubtitlesFont))
-        LineSeparator ls5 = new LineSeparator()
-        ls5.setOffset(15)
-        ls5.setLineColor(BaseColor.BLUE)
-        document.add(new Chunk(ls5))
+        addSubtitleCV1(document, languagesDescription)
         if(studentAccount.languages.size()){
             for(LanguageCombination languageCombination : studentAccount.languages) {
-                String languageName  = languageCombination.languageType.nameCZ + " - "
-                String languageLevel = languageCombination.level.nameCZ
                 Phrase languagePhrase = new Phrase()
-                languagePhrase.add(new Chunk(languageName,boldFont))
-                languagePhrase.add(new Chunk(languageLevel,regularFont))
+                switch (locale) {
+                    case "cs_CZ":
+                        languagePhrase.add(new Chunk(languageCombination.languageType.nameCZ,boldFont))
+                        languagePhrase.add(new Chunk("     "+languageCombination.level.nameCZ,regularFont))
+                        break
+                    case "en_US":
+                        languagePhrase.add(new Chunk(languageCombination.languageType.nameEN,boldFont))
+                        languagePhrase.add(new Chunk("     "+languageCombination.level.nameEN,regularFont))
+                        break
+                    case "sk":
+                        languagePhrase.add(new Chunk(languageCombination.languageType.nameSK,boldFont))
+                        languagePhrase.add(new Chunk("     "+languageCombination.level.nameSK,regularFont))
+                        break
+                    default:
+                        languagePhrase.add(new Chunk(languageCombination.languageType.nameEN,boldFont))
+                        languagePhrase.add(new Chunk("     "+languageCombination.level.nameEN,regularFont))
+                        break
+                }
                 Paragraph languageParagraph = new Paragraph(languagePhrase)
                 document.add(languageParagraph)
-
-                //document.add(new Paragraph(" "))
-
             }
+            document.add(new Paragraph(" "))
         } else {
-            document.add(new Paragraph("No language knowledge defined", italicFont))
+            document.add(new Paragraph(noLanguages, italicFont))
             document.add(new Paragraph(" "))
+        }
+
+        //Pc skills
+        addSubtitleCV1(document, skillsDescription)
+        if(studentAccount.skills.size()){
+            for(SkillCombination skillCombination : studentAccount.skills) {
+                Phrase skillPhrase = new Phrase()
+                switch (locale) {
+                    case "cs_CZ":
+                        skillPhrase.add(new Chunk(skillCombination.skillType.name, boldFont))
+                        skillPhrase.add(new Chunk("   -   "+skillCombination.level.nameCZ.substring(3), regularFont))
+                        break
+                    case "en_US":
+                        skillPhrase.add(new Chunk(skillCombination.skillType.name, boldFont))
+                        skillPhrase.add(new Chunk("   -   "+skillCombination.level.nameEN.substring(3), regularFont))
+                        break
+                    case "sk":
+                        skillPhrase.add(new Chunk(skillCombination.skillType.name, boldFont))
+                        skillPhrase.add(new Chunk("   -   "+skillCombination.level.nameSK.substring(3), regularFont))
+                        break
+                    default:
+                        skillPhrase.add(new Chunk(skillCombination.skillType.name, boldFont))
+                        skillPhrase.add(new Chunk("   -   "+skillCombination.level.nameEN.substring(3), regularFont))
+                        break
+                }
+                Paragraph skillParagraph = new Paragraph(skillPhrase)
+                document.add(skillParagraph)
+            }
             document.add(new Paragraph(" "))
+        } else {
+            document.add(new Paragraph(noSkills, italicFont))
             document.add(new Paragraph(" "))
         }
 
         // Courses and Training
         if(studentAccount.certificates.size()){
-            String certificatesDescription = "COURSES AND TRAINING"
-            document.add(new Paragraph(certificatesDescription,blueSubtitlesFont))
-            LineSeparator ls3 = new LineSeparator()
-            ls3.setOffset(15)
-            ls3.setLineColor(BaseColor.BLUE)
-            document.add(new Chunk(ls3))
+            addSubtitleCV1(document, certificatesDescription)
             for(Certificate certificate : studentAccount.certificates) {
                 String certificateName  = certificate.name
                 String level = " "
@@ -277,7 +370,6 @@ class PdfService {
                 Paragraph paragraph = new Paragraph(certificatePhrase)
                 document.add(paragraph)
                 document.add(new Paragraph(description))
-
                 document.add(new Paragraph(" "))
             }
         }
@@ -380,17 +472,18 @@ class PdfService {
         Font importantFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.NORMAL)
         Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.BOLD)
         Font italicFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.ITALIC)
-        Font italicFontSubtitle = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.ITALIC, BaseColor.LIGHT_GRAY)
-        Font subtitlesFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,13,Font.UNDERLINE|Font.BOLD,BaseColor.BLACK, )
+        Font italicFontSubtitle = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.ITALIC, new BaseColor(173, 173, 173))
+        Font subtitlesFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,13,Font.UNDERLINE|Font.BOLD,BaseColor.BLACK)
 
         //Widths for table columns
+        int[] certificatesWidths = [5, 7, 16]
         int[] widthsPersonalInfo = [3, 4]
         int[] widthsEducation = [3, 2, 2]
         int[] widthsTitle = [1, 3, 3]
 
         //Profile photo
-        PdfPTable table = new PdfPTable(3);
-        table.setWidthPercentage(100);
+        PdfPTable table = new PdfPTable(3)
+        table.setWidthPercentage(100)
         table.setWidths(widthsTitle)
         if (studentAccount.photo) {
             Photo photo = studentAccount.photo
@@ -401,7 +494,7 @@ class PdfService {
             image.setBorderColor(BaseColor.LIGHT_GRAY)
             image.setBorderWidth(4f)
             PdfPCell cell = new PdfPCell(image, false)
-            cell.setFixedHeight(80f);
+            cell.setFixedHeight(80f)
             cell.setRowspan(2)
             cell.setBorder(0)
             table.addCell(cell)
@@ -413,7 +506,7 @@ class PdfService {
             image.setBorderColor(BaseColor.LIGHT_GRAY)
             image.setBorderWidth(4f)
             PdfPCell cell = new PdfPCell(image, false)
-            cell.setFixedHeight(80f);
+            cell.setFixedHeight(80f)
             cell.setRowspan(2)
             cell.setBorder(0)
             table.addCell(cell)
@@ -424,10 +517,10 @@ class PdfService {
         String name = studentAccount.user.firstName+" "+studentAccount.user.lastName
         Paragraph title = new Paragraph(name,titleFont)
         title.setAlignment(Paragraph.ALIGN_CENTER)
-        PdfPCell cell = new PdfPCell();
+        PdfPCell cell = new PdfPCell()
         cell.addElement(title)
         cell.setColspan(2)
-        cell.setFixedHeight(40f);
+        cell.setFixedHeight(40f)
         cell.setBorder(2)
         cell.setBorderColor(BaseColor.LIGHT_GRAY)
         table.addCell(cell)
@@ -436,7 +529,7 @@ class PdfService {
         }
         Paragraph parSubTitle = new Paragraph(subTitle,italicFontSubtitle)
         parSubTitle.setAlignment(Paragraph.ALIGN_CENTER)
-        cell = new PdfPCell();
+        cell = new PdfPCell()
         cell.addElement(parSubTitle)
         cell.setColspan(2)
         cell.setBorder(0)
@@ -449,8 +542,8 @@ class PdfService {
         parPersonalInfoDescription.setLeading(15,0)
         parPersonalInfoDescription.setSpacingAfter(5)
         document.add(parPersonalInfoDescription)
-        PdfPTable tableAddress = new PdfPTable(2);
-        tableAddress.setWidthPercentage(100);
+        PdfPTable tableAddress = new PdfPTable(2)
+        tableAddress.setWidthPercentage(100)
         tableAddress.setWidths(widthsPersonalInfo)
 
         // Address
@@ -461,10 +554,7 @@ class PdfService {
         }
         Paragraph parAddressDescription = new Paragraph(addressDescription,importantFont)
         Paragraph parAddressValue = new Paragraph(addressValue,regularFont)
-        //parPersonalInfoDescription.setLeading(10)
-        //parAddressValue.setLeading(10)
         PdfPCell cellAddressDescription = new PdfPCell()
-
         cellAddressDescription.addElement(parAddressDescription)
         PdfPCell cellAddressValue = new PdfPCell()
         cellAddressValue.addElement(parAddressValue)
@@ -475,13 +565,13 @@ class PdfService {
         document.add(tableAddress)
 
         // E-mail
-        PdfPTable tableEmail = new PdfPTable(2);
-        tableEmail.setWidthPercentage(100);
+        PdfPTable tableEmail = new PdfPTable(2)
+        tableEmail.setWidthPercentage(100)
         tableEmail.setWidths(widthsPersonalInfo)
         String emailValue = studentAccount.user.username
         Paragraph parEmailDescription = new Paragraph(emailDescription,importantFont)
         Paragraph parEmailValue = new Paragraph(emailValue,regularFont)
-        PdfPCell cellEmailDescription = new PdfPCell();
+        PdfPCell cellEmailDescription = new PdfPCell()
         cellEmailDescription.addElement(parEmailDescription)
         PdfPCell cellEmailValue = new PdfPCell()
         cellEmailValue.addElement(parEmailValue)
@@ -492,8 +582,8 @@ class PdfService {
         document.add(tableEmail)
 
         // Telephone
-        PdfPTable tableContact = new PdfPTable(2);
-        tableContact.setWidthPercentage(100);
+        PdfPTable tableContact = new PdfPTable(2)
+        tableContact.setWidthPercentage(100)
         tableContact.setWidths(widthsPersonalInfo)
         String contactDescription = ""
         String contactValue = " "
@@ -502,9 +592,7 @@ class PdfService {
         }
         Paragraph parContactDescription = new Paragraph(contactDescription,importantFont)
         Paragraph parContactValue = new Paragraph(contactValue,regularFont)
-        //parContactDescription.setLeading(10)
-        //parContactValue.setLeading(10)
-        PdfPCell cellContactDescription = new PdfPCell();
+        PdfPCell cellContactDescription = new PdfPCell()
         cellContactDescription.addElement(parContactDescription)
         PdfPCell cellContactValue = new PdfPCell()
         cellContactValue.addElement(parContactValue)
@@ -515,8 +603,8 @@ class PdfService {
         document.add(tableContact)
 
         //Date of birth
-        PdfPTable tableBirth = new PdfPTable(2);
-        tableBirth.setWidthPercentage(100);
+        PdfPTable tableBirth = new PdfPTable(2)
+        tableBirth.setWidthPercentage(100)
         tableBirth.setWidths(widthsPersonalInfo)
         String dateOfBirthValue = " "
         if (studentAccount.birthday) {
@@ -524,7 +612,7 @@ class PdfService {
         }
         Paragraph parDateOfBirthDescription = new Paragraph(dateOfBirthDescription,importantFont)
         Paragraph parDateOfBirthValue = new Paragraph(dateOfBirthValue,regularFont)
-        PdfPCell cellDateOfBirthDescription = new PdfPCell();
+        PdfPCell cellDateOfBirthDescription = new PdfPCell()
         cellDateOfBirthDescription.addElement(parDateOfBirthDescription)
         PdfPCell cellDateOfBirthValue = new PdfPCell()
         cellDateOfBirthValue.addElement(parDateOfBirthValue)
@@ -541,8 +629,8 @@ class PdfService {
         document.add(parEducationsDescription)
         if (studentAccount.educations.size()) {
             for (Education education : studentAccount.educations) {
-                PdfPTable tableEducation = new PdfPTable(3);
-                tableEducation.setWidthPercentage(100);
+                PdfPTable tableEducation = new PdfPTable(3)
+                tableEducation.setWidthPercentage(100)
                 tableEducation.setWidths(widthsEducation)
                 String university = education.university.name
                 String startYear = education.startYear.toString().split("-").first()
@@ -554,7 +642,7 @@ class PdfService {
                 Paragraph parEducationYears = new Paragraph(startYear + "-" + endYear,regularFont)
                 Paragraph parEducationUniversity = new Paragraph(university,boldFont)
                 Paragraph parEducationSpecialization = new Paragraph(specialization,regularFont)
-                PdfPCell cellEducationYears = new PdfPCell();
+                PdfPCell cellEducationYears = new PdfPCell()
                 cellEducationYears.addElement(parEducationYears)
                 cellEducationYears.setRowspan(2)
                 PdfPCell cellEducationUniversity = new PdfPCell()
@@ -586,7 +674,7 @@ class PdfService {
         if(studentAccount.experiences.size()){
             for(Experience experience : studentAccount.experiences) {
                 Paragraph experienceDate = new Paragraph(experience.periodStart+" - "+experience.periodEnd, regularFont)
-                document.add(experienceDate);
+                document.add(experienceDate)
                 Phrase experiencePhrase = new Phrase()
                 String experienceEmployer = " "
                 if (experience.employer) {
@@ -601,14 +689,16 @@ class PdfService {
                 Paragraph parExperienceName = new Paragraph(experiencePhrase)
                 document.add(parExperienceName)
                 document.add(new Paragraph("• " + experience.activities))
+                document.add(new Paragraph(" "))
             }
         } else {
             Paragraph parNoEmployment = new Paragraph(noEmployment, italicFont)
             parNoEmployment.setLeading(30)
             parNoEmployment.setAlignment(Paragraph.ALIGN_CENTER)
             document.add(parNoEmployment)
+            document.add(new Paragraph(" "))
         }
-        document.add(new Paragraph(" "))
+
 
         // Language skill
         Paragraph parLanguagesDescription = new Paragraph(languagesDescription, subtitlesFont)
@@ -616,8 +706,8 @@ class PdfService {
         document.add(parLanguagesDescription)
         if(studentAccount.languages.size()){
             for(LanguageCombination languageCombination : studentAccount.languages) {
-                PdfPTable tableLanguage = new PdfPTable(2);
-                tableLanguage.setWidthPercentage(100);
+                PdfPTable tableLanguage = new PdfPTable(2)
+                tableLanguage.setWidthPercentage(100)
                 tableLanguage.setWidths(widthsPersonalInfo)
                 String languageName = ""
                 String languageLevel = ""
@@ -641,7 +731,7 @@ class PdfService {
                 }
                 Paragraph parLanguageName = new Paragraph(languageName,boldFont)
                 Paragraph parLanguageLevel = new Paragraph(languageLevel,regularFont)
-                PdfPCell cellLanguageName = new PdfPCell();
+                PdfPCell cellLanguageName = new PdfPCell()
                 cellLanguageName.addElement(parLanguageName)
                 PdfPCell cellLanguageLevel = new PdfPCell()
                 cellLanguageLevel.addElement(parLanguageLevel)
@@ -660,24 +750,23 @@ class PdfService {
         document.add(new Paragraph(" "))
 
         //PC skills
-        PdfPTable tableSkill = new PdfPTable(4);
-        tableSkill.setWidthPercentage(100);
+        PdfPTable tableSkill = new PdfPTable(4)
+        tableSkill.setWidthPercentage(100)
         Paragraph parSkillsDescription = new Paragraph(skillsDescription, subtitlesFont)
         parSkillsDescription.setSpacingAfter(10)
         document.add(parSkillsDescription)
         if(studentAccount.skills.size()){
             for(SkillCombination skillCombination : studentAccount.skills) {
-                //tableSkill.setWidths(widthsPersonalInfo)
                 String skillName = skillCombination.skillType.name + ":"
-                String skillLevel = skillCombination.level.name
                 Paragraph parSkillName = new Paragraph(skillName,boldFont)
-                Paragraph parSkillLevel = new Paragraph(skillLevel,regularFont)
-                PdfPCell cellSkillName = new PdfPCell();
+                Paragraph parSkillLevel = dottedParagraph(skillCombination.level.posOrder)
+                PdfPCell cellSkillName = new PdfPCell()
                 cellSkillName.addElement(parSkillName)
                 PdfPCell cellSkillLevel = new PdfPCell()
                 cellSkillLevel.addElement(parSkillLevel)
                 cellSkillName.setBorder(0)
                 cellSkillLevel.setBorder(0)
+                cellSkillLevel.setPaddingTop(8)
                 tableSkill.addCell(cellSkillName)
                 tableSkill.addCell(cellSkillLevel)
             }
@@ -696,45 +785,15 @@ class PdfService {
         document.add(tableSkill)
         document.add(new Paragraph(" "))
 
-        /*Paragraph parSkillsDescription = new Paragraph(skillsDescription, subtitlesFont)
-        parSkillsDescription.setSpacingAfter(10)
-        document.add(parSkillsDescription)
-        if(studentAccount.skills.size()){
-            for(SkillCombination skillCombination : studentAccount.skills) {
-                PdfPTable tableSkill = new PdfPTable(2);
-                tableSkill.setWidthPercentage(100);
-                tableSkill.setWidths(widthsPersonalInfo)
-                String skillName = skillCombination.skillType.nameCZ
-                String skillLevel = skillCombination.level.nameCZ
-                Paragraph parSkillName = new Paragraph(skillName,boldFont)
-                Paragraph parSkillLevel = new Paragraph(skillLevel,regularFont)
-                PdfPCell cellSkillName = new PdfPCell();
-                cellSkillName.addElement(parSkillName)
-                PdfPCell cellSkillLevel = new PdfPCell()
-                cellSkillLevel.addElement(parSkillLevel)
-                cellSkillName.setBorder(0)
-                cellSkillLevel.setBorder(0)
-                tableSkill.addCell(cellSkillName)
-                tableSkill.addCell(cellSkillLevel)
-                document.add(tableSkill)
-            }
-        } else {
-            Paragraph parNoSkills = new Paragraph(noSkills, italicFont)
-            parNoSkills.setLeading(30)
-            parNoSkills.setAlignment(Paragraph.ALIGN_CENTER)
-            document.add(parNoSkills)
-        }
-        document.add(new Paragraph(" "))*/
-
         // Courses and Training
         if(studentAccount.certificates.size()){
             Paragraph parCertificatesDescription = new Paragraph(certificatesDescription, subtitlesFont)
-            parCertificatesDescription.setSpacingAfter(10)
+            parCertificatesDescription.setSpacingAfter(11)
             document.add(parCertificatesDescription)
             for(Certificate certificate : studentAccount.certificates) {
-                PdfPTable tableCertificates = new PdfPTable(2);
-                tableCertificates.setWidthPercentage(100);
-                tableCertificates.setWidths(widthsPersonalInfo)
+                PdfPTable tableCertificates = new PdfPTable(3)
+                tableCertificates.setWidthPercentage(100)
+                tableCertificates.setWidths(certificatesWidths)
                 String certificateName = certificate.name
                 String level = " "
                 if (certificate.level) {
@@ -742,23 +801,538 @@ class PdfService {
                 }
                 String certificateDescription = " "
                 if (certificate.description) {
-                    certificateDescription =  "• " + certificate.description
+                    certificateDescription = certificate.description
                 }
-                Paragraph parCertificateName = new Paragraph(certificateName, boldFont)
-                Paragraph parLevel = new Paragraph(level,regularFont)
-                Paragraph parCertificateDescription = new Paragraph(certificateDescription,italicFont)
-                PdfPCell cellCertificateName = new PdfPCell();
-                cellCertificateName.addElement(parCertificateName)
-                PdfPCell cellLevel = new PdfPCell()
-                cellLevel.addElement(parLevel)
-                cellCertificateName.setBorder(0)
-                cellLevel.setBorder(0)
-                tableCertificates.addCell(cellCertificateName)
-                tableCertificates.addCell(cellLevel)
+                cell = new PdfPCell(new Paragraph(certificateName, boldFont))
+                cell.setBorder(0)
+                tableCertificates.addCell(cell)
+                cell = new PdfPCell(new Paragraph(level, boldFont))
+                cell.setHorizontalAlignment(Paragraph.ALIGN_CENTER)
+                cell.setBorder(0)
+                tableCertificates.addCell(cell)
+                cell = new PdfPCell(new Paragraph(certificateDescription, regularFont))
+                cell.setBorder(0)
+                tableCertificates.addCell(cell)
                 document.add(tableCertificates)
-                document.add(parCertificateDescription)
                 document.add(new Paragraph(" "))
             }
         }
+    }
+
+     /*
+      * Added by Filip Boroš
+      * Third CV template, inspired by kickresume.com
+      */
+     private def generateDocument3(Document document, StudentAccount studentAccount, String studentPhotoDirectory, String locale) {
+         //Text mutations
+         String personalInfoDescription = ""
+         String firstName = ""
+         String lastName = ""
+         String dateOfBirth = ""
+         String address = ""
+         String phone = ""
+         String email = ""
+         String profile = ""
+         String workExperience = ""
+         String noWorkExperience = ""
+         String educations = ""
+         String noEducation = ""
+         String skills = ""
+         String skillsSoftware = ""
+         String skillsLanguages = ""
+         String certificates = ""
+         switch (locale) {
+             case "cs_CZ":
+                 personalInfoDescription = "Osobní info"
+                 firstName = "Jméno:"
+                 lastName = "Příjmení:"
+                 dateOfBirth = "Datum narození:"
+                 address = "Adresa:"
+                 phone = "Telefonní číslo:"
+                 email = "Email:"
+                 profile = "Profil"
+                 workExperience = "Pracovní zkušenosti"
+                 noWorkExperience = "Nedefinována žádna pracovní zkušenost"
+                 educations = "Vzdělání"
+                 noEducation = "Nedefinované žádné vzdelání"
+                 skills = "Zručnosti"
+                 skillsSoftware = "Software"
+                 skillsLanguages = "Jazyky"
+                 certificates = "Certifikáty a kurzy"
+                 break
+             case "en_US":
+                 personalInfoDescription = "Personal info"
+                 firstName = "First name:"
+                 lastName = "Last name:"
+                 dateOfBirth = "Date of birth:"
+                 address = "Address:"
+                 phone = "Phone number:"
+                 email = "Email address:"
+                 profile = "Profile"
+                 workExperience = "Work experience"
+                 noWorkExperience = "No work experience defined"
+                 educations = "Education"
+                 noEducation = "No education defined"
+                 skills = "Skills"
+                 skillsSoftware = "Software"
+                 skillsLanguages = "Languages"
+                 certificates = "Certificates and courses"
+                 break
+             case "sk":
+                 personalInfoDescription = "Osobné údaje"
+                 firstName = "Meno:"
+                 lastName = "Priezvisko:"
+                 dateOfBirth = "Dátum narodenia:"
+                 address = "Adresa:"
+                 phone = "Telefónne číslo:"
+                 email = "Email:"
+                 profile = "Profil"
+                 workExperience = "Pracovné skúsenosti"
+                 noWorkExperience = "Nedefinovaná žiadna pracovná skúsenost"
+                 educations = "Vzdelanie"
+                 noEducation = "Nedefinované žiadné vzdelanie"
+                 skills = "Zručnosti"
+                 skillsSoftware = "Software"
+                 skillsLanguages = "Jazyky"
+                 certificates = "Certifikáty a kurzy"
+                 break
+             default:
+                 personalInfoDescription = "Personal info"
+                 firstName = "First name:"
+                 lastName = "Last name:"
+                 dateOfBirth = "Date of birth:"
+                 address = "Address:"
+                 phone = "Phone number:"
+                 email = "Email address:"
+                 profile = "Profil"
+                 workExperience = "Work experience"
+                 noWorkExperience = "No work experience defined"
+                 educations = "Education"
+                 noEducation = "No education defined"
+                 skills = "Skills"
+                 skillsSoftware = "Software"
+                 skillsLanguages = "Languages"
+                 certificates = "Certificates and courses"
+                 break
+         }
+
+         String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')
+         //Fonts
+         FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
+         Font titleFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,29,Font.BOLD,new BaseColor(86, 86, 86))
+         Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.NORMAL)
+         Font boldFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.BOLD)
+         Font italicFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,11,Font.ITALIC)
+         //Widths for table columns
+         int[] certificatesWidths = [5, 3, 21]
+         int[] widthsEducation = [10, 27, 14]
+         int[] widthsOthers = [10, 1, 26, 14]
+         int[] widthsTitle = [8, 26, 7, 1]
+
+         //Name
+         String name = studentAccount.user.firstName + " " + studentAccount.user.lastName
+         Paragraph title = new Paragraph(name,titleFont)
+         title.setAlignment(Paragraph.ALIGN_CENTER)
+         document.add(title)
+         document.add(new Paragraph(" "))
+
+         //Personal info
+         addSubtitle(document, personalInfoDescription)
+
+         PdfPTable tablePersonalInfo = new PdfPTable(4)
+         tablePersonalInfo.setWidthPercentage(100)
+         tablePersonalInfo.setWidths(widthsTitle)
+         //First name
+         PdfPCell cell = new PdfPCell(new Paragraph(firstName, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.user.firstName) {
+             cell = new PdfPCell(new Paragraph(studentAccount.user.firstName, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Profile photo
+         if (studentAccount.photo) {
+             Photo photo = studentAccount.photo
+             Image image = Image.getInstance(studentPhotoDirectory + "/" + photo.newFilename)
+             image.scaleAbsolute(83, 86)
+             cell = new PdfPCell(image, false)
+             cell.setVerticalAlignment(Image.ALIGN_MIDDLE)
+             cell.setHorizontalAlignment(Image.ALIGN_CENTER)
+             cell.setBorderColor(new BaseColor(173, 173, 173))
+         } else {
+             Image image = Image.getInstance("grails-app/assets/images/ikariera_sk/no-profile-image2.png")
+             image.scaleAbsolute(83, 86)
+             cell = new PdfPCell(image, false)
+             cell.setVerticalAlignment(Image.ALIGN_MIDDLE)
+             cell.setHorizontalAlignment(Image.ALIGN_CENTER)
+             cell.setBorderColor(new BaseColor(173, 173, 173))
+         }
+         cell.setRowspan(6)
+         tablePersonalInfo.addCell(cell)
+         //Empty column
+         cell = new PdfPCell()
+         cell.setRowspan(6)
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Last Name
+         cell = new PdfPCell(new Paragraph(lastName, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.user.lastName) {
+             cell = new PdfPCell(new Paragraph(studentAccount.user.lastName, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Date of birth
+         cell = new PdfPCell(new Paragraph(dateOfBirth, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.birthday) {
+             cell = new PdfPCell(new Paragraph(studentAccount.birthday, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Address
+         cell = new PdfPCell(new Paragraph(address, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.addressStreet && studentAccount.addressZip && studentAccount.addressCity) {
+             cell = new PdfPCell(new Paragraph(studentAccount.addressStreet + ", " + studentAccount.addressZip + " " + studentAccount.addressCity, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Phone number
+         cell = new PdfPCell(new Paragraph(phone, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.telephone) {
+             cell = new PdfPCell(new Paragraph(studentAccount.telephone, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         //Email address
+         cell = new PdfPCell(new Paragraph(email, regularFont))
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         if (studentAccount.user.username) {
+             cell = new PdfPCell(new Paragraph(studentAccount.user.username, regularFont))
+         } else {
+             cell = new PdfPCell(new Paragraph("", regularFont))
+         }
+         cell.setBorder(0)
+         tablePersonalInfo.addCell(cell)
+         document.add(tablePersonalInfo)
+         document.add(new Paragraph(" "))
+
+         //Profile - short info
+         if (studentAccount.personalCharacteristic) {
+             addSubtitle(document, profile)
+             Paragraph profileShortInfo = new Paragraph(studentAccount.personalCharacteristic, regularFont)
+             profileShortInfo.setSpacingBefore(10)
+             document.add(profileShortInfo)
+         }
+         document.add(new Paragraph(" "))
+
+         //Work experience
+         addSubtitle(document, workExperience)
+         if(studentAccount.experiences.size()){
+             for(Experience experience : studentAccount.experiences) {
+                 PdfPTable tableWorkExperience = new PdfPTable(4)
+                 tableWorkExperience.setWidthPercentage(100)
+                 tableWorkExperience.setWidths(widthsOthers)
+                 if (experience.employer) {
+                     cell = new PdfPCell(new Paragraph(experience.employer, boldFont))
+                     cell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT)
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", boldFont))
+                 }
+                 cell.setBorder(0)
+                 cell.setRowspan(2)
+                 tableWorkExperience.addCell(cell)
+                 if (experience.occupation) {
+                     cell = new PdfPCell(new Paragraph(experience.occupation, boldFont))
+                     cell.setColspan(2)
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", boldFont))
+                     cell.setColspan(2)
+                 }
+                 cell.setBorder(0)
+                 tableWorkExperience.addCell(cell)
+                 String workExperienceDates = ""
+                 if (experience.periodStart) {
+                     workExperienceDates += experience.periodStart + " - "
+                 } else {
+                     workExperienceDates += "X - "
+                 }
+                 if (experience.periodEnd) {
+                     workExperienceDates += experience.periodEnd
+                 } else {
+                     workExperienceDates += "X"
+                 }
+                 Paragraph parWorkExperienceDates = new Paragraph(workExperienceDates, boldFont)
+                 cell = new PdfPCell(parWorkExperienceDates)
+                 cell.setRowspan(2)
+                 cell.setBorder(0)
+                 cell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT)
+                 tableWorkExperience.addCell(cell)
+                 if(experience.activities) {
+                     cell = new PdfPCell(new Paragraph("• ", boldFont))
+                     cell.setVerticalAlignment(Paragraph.ALIGN_TOP)
+                     cell.setHorizontalAlignment(Paragraph.ALIGN_MIDDLE)
+                     cell.setBorder(0)
+                     tableWorkExperience.addCell(cell)
+
+                     cell = new PdfPCell(new Paragraph(experience.activities, regularFont))
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", regularFont))
+                 }
+                 cell.setBorder(0)
+                 tableWorkExperience.addCell(cell)
+                 document.add(tableWorkExperience)
+                 document.add(new Paragraph(" "))
+             }
+         } else {
+             Paragraph parNoWorkExperience = new Paragraph(noWorkExperience, italicFont)
+             parNoWorkExperience.setLeading(30)
+             parNoWorkExperience.setAlignment(Paragraph.ALIGN_CENTER)
+             document.add(parNoWorkExperience)
+             document.add(new Paragraph(" "))
+         }
+
+         // Education
+         addSubtitle(document, educations)
+         if(studentAccount.educations.size()){
+             for(Education education : studentAccount.educations) {
+                 PdfPTable tableEducations = new PdfPTable(3)
+                 tableEducations.setWidthPercentage(100)
+                 tableEducations.setWidths(widthsEducation)
+                 if (education.university.name) {
+                     cell = new PdfPCell(new Paragraph(education.university.name, boldFont))
+                     cell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT)
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", boldFont))
+                 }
+                 cell.setBorder(0)
+                 cell.setRowspan(2)
+                 tableEducations.addCell(cell)
+                 if (education.studyCategory.name) {
+                     cell = new PdfPCell(new Paragraph(education.studyCategory.name, boldFont))
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", boldFont))
+                 }
+                 cell.setBorder(0)
+                 tableEducations.addCell(cell)
+                 String educationsDates = ""
+                 if (education.startYear) {
+                     educationsDates += education.startYear.toString().split("-").first() + " - "
+                 } else {
+                     educationsDates += "X - "
+                 }
+                 if (education.endingYear) {
+                     educationsDates += education.endingYear.toString().split("-").first()
+                 } else {
+                     educationsDates += "X"
+                 }
+                 Paragraph parEducationsDate = new Paragraph(educationsDates, boldFont)
+                 cell = new PdfPCell(parEducationsDate)
+                 cell.setRowspan(2)
+                 cell.setBorder(0)
+                 cell.setHorizontalAlignment(Paragraph.ALIGN_RIGHT)
+                 tableEducations.addCell(cell)
+                 if(education.specialization) {
+                     cell = new PdfPCell(new Paragraph(education.specialization, regularFont))
+                     cell.setPaddingRight(8)
+                 } else {
+                     cell = new PdfPCell(new Paragraph("", regularFont))
+                 }
+                 cell.setBorder(0)
+                 tableEducations.addCell(cell)
+                 document.add(tableEducations)
+                 document.add(new Paragraph(" "))
+             }
+         } else {
+             Paragraph parNoEducations = new Paragraph(noEducation, italicFont)
+             parNoEducations.setLeading(30)
+             parNoEducations.setAlignment(Paragraph.ALIGN_CENTER)
+             document.add(parNoEducations)
+             document.add(new Paragraph(" "))
+         }
+
+         //Skills
+         addSubtitle(document, skills)
+         PdfPTable tableSkills = new PdfPTable(2)
+         tableSkills.setWidthPercentage(100)
+         cell = new PdfPCell(new Paragraph(skillsSoftware, boldFont))
+         cell.setHorizontalAlignment(Paragraph.ALIGN_CENTER)
+         cell.setBorder(0)
+         cell.setPaddingBottom(5)
+         tableSkills.addCell(cell)
+         cell = new PdfPCell(new Paragraph(skillsLanguages, boldFont))
+         cell.setHorizontalAlignment(Paragraph.ALIGN_CENTER)
+         cell.setBorder(0)
+         cell.setPaddingBottom(5)
+         tableSkills.addCell(cell)
+         //Software
+         PdfPCell cellSoftware = new PdfPCell()
+         if (studentAccount.skills.size()) {
+             PdfPTable tableSoftware = new PdfPTable(2)
+             tableSoftware.setWidthPercentage(100)
+             for(SkillCombination skillCombination : studentAccount.skills) {
+                 cell = new PdfPCell(new Paragraph(skillCombination.skillType.name, regularFont))
+                 cell.setBorder(0)
+                 skillCombination.level.posOrder
+                 tableSoftware.addCell(cell)
+                 Paragraph dots = new Paragraph(dottedParagraph(skillCombination.level.posOrder))
+                 cell = new PdfPCell(dots)
+                 cell.setPaddingTop(-6)
+                 cell.setBorder(0)
+                 tableSoftware.addCell(cell)
+             }
+             cellSoftware.addElement(tableSoftware)
+         } else {
+             cellSoftware.addElement(new Paragraph(""))
+         }
+         cellSoftware.setBorder(0)
+         tableSkills.addCell(cellSoftware)
+         //Languages
+         PdfPCell cellLanguages = new PdfPCell()
+         if (studentAccount.languages.size()) {
+             PdfPTable tableLanguages= new PdfPTable(2)
+             tableLanguages.setWidthPercentage(100)
+             for(LanguageCombination languageCombination : studentAccount.languages) {
+                 String languageName = ""
+                 String languageLevel = ""
+                 switch (locale) {
+                     case "cs_CZ":
+                         languageName = languageCombination.languageType.nameCZ
+                         languageLevel = languageCombination.level.nameCZ
+                         break
+                     case "en_US":
+                         languageName = languageCombination.languageType.nameEN
+                         languageLevel = languageCombination.level.nameEN
+                         break
+                     case "sk":
+                         languageName = languageCombination.languageType.nameSK
+                         languageLevel = languageCombination.level.nameSK
+                         break
+                     default:
+                         languageName = languageCombination.languageType.nameEN
+                         languageLevel = languageCombination.level.nameEN
+                         break
+                 }
+                 cell = new PdfPCell(new Paragraph(languageName, regularFont))
+                 cell.setBorder(0)
+                 cell.setPadding(5)
+                 tableLanguages.addCell(cell)
+                 cell = new PdfPCell(new Paragraph(languageLevel, regularFont))
+                 cell.setBorder(0)
+                 cell.setPadding(5)
+                 cell.setHorizontalAlignment(Paragraph.ALIGN_LEFT)
+                 tableLanguages.addCell(cell)
+             }
+             cellLanguages.addElement(tableLanguages)
+         } else {
+             cellLanguages.addElement(new Paragraph(""))
+         }
+         cellLanguages.setBorder(0)
+         cellLanguages.setHorizontalAlignment(PdfPTable.ALIGN_RIGHT)
+         tableSkills.addCell(cellLanguages)
+         document.add(tableSkills)
+
+         // Courses and Training
+         if(studentAccount.certificates.size()){
+             addSubtitle(document, certificates)
+             for(Certificate certificate : studentAccount.certificates) {
+                PdfPTable tableCertificates = new PdfPTable(3)
+                tableCertificates.setWidthPercentage(100)
+                tableCertificates.setWidths(certificatesWidths)
+                String certificateName = certificate.name
+                String level = " "
+                if (certificate.level) {
+                    level = certificate.level
+                }
+                String certificateDescription = " "
+                if (certificate.description) {
+                    certificateDescription = certificate.description
+                }
+                 cell = new PdfPCell(new Paragraph(certificateName, boldFont))
+                 cell.setBorder(0)
+                 tableCertificates.addCell(cell)
+                 cell = new PdfPCell(new Paragraph(level, boldFont))
+                 cell.setHorizontalAlignment(Paragraph.ALIGN_CENTER)
+                 cell.setBorder(0)
+                 tableCertificates.addCell(cell)
+                 cell = new PdfPCell(new Paragraph(certificateDescription, regularFont))
+                 cell.setBorder(0)
+                 tableCertificates.addCell(cell)
+                 document.add(tableCertificates)
+                 document.add(new Paragraph(" "))
+             }
+         }
+     }
+
+    private def addSubtitle(Document document, String subtitleText) {
+        String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')
+        FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
+        Font subtitlesFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,16,Font.BOLD,new BaseColor(86, 86, 86))
+
+        Paragraph parNewSubtitle = new Paragraph(subtitleText,subtitlesFont)
+        parNewSubtitle.setLeading(15,0)
+        parNewSubtitle.setAlignment(Paragraph.ALIGN_CENTER)
+        parNewSubtitle.setSpacingAfter(-9)
+        document.add(parNewSubtitle)
+        LineSeparator ls = new LineSeparator()
+        ls.setOffset(-8)
+        ls.setLineColor(new BaseColor(173, 173, 173))
+        document.add(new Chunk(ls))
+    }
+
+    private def dottedParagraph(int level) {
+        String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')
+        FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
+        Font bigDot = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,25,Font.BOLD)
+        Font regularFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,21,Font.BOLD)
+
+        String dotts = ""
+        for (int i = 0; i < level; i++) {
+            dotts += "•"
+        }
+        /*String emptyDotts = ""
+        for (int i = 0; i < 5-level; i++) {
+            emptyDotts += "○ "
+        }*/
+        Phrase dottPhrase = new Phrase()
+        dottPhrase.add(new Chunk(dotts,bigDot))
+        //dottPhrase.add(new Chunk(emptyDotts,regularFont))
+        Paragraph parDotts = new Paragraph(dottPhrase)
+        return parDotts
+    }
+
+    private def addSubtitleCV1(Document document, String subtitleText) {
+        String unicodeArialFont = ServletContextHolder.servletContext.getRealPath('/')// TODO could couse problems in grails 3
+        FontFactory.register(unicodeArialFont+"fonts/arial-unicode-ms.ttf","Arial Unicode MS")
+        Font blueSubtitlesFont = FontFactory.getFont("Arial Unicode MS",BaseFont.IDENTITY_H,BaseFont.EMBEDDED,13,Font.NORMAL,BaseColor.BLUE, )
+
+        document.add(new Paragraph(subtitleText, blueSubtitlesFont))
+        LineSeparator ls = new LineSeparator()
+        ls.setOffset(15)
+        ls.setLineColor(BaseColor.BLUE)
+        document.add(new Chunk(ls))
     }
 }
