@@ -226,8 +226,28 @@
         %{--Michal Dolnak--}%
 
         <g:form action="index" controller="studentAccountGenerateCv">
-            <input type="submit" class="btn btn-danger" value="${message(code: 'student.cv.generate')}">
+            <div class="row">
+
+                <div class="large-5 columns">
+                    <input type="submit" class="btn btn-danger" value="${message(code: 'student.cv.generate')}">
+
+
+                </div>
+
+
+                <div class="large-3 columns">
+                    <g:select name="CVnumber" from="${1..3}" value="1"
+                              noSelection="${['':message(code:'student.cv.select')]}"/>
+                </div>
+
+            </div>
+
+
+
+
+
         </g:form>
+
 
 
     %{-- <hr>
